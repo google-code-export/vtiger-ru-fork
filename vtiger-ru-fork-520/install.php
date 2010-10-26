@@ -32,8 +32,9 @@ if(version_compare(phpversion(), '5.0') < 0) {
 	$_GET = array_map("stripslashes_checkstrings", $_GET);
 
 }
-
-require_once('include/install/language/en_us.lang.php');
+//BEGIN vtiger-ru-fork 25.10.10 Eugene Babiy
+require_once('include/install/language/ru_ru.lang.php');
+//END vtiger-ru-fork
 require_once('include/install/resources/utils.php');
 require_once('vtigerversion.php');	
 global $installationStrings, $vtiger_current_version;

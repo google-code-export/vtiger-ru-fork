@@ -344,11 +344,14 @@ class Chat
   function submit($msg, $to=0)
   {
 	global $adb;
+
+	/*vtiger-ru-fork 25.10.10 Eugene Babiy
+
     //UTF-8 support added - ding
     $msg = utf8RawUrlDecode($msg);
     $msg = $this->msgParse($msg);
     $msg = htmlentities($msg);
-    if(strlen($msg) == 0) return;
+    if(strlen($msg) == 0) return;*/
 	
 	//$sql = "insert into vtiger_chat_msg set chat_from=?, chat_to=?, born=now(), msg=?";
     $sql = "insert into vtiger_chat_msg(chat_from, chat_to, born, msg) values (?,?, now(), ?)";
