@@ -16,7 +16,9 @@
  * $Header: /advent/projects/wesat/vtiger_crm/sugarcrm/modules/Contacts/contactSeedData.php,v 1.4 2005/03/05 08:11:44 jack Exp $
  * Description:  TODO: To be written.
  ********************************************************************************/
-$last_name_array = Array(
+
+//vtiger-ru-fork 27.10.2010 Eugene Babiy
+/*$last_name_array = Array(
 "SMITH",
 "JOHNSON",
 "WILLIAMS",
@@ -21134,31 +21136,36 @@ $first_name_array = Array(
 "BRODERICK",
 "ALONSO"
 );
+*/
+
+//vtiger-ru-fork 28.10.2010 Eugene Babiy
 require_once('include/database/PearDatabase.php');
 $company_name_array = Array(
-"vtiger",
-"t3M Invest A/S",
-"EDFG Group Limited",
-"vtigerCRM Inc",
-"X-CEED INC 99",
-"demovtiger",
-"usable-vtiger",
-"gooduivtiger",
-"vtigeruser",
-"samplevtiger"
+"Наша CRM Система",
+"Наши Инвестиции, ООО",
+"Группа Компаний ОРФО Лимитед, ООО",
+"Иванов Иван Сидорович, ФЛП",
+"Все Что Вам Угодно, Фирма",
+"Абромович Роман, ИП",
+"Используем с умом CRM, ЗАО",
+"Новые Технологии, ЧП",
+"Любопытные Факты, ООО",
+"Открытые Системы для Бизнеса, АО"
 );
 
+//vtiger-ru-fork 28.10.2010 Eugene Babiy
 $street_address_array = Array(
- "123 Anywhere Street",
- "345 Sugar Blvd.",
- "1715 Scott Dr",
- "999 Baker Way");
+ "ул. Неизвестная 1",
+ "просп. Великий 2",
+ "наб. Новоиспеченная 123",
+ "пров. Какой Угодно 321");
 
+//vtiger-ru-fork 28.10.2010 Eugene Babiy
 $city_array = Array(
- "San Jose",
- "San Francisco",
- "Sunnyvale",
- "San Mateo");
+ "Киев",
+ "Москва",
+ "Минск",
+ "Баку");
 
 $campaign_name_array = Array(
 "User Conference",

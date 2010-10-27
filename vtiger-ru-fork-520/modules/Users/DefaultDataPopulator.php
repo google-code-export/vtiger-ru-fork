@@ -1271,20 +1271,21 @@ class DefaultDataPopulator extends CRMEntity {
 	$folderid = $this->db->getUniqueID("vtiger_attachmentsfolder");
 	$this->db->query("insert into vtiger_attachmentsfolder values(".$folderid.",'Default','This is a Default Folder',1,1)");	
 
-		//Inserting Inventory Notifications
-	$invoice_body = 'Dear {HANDLER},
+	//Inserting Inventory Notifications
+	//vtiger-ru-fork 27.10.2010 Eugene Babiy
+	$invoice_body = 'Уважаемый(ая) {HANDLER},
 
-The current stock of {PRODUCTNAME} in our warehouse is {CURRENTSTOCK}. Kindly procure required number of units as the stock level is below reorder level {REORDERLEVELVALUE}.
+Текущий остаток товара "{PRODUCTNAME}" на нашем складе составляет {CURRENTSTOCK}. Просим вас обеспечить поставку необходимого количества товара, так как уровень запасов ниже минимального {REORDERLEVELVALUE}.
 
-Please treat this information as Urgent as the invoice is already sent  to the customer.
+Примите это сообщение во внимание, так как Счет уже выставлен Клиенту.
 
-Severity: Critical
+Важность: Критическая
 
-Thanks,
+С уважением,
 {CURRENTUSER}';
 
 		
-               $this->db->query("insert into vtiger_inventorynotification(notificationid,notificationname,notificationsubject,notificationbody,label) values (".$this->db->getUniqueID("vtiger_inventorynotification").",'InvoiceNotification','{PRODUCTNAME} Stock Level is Low','".$invoice_body." ','InvoiceNotificationDescription')");
+		$this->db->query("insert into vtiger_inventorynotification(notificationid,notificationname,notificationsubject,notificationbody,label) values (".$this->db->getUniqueID("vtiger_inventorynotification").",'InvoiceNotification','{PRODUCTNAME} Stock Level is Low','".$invoice_body." ','InvoiceNotificationDescription')");
 
 		$quote_body = 'Dear {HANDLER},
 
@@ -1296,7 +1297,7 @@ Thanks,
 {CURRENTUSER}';	
 		
 		
-               $this->db->query("insert into vtiger_inventorynotification(notificationid,notificationname,notificationsubject,notificationbody,label) values (".$this->db->getUniqueID("vtiger_inventorynotification").",'QuoteNotification','Quote given for {PRODUCTNAME}','".$quote_body." ','QuoteNotificationDescription')");
+		$this->db->query("insert into vtiger_inventorynotification(notificationid,notificationname,notificationsubject,notificationbody,label) values (".$this->db->getUniqueID("vtiger_inventorynotification").",'QuoteNotification','Quote given for {PRODUCTNAME}','".$quote_body." ','QuoteNotificationDescription')");
 
 		$so_body = 'Dear {HANDLER},
 
@@ -1309,19 +1310,18 @@ Severity: Major
 Thanks,
 {CURRENTUSER}';
 
-		
-               $this->db->query("insert into vtiger_inventorynotification(notificationid,notificationname,notificationsubject,notificationbody,label) values (".$this->db->getUniqueID("vtiger_inventorynotification").",'SalesOrderNotification','Sales Order generated for {PRODUCTNAME}','".$so_body." ','SalesOrderNotificationDescription')");
+		//vtiger-ru-fork 27.10.2010 Eugene Babiy
+		$this->db->query("insert into vtiger_inventorynotification(notificationid,notificationname,notificationsubject,notificationbody,label) values (".$this->db->getUniqueID("vtiger_inventorynotification").",'SalesOrderNotification','Сформирован Заказ на Продажу для {PRODUCTNAME}','".$so_body." ','SalesOrderNotificationDescription')");
 
 //insert into inventory terms and conditions table
 
+// vtiger-ru-fork 2010-10-27 22:38:07 Eugene Babiy
 	$inv_tandc_text='
- - Unless otherwise agreed in writing by the supplier all invoices are payable within thirty (30) days of the date of invoice, in the currency of the invoice, drawn on a bank based in India or by such other method as is agreed in advance by the Supplier.
-
- - All prices are not inclusive of VAT which shall be payable in addition by the Customer at the applicable rate.';
+ - Счет действителен на протяжении 14 календарных дней с даты его выставления, если другое не оговорено в письменной форме. Оплата счета Покупателем означает согласие с условиями поставки.';
 
 	$this->db->query("insert into vtiger_inventory_tandc(id,type,tandc) values (".$this->db->getUniqueID("vtiger_inventory_tandc").", 'Inventory', '".$inv_tandc_text."')");	
 
-//insert into email template vtiger_table
+	//insert into email template vtiger_table
 
 	$body='Hello!   <br />
 	<br />
@@ -1966,9 +1966,10 @@ $body='<table width="700" cellspacing="0" cellpadding="0" border="0" align="cent
 	$vatid = $this->db->getUniqueID("vtiger_inventorytaxinfo");
 	$salesid = $this->db->getUniqueID("vtiger_inventorytaxinfo");
 	$serviceid = $this->db->getUniqueID("vtiger_inventorytaxinfo");
-	$this->db->query("insert into vtiger_inventorytaxinfo values($vatid,'tax".$vatid."','VAT','4.50','0')");
-	$this->db->query("insert into vtiger_inventorytaxinfo values($salesid,'tax".$salesid."','Sales','10.00','0')");
-	$this->db->query("insert into vtiger_inventorytaxinfo values($serviceid,'tax".$serviceid."','Service','12.50','0')");
+	//vtiger-ru-fork 27.10.2010 Eugene Babiy
+	$this->db->query("insert into vtiger_inventorytaxinfo values($vatid,'tax".$vatid."','НДС','20','0')");
+	//$this->db->query("insert into vtiger_inventorytaxinfo values($salesid,'tax".$salesid."','Sales','10.00','0')");
+	//$this->db->query("insert into vtiger_inventorytaxinfo values($serviceid,'tax".$serviceid."','Service','12.50','0')");
 	//After added these taxes we should add these taxes as columns in vtiger_inventoryproductrel table
 	$this->db->query("alter table vtiger_inventoryproductrel add column tax$vatid decimal(7,3) default NULL");
 	$this->db->query("alter table vtiger_inventoryproductrel add column tax$salesid decimal(7,3) default NULL");
@@ -1981,9 +1982,11 @@ $body='<table width="700" cellspacing="0" cellpadding="0" border="0" align="cent
 	$shvatid = $this->db->getUniqueID("vtiger_shippingtaxinfo");
 	$shsalesid = $this->db->getUniqueID("vtiger_shippingtaxinfo");
 	$shserviceid = $this->db->getUniqueID("vtiger_shippingtaxinfo");
-	$this->db->query("insert into vtiger_shippingtaxinfo values($shvatid,'shtax".$shvatid."','VAT','4.50','0')");
-	$this->db->query("insert into vtiger_shippingtaxinfo values($shsalesid,'shtax".$shsalesid."','Sales','10.00','0')");
-	$this->db->query("insert into vtiger_shippingtaxinfo values($shserviceid,'shtax".$shserviceid."','Service','12.50','0')");
+	
+	//vtiger-ru-fork 27.10.2010 Eugene Babiy
+	$this->db->query("insert into vtiger_shippingtaxinfo values($shvatid,'shtax".$shvatid."','НДС','20','0')");
+	//$this->db->query("insert into vtiger_shippingtaxinfo values($shsalesid,'shtax".$shsalesid."','Sales','10.00','0')");
+	//$this->db->query("insert into vtiger_shippingtaxinfo values($shserviceid,'shtax".$shserviceid."','Service','12.50','0')");
 	//After added these taxes we should add these taxes as columns in vtiger_inventoryshippingrel table
 	$this->db->query("alter table vtiger_inventoryshippingrel add column shtax$shvatid decimal(7,3) default NULL");
 	$this->db->query("alter table vtiger_inventoryshippingrel add column shtax$shsalesid decimal(7,3) default NULL");
@@ -1997,6 +2000,8 @@ $body='<table width="700" cellspacing="0" cellpadding="0" border="0" align="cent
 	require_once('vtlib/Vtiger/Language.php');
 	$vtlanguage = new Vtiger_Language();
 	$vtlanguage->register('en_us','US English','English',true,true,true);
+	// vtiger-ru-fork 2010-10-27 22:29:43 Eugene Babiy
+	$vtlanguage->register('ru_ru','RU Русский','Русский',true,true,true);
 	
 	$this->initWebservices();
 

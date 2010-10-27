@@ -98,7 +98,7 @@ $upload_dir = '_VT_UPLOADDIR_';
 
 // maximum file size for uploaded files in bytes also used when uploading import files
 // upload_maxsize default value = 3000000
-$upload_maxsize = 3000000;
+$upload_maxsize = 30000000;
 
 // flag to allow export functionality
 // 'all' to allow anyone to use exports 
@@ -165,7 +165,7 @@ $default_charset = '_VT_CHARSET_';
 
 // default language
 // default_language default value = en_us
-$default_language = 'en_us';
+$default_language = 'ru_ru';
 
 // add the language pack name to every translation string in the display.
 // translation_string_prefix default value = false
@@ -190,7 +190,7 @@ $listview_max_textlength = 40;
 $php_max_execution_time = 0;
 
 // Set the default timezone as per your preference
-$default_timezone = 'Europe/London';
+$default_timezone = 'Europe/Kiev';
 
 /** If timezone is configured, try to set it */
 if(isset($default_timezone) && function_exists('date_default_timezone_set')) {
