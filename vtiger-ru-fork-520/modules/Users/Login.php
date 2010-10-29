@@ -183,7 +183,7 @@ function set_focus() {
 							?>
 							<tr>
 								<td class="small">&nbsp;</td>
-								<td class="small"><input title="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" alt="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" accesskey="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" src="themes/images/btnSignInNEW.gif" type="image" name="Login" value="  <?php echo $current_module_strings['LBL_LOGIN_BUTTON_LABEL'] ?>  "  tabindex="5"></td>
+								<td class="small"><input title="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" alt="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" accesskey="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" src="themes/images/btnSignIn.gif" type="image" name="Login" value="  <?php echo $current_module_strings['LBL_LOGIN_BUTTON_LABEL'] ?>  "  tabindex="5"></td>
 							</tr>
 							</table>
 							<br><br>

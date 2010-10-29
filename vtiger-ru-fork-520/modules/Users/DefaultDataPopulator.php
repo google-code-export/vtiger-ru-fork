@@ -1875,7 +1875,7 @@ $body='<table width="700" cellspacing="0" cellpadding="0" border="0" align="cent
 
 		
 	       //Insert into vtiger_organizationdetails vtiger_table 
-	       $this->db->query("insert into vtiger_organizationdetails(organizationname,address,city,state,country,code,phone,fax,website,logoname) values ('vtiger',' 40-41-42, Sivasundar Apartments, Flat D-II, Shastri Street, Velachery','Chennai','Tamil Nadu','India','600 042','+91-44-5202-1990','+91-44-5202-1990','www.vtiger.com','vtiger-crm-logo.jpg')");
+	       $this->db->query("insert into vtiger_organizationdetails(organizationname,address,city,state,country,code,phone,fax,website,logoname) values ('Открытые Системы для Бизнеса, ООО','ул. Крещатик 1','Киев','Киевская','Украина','01001','+380(66)078-5088','+380(97)821-2082','http://code.google.com/p/vtiger-ru-fork/','vtiger-crm-logo.jpg')");
 
 
 	$this->db->query("insert into vtiger_actionmapping values(0,'Save',0)");

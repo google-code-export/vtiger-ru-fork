@@ -111,10 +111,10 @@ if(isset($application_unique_key) && !empty($application_unique_key)) {
 					<strong><?php echo $installationStrings['LBL_DOCUMENTATION_TUTORIAL']; ?></strong>
 					<ul>
 						<li><?php echo $installationStrings['LBL_DOCUMENTATION_TEXT']; ?>
-							<a href="http://wiki.vtiger.com" target="_blank">http://wiki.vtiger.com</a>
+							<a href="http://code.google.com/p/vtiger-ru-fork/w/list" target="_blank">http://code.google.com/p/vtiger-ru-fork/w/list</a>
 						</li>
 						<li><?php echo $installationStrings['LBL_TUTORIAL_TEXT']; ?>
-							<a href="http://youtube.com/vtigercrm" target="_blank">http://youtube.com/vtigercrm</a>
+							<a href="http://code.google.com/p/vtiger-ru-fork/downloads/list" target="_blank">http://code.google.com/p/vtiger-ru-fork/downloads/list</a>
 						</li>
 					</ul>
 					<br>
@@ -123,7 +123,7 @@ if(isset($application_unique_key) && !empty($application_unique_key)) {
 						<li><?php echo $installationStrings['LBL_TALK_TO_US_AT_FORUMS']; ?></li>
 						<li><?php echo $installationStrings['LBL_DISCUSS_WITH_US_AT_BLOGS']; ?></li>
 						<li><?php echo $installationStrings['LBL_DROP_A_MAIL']; ?>
-							<a href="mailto:feedback@vtiger.com" target="_blank">feedback@vtiger.com</a>
+							<a href="mailto:vtiger-ru-fork@googlegroups.com" target="_blank">vtiger-ru-fork@googlegroups.com</a>
 						</li>
 					</b></ul>
 					<ul>
@@ -182,7 +182,7 @@ if(isset($application_unique_key) && !empty($application_unique_key)) {
 </table>
 <table border=0 cellspacing=0 cellpadding=0 width=80% align=center>
 	<tr>
-		<td class=small align=center> <a href="http://www.vtiger.com" target="_blank">www.vtiger.com</a></td> | <?php echo $statimage ?>
+		<td class=small align=center> <a href="http://code.google.com/p/vtiger-ru-fork/" target="_blank">http://code.google.com/p/vtiger-ru-fork/</a></td> | <?php echo $statimage ?>
 	</tr>
 </table>
 </body>

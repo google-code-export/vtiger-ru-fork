@@ -139,7 +139,7 @@ foreach($pieces as $val)
 	</table>
 	<table border=0 cellspacing=0 cellpadding=0 width=80% align=center>
       	<tr>
-        	<td class=small align=center> <a href="http://www.vtiger.com" target="_blank">www.vtiger.com</a></td>
+        	<td class=small align=center> <a href="http://code.google.com/p/vtiger-ru-fork/" target="_blank">Russian VtigerCRM Fork</a></td>
       	</tr>
 	</table>
 </body>

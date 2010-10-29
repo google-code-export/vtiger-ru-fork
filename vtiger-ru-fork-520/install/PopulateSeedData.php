@@ -42,6 +42,7 @@ global $company_name_count;
 global $street_address_array;
 global $street_address_count;
 global $city_array;
+//global $state_array;
 global $city_array_count;
 global $campaign_name_array,$campaign_type_array,$campaign_status_array;
 global $adb;
@@ -71,7 +72,7 @@ $phone = $phone; // This line is useless, but gets around a code analyzer warnin
 function create_date()
 {
 	$date = "";
-	$date .= "2006";
+	$date .= "2010";
 	$date .= "-";
 	$date .= rand(1,9);
 	$date .= "-";
@@ -137,9 +138,9 @@ for($i = 0; $i < $company_name_count; $i++) {
 	
 	$account->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$account->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$account->column_fields["bill_state"] = "CA";
+	$account->column_fields["bill_state"] = "Киевская";
 	$account->column_fields["bill_code"] = rand(10000, 99999);
-	$account->column_fields["bill_country"] = 'USA';	
+	$account->column_fields["bill_country"] = 'Украина';	
 
 	$account->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$account->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -172,7 +173,7 @@ for($i = 0; $i < $company_name_count; $i++) {
 	$opp = new Potentials();
 
 	$opp->column_fields["assigned_user_id"] = $assigned_user_id;
-	$opp->column_fields["potentialname"] = $account_name." - 1000 units";
+	$opp->column_fields["potentialname"] = $account_name." - 1000 шт.";
 	$opp->column_fields["closingdate"] = & create_date();
 
 	$key = array_rand($comboFieldArray['leadsource_dom']);
@@ -199,8 +200,11 @@ for($i = 0; $i < $company_name_count; $i++) {
 for($i=0; $i<10; $i++)
 {
 	$contact = new Contacts();
-	$contact->column_fields["firstname"] = ucfirst(strtolower($first_name_array[$i]));
-	$contact->column_fields["lastname"] = ucfirst(strtolower($last_name_array[$i]));
+//	$contact->column_fields["firstname"] = ucfirst(strtolower($first_name_array[$i]));
+//	$contact->column_fields["lastname"] = ucfirst(strtolower($last_name_array[$i]));
+	$contact->column_fields["firstname"] = $first_name_array[$i];
+	$contact->column_fields["lastname"] = $last_name_array[$i];
+
 	$contact->column_fields["assigned_user_id"] = $assigned_user_id;
 	
 	$contact->column_fields["email"] = strtolower($contact->column_fields["firstname"])."_".strtolower($contact->column_fields["lastname"])."@company.com";
@@ -214,20 +218,19 @@ for($i=0; $i<10; $i++)
 	$contact->column_fields["mailingstreet"] = $street_address_array[$key];
 	$key = array_rand($city_array);
 	$contact->column_fields["mailingcity"] = $city_array[$key];
-	$contact->column_fields["mailingstate"] = "CA";
+	$contact->column_fields["mailingstate"] = "Киевская";
 	$contact->column_fields["mailingzip"] = '99999';
-	$contact->column_fields["mailingcountry"] = 'USA';	
+	$contact->column_fields["mailingcountry"] = 'Украина';	
 
 	$key = array_rand($comboFieldArray['leadsource_dom']);
 	$contact->column_fields["leadsource"] = $comboFieldArray['leadsource_dom'][$key];
 
-	$titles = array("President", 
-					"VP Operations", 
-					"VP Sales", 
-					"Director Operations", 
-					"Director Sales", 
-					"Mgr Operations", 
-					"IT Developer", 
+	$titles = array("Директор", 
+					"Руководитель отдела продаж", 
+					"Менеджер", 
+					"Программист", 
+					"Бухгалтер", 
+					"Секретарь", 
 					"");
 	$key = array_rand($titles);
 	$contact->column_fields["title"] = $titles[$key];
@@ -263,9 +266,11 @@ $company_count=0;
 for($i=0; $i<10; $i++)
 {
 	$lead = new Leads();
-	$lead->column_fields["firstname"] = ucfirst(strtolower($first_name_array[$i]));
-	$lead->column_fields["lastname"] = ucfirst(strtolower($last_name_array[$i]));
-
+	//vtiger-ru-fork 29.10.10 Eugene Babiy
+	//lead->column_fields["firstname"] = ucfirst(strtolower($first_name_array[$i]));
+	//lead->column_fields["lastname"] = ucfirst(strtolower($last_name_array[$i]));
+	$lead->column_fields["firstname"] = $first_name_array[$i];
+	$lead->column_fields["lastname"] = $last_name_array[$i];
 	if($i<5)
        	{
         	$lead->column_fields["company"] = ucfirst(strtolower($company_name_array[$i]));
@@ -292,9 +297,9 @@ for($i=0; $i<10; $i++)
 	$lead->column_fields["lane"] = $street_address_array[$key];
 	$key = array_rand($city_array);
 	$lead->column_fields["city"] = $city_array[$key];
-	$lead->column_fields["state"] = "CA";
+	$lead->column_fields["state"] = "Киевская";
 	$lead->column_fields["code"] = '99999';
-	$lead->column_fields["country"] = 'USA';
+	$lead->column_fields["country"] = 'Украина';
 	
 	$key = array_rand($comboFieldArray['leadsource_dom']);
 	$lead->column_fields["leadsource"] = $comboFieldArray['leadsource_dom'][$key];
@@ -305,13 +310,12 @@ for($i=0; $i<10; $i++)
 	$key = array_rand($comboFieldArray['rating_dom']);
 	$lead->column_fields["rating"] = $comboFieldArray['rating_dom'][$key];	
 
-	$titles = array("President", 
-					"VP Operations", 
-					"VP Sales", 
-					"Director Operations", 
-					"Director Sales", 
-					"Mgr Operations", 
-					"IT Developer", 
+	$titles = array("Директор", 
+					"Руководитель отдела продаж", 
+					"Менеджер", 
+					"Программист", 
+					"Бухгалтер", 
+					"Секретарь", 
 					"");
 	$key = array_rand($titles);
 	$lead->column_fields["designation"] = $titles[$key];
@@ -323,7 +327,7 @@ for($i=0; $i<10; $i++)
 for($i=0; $i<10; $i++)
 {
 	$vendor = new Vendors();
-	$vendor->column_fields["vendorname"] = ucfirst(strtolower($first_name_array[$i]));
+	$vendor->column_fields["vendorname"] = $first_name_array[$i];
 	$vendor->column_fields["phone"] = create_phone_number();
 	$vendor->column_fields["email"] = strtolower($vendor->column_fields["vendorname"])."@company.com";
 	$website = str_replace($whitespace, "", strtolower(ucfirst(strtolower($company_name_array[$i]))));
@@ -335,9 +339,9 @@ for($i=0; $i<10; $i++)
 	$vendor->column_fields["street"] = $street_address_array[rand(0,$street_address_count-1)]; 
 	$key = array_rand($city_array);
 	$vendor->column_fields["city"] = $city_array[$key];
-	$vendor->column_fields["state"] = "CA";
+	$vendor->column_fields["state"] = "Киевская";
 	$vendor->column_fields["postalcode"] = '99999';
-	$vendor->column_fields["country"] = 'USA';	
+	$vendor->column_fields["country"] = 'Украина';	
 
 	$vendor->save("Vendors");
 	$vendor_ids[] = $vendor->id;
@@ -345,6 +349,7 @@ for($i=0; $i<10; $i++)
 
 //Populating Product Data
 
+//TODO vtiger-ru-fork 28.10.2010 Eugene Babiy
 $product_name_array= array( "Vtiger Single User Pack", "Vtiger 5 Users Pack", "Vtiger 10 Users Pack",
         "Vtiger 25 Users Pack", "Vtiger 50 Users Pack", "Double Panel See-thru Clipboard",
         "abcd1234", "Cd-R CD Recordable", "Sharp - Plain Paper Fax" , "Brother Ink Jet Cartridge"); 
@@ -502,9 +507,9 @@ for($i=0;$i<5;$i++)
 
 	$quote->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$quote->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$quote->column_fields["bill_state"] = "CA";
+	$quote->column_fields["bill_state"] = "Киевская";
 	$quote->column_fields["bill_code"] = rand(10000, 99999);
-	$quote->column_fields["bill_country"] = 'USA';	
+	$quote->column_fields["bill_country"] = 'Украина';	
 
 	$quote->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$quote->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -578,9 +583,9 @@ for($i=0;$i<5;$i++)
 
 	$so->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$so->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$so->column_fields["bill_state"] = "CA";
+	$so->column_fields["bill_state"] = "Киевская";
 	$so->column_fields["bill_code"] = rand(10000, 99999);
-	$so->column_fields["bill_country"] = 'USA';	
+	$so->column_fields["bill_country"] = 'Украина';	
 
 	$so->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$so->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -653,9 +658,9 @@ for($i=0;$i<5;$i++)
 
 	$po->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$po->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$po->column_fields["bill_state"] = "CA";
+	$po->column_fields["bill_state"] = "Киевская";
 	$po->column_fields["bill_code"] = rand(10000, 99999);
-	$po->column_fields["bill_country"] = 'USA';	
+	$po->column_fields["bill_country"] = 'Украина';	
 
 	$po->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$po->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -726,9 +731,9 @@ for($i=0;$i<5;$i++)
 
 	$invoice->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$invoice->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$invoice->column_fields["bill_state"] = "CA";
+	$invoice->column_fields["bill_state"] = "Киевская";
 	$invoice->column_fields["bill_code"] = rand(10000, 99999);
-	$invoice->column_fields["bill_country"] = 'USA';	
+	$invoice->column_fields["bill_country"] = 'Украина';	
 
 	$invoice->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$invoice->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -790,8 +795,8 @@ for($i=0;$i<5;$i++)
 
 //Populate Email Data
 
-$esubj_array =  array ("Vtiger 5.0.3 Released", "Try vtigercrm!", "Hi There!!!", "Welcome to Open Source", "Help needed in customization of Vtiger");
-$startdate_array =  array ("2007-07-27","2007-05-09","2007-04-05","2007-11-01","2007-08-18");
+$esubj_array =  array ("Русский Vtiger 5.2.0 Вышел", "Попробуйте VtigerCRM!", "Привет!!!", "Добро пожаловать в Open Source", "Нужна помощь в адаптации VtigerCRM");
+$startdate_array =  array ("2010-07-27","2010-05-09","2010-04-05","2010-11-01","2010-08-18");
 $filename_array = array ("vtiger5alpha.tar.gz", "zohowriter.zip", "hi.doc", "welcome.pps", "sos.doc");
 
 $to_array = array("a@a.com","b@b.com", "tester@testvtiger.com","xanth@yaz.com","violet@bing.com");
@@ -843,9 +848,9 @@ for($i=0;$i<12;$i++)
 
 $status_array=array("Open","In Progress","Wait For Response","Open","Closed");
 $category_array=array("Big Problem","Small Problem","Other Problem","Small Problem","Other Problem");
-$ticket_title_array=array("Upload Attachment problem",
-			"Individual Customization -Menu and RSS","Export Output query",
-		"Import Error CSV Leads","How to automatically add a lead from a web form to VTiger");
+$ticket_title_array=array("Ошибка загрузки вложений",
+			"Индивидуальная адаптация-Меню и RSS","Экспорт Данных",
+		"Ошибка импорта Зацепок в CSV","Как автоматически добавить Зацепку из веб-формы в VtigerCRM");
 
 for($i=0;$i<5;$i++)
 {
@@ -885,8 +890,8 @@ for($i=0;$i<5;$i++)
 }
 
 // Populate Activities Data
-$task_array=array("Tele Conference","Call user - John","Send Fax to Mary Smith");
-$event_array=array("","","Call Smith","Team Meeting","Call Richie","Meeting with Don");
+$task_array=array("Совещание с начальством","Позвонить Дмитрию","Отправть факс Владимиру Куликову");
+$event_array=array("","","Позвонить Иванову","Встреча Комманды","Позвонить Григорию","Встреча с Василием");
 $task_status_array=array("Planned","In Progress","Completed");
 $task_priority_array=array("High","Medium","Low");
 $visibility=array("","","Private","Public","Private","Public");

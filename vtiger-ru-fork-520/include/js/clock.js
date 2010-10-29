@@ -12,7 +12,7 @@ tCol='#000000'; //select/form text colour.
 
 //Alter nothing below! Alignments will be lost!
 y=87;
-xpos=60;
+xpos=80;
 h=4;
 m=5;
 s=6;
@@ -37,7 +37,7 @@ var getOddMinutes;
 var addOddMinutes;
 plusMinus=false;
 
-var mon=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+var mon=new Array("Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь");
 
 document.write('<div id="theDate" class="datestyle" style="color:'+cCol+'">\!<\/div>');
 document.write('<div id="amOrPm" class="ampmstyle" style="color:'+aCol+'">\!<\/div>');
@@ -68,15 +68,15 @@ var dsp3=document.getElementById("theDate").style;
 //var dsp4=document.getElementById("city").style;
 var dsp5=document.getElementById("theClockLayer").style;
 dsp1.top=y+"px";
-dsp1.left=xpos-8+"px";
+dsp1.left=xpos-10+"px";
 dsp2.top=y-80+"px";
-dsp2.left=xpos-55+"px";
+dsp2.left=xpos-75+"px";
 dsp3.top=y+55+"px";
-dsp3.left=xpos-60+"px";
+dsp3.left=xpos-65+"px";
 
 dsp5.backgroundImage="url(themes/images/clock_bg.gif)"
 dsp5.backgroundRepeat="no-repeat"
-dsp5.backgroundPosition="4px 38px"
+dsp5.backgroundPosition="24px 38px"
 
 function lcl(currIndex,localState){
 	zone=document.frmtimezone.clockcity.options[currIndex].value;

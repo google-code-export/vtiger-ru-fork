@@ -14,7 +14,7 @@ class Calendar
 {
 	var $view='day';
 	var $date_time;
-	var $hour_format = 'am/pm';
+	var $hour_format = '24'; //vtiger-ru-fork 28.10.2010 Eugene Babiy
 	var $day_slice;
 	var $week_slice;
 	var $week_array;

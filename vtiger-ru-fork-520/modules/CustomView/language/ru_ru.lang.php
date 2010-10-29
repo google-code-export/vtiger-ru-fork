@@ -223,7 +223,30 @@ $mod_strings = array (
       'LBL_EDIT' => 'Изменить',
       'LBL_STATUS_PUBLIC_APPROVE' => 'Одобрить',
       'LBL_STATUS_PUBLIC_DENY' => 'Запретить',
+
+/*vtiger-ru-fork 28.10.2010 Eugene Babiy
+
+	'All' => 'Все',
+	'Hot Leads' => 'Последние Зацепки',
+	'This Month Leads' => 'Зацепки за Месяц',
+	'Prospect Accounts' => '',
+	'New This Week' => 'Новые за Месяц',
+	'Contacts Address' => 'Адреса Контактов',
+	'Todays Birthday' => '',
+	'Potentials Won' => 'Подписанные Контракты',
+	'Prospecting' => '',
+	'Open Tickets' => 'Открытые Заявки',
+	'High Prioriy Tickets' => 'Заявки',
+	'Open Quotes' => 'Открытые Предложения',
+	'Rejected Quotes' => 'Отторгнутые Предложения',
+	'Drafted FAQ' => 'Черновые ЧаВо',
+	'Published FAQ' => 'Опубликованные ЧаВо',
+	'Open Purchase Orders' => 'Открытые Закупки',
+	'Received Purchase Orders' => '',
+	'Open Invoices' => 'Открытые Счета',
+	'Paid Invoices' => 'Оплаченные Счета',
+	'Pending Sales Orders' => 'Текущие Продажи',
+*/
 );
-$mod_list_strings = array (
-);
+
 ?>
