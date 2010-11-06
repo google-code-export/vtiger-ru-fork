@@ -21,12 +21,12 @@ Skype: eugene.babiy
 $mod_strings = array (
       'LBL_MODULE_NAME' => 'Предложения',
       'LBL_MODULE_TITLE' => 'Предложения: Главная',
-      'LBL_SEARCH_FORM_TITLE' => 'Поиск предложений',
-      'LBL_LIST_FORM_TITLE' => 'Список предложений',
+      'LBL_SEARCH_FORM_TITLE' => 'Поиск Предложений',
+      'LBL_LIST_FORM_TITLE' => 'Список Предложений',
       'LBL_NEW_FORM_TITLE' => 'Новое Предложение',
       'LBL_MEMBER_ORG_FORM_TITLE' => 'Организации-члены',
       'LBL_LIST_ACCOUNT_NAME' => 'Контрагент',
-      'LBL_RELATED_PRODUCTS' => 'Сходные Продукты',
+      'LBL_RELATED_PRODUCTS' => 'Сходные Товары',
       'LBL_LIST_CITY' => 'Город',
       'LBL_LIST_WEBSITE' => 'Веб-сайт',
       'LBL_LIST_STATE' => 'Область',
@@ -107,7 +107,7 @@ $mod_strings = array (
       'Type' => 'Тип',
       'Tax' => 'Налог',
       'Total' => 'Итого',
-      'Product Name' => 'Продукт',
+      'Product Name' => 'Товар',
       'Assigned To' => 'Ответственный',
       'Billing Address' => 'Юридический адрес',
       'Shipping Address' => 'Фактический адрес',
@@ -152,6 +152,8 @@ $mod_strings = array (
       'Adjustment' => 'Корректировка',
       'S&H Amount' => 'Общая Сумма',
       'Quote No' => 'Предложение №',
+      'Quantity' => 'Кол-во',
+      'Issued Date' => 'Дата',
+      'Quote:' => 'Предложение',
 );
-
 ?>

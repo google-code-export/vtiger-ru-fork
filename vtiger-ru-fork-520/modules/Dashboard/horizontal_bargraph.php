@@ -12,6 +12,7 @@
 
 require_once('config.php');
 require_once('include/utils/GraphUtils.php');
+require_once('include/phputf8/utf8.php');
 include_once ('Image/Graph.php');
 include_once ('Image/Canvas.php');
 
@@ -43,7 +44,7 @@ function horizontal_graph($referdata,$refer_code,$width,$height,$left,$right,$to
 		$alts[]=htmlentities($name)."=%d";
 //If the daatx value of a string is greater, adding '\n' to it so that it'll cme inh 2nd line
 		 if(strlen($name)>=14)
-                        $name=substr($name, 0, 44);
+                        $name=utf8_substr($name, 0, 44);
 		if($pos>=2)
 		{
 			$val=explode(" ",$name);

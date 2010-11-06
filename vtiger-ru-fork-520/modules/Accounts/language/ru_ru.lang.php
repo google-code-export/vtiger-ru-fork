@@ -193,7 +193,7 @@ $mod_strings = array (
       'LBL_MAILER_EXPORT_CHECKED' => 'Проверено',
       'LBL_MAILER_EXPORT_NOTCHECKED' => 'Не проверено',
       'Account No' => 'Контрагент №',
-      'LBL_SHOW_ACCOUNT_HIERARCHY' => 'Отобразить Иерархию Контрагента',
+      'LBL_SHOW_ACCOUNT_HIERARCHY' => 'Иерархия Контрагента',
 
 //Добавлено для 5.2.0
 	'Projects' => 'Проекты',

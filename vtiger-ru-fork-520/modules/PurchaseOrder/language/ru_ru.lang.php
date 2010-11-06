@@ -20,7 +20,7 @@ Skype: eugene.babiy
 
 $mod_strings = array (
       'LBL_MODULE_NAME' => 'Закупки',
-      'LBL_RELATED_PRODUCTS' => 'Продукты',
+      'LBL_RELATED_PRODUCTS' => 'Товары',
       'LBL_MODULE_TITLE' => 'Закупки: Главная',
       'LBL_SEARCH_FORM_TITLE' => 'Поиск Закупки',
       'LBL_LIST_FORM_TITLE' => 'Список Закупок',
@@ -108,7 +108,7 @@ $mod_strings = array (
       'Sales Commission' => 'Коммисия',
       'Excise Duty' => 'Акциз',
       'Total' => 'Всего',
-      'Product Name' => 'Продукт',
+      'Product Name' => 'Товар',
       'Assigned To' => 'Ответственный',
       'Billing Address' => 'Юридический адрес',
       'Shipping Address' => 'Фактический адрес',
