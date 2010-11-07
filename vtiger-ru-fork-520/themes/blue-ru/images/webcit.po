@@ -1,0 +1,1447 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WebCit\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-07-28 14:25+0200\n"
+"PO-Revision-Date: 2010-07-28 13:02+0200\n"
+"Last-Translator: \n"
+"Language-Team: Vladimir Kruglov <mail_server@mail.ru>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+msgid "Edit or Delete users"
+msgstr "Изменить или удалить пользователя"
+
+msgid "switch to room list"
+msgstr "перейти к списку комнат"
+
+msgid "Basic commands"
+msgstr "Основные команды"
+
+msgid "Summary"
+msgstr "краткое содержание"
+
+msgid "Messages"
+msgstr "Сообщения"
+
+msgid "Tasks"
+msgstr "Задачи"
+
+msgid "Today on your calendar"
+msgstr "Сегодня в календаре"
+
+msgid "Who's online now"
+msgstr "Кто сейчас в онлайне"
+
+msgid "About this server "
+msgstr "Об этом сервере "
+
+msgid "Make this my start page"
+msgstr "Сделать моей стартовой страницей"
+
+msgid "User name"
+msgstr "Имя пользователя"
+
+msgid "Room"
+msgstr "комната"
+
+msgid "(None)"
+msgstr "(Нет)"
+
+msgid "(Nothing)"
+msgstr "(Ничто)"
+
+msgid "Mail"
+msgstr "Почта"
+
+msgid "Date"
+msgstr "Дата"
+
+msgid "Sender"
+msgstr "Отправитель"
+
+msgid "Subject"
+msgstr "Тема"
+
+msgid "Ungoto"
+msgstr "Перейти"
+
+msgid "Refresh message list"
+msgstr "Обновить список сообщений"
+
+msgid "Search: "
+msgstr "Поиск: "
+
+msgid "View as:"
+msgstr "Смотреть в:"
+
+msgid "Write mail"
+msgstr "Написать письмо"
+
+msgid "Delete"
+msgstr "Удалить"
+
+msgid "Skip this room"
+msgstr "Пропустить эту комнату"
+
+msgid "Goto next room"
+msgstr "Перейти к следующей комнате"
+
+msgid "Calendar"
+msgstr "Календарь"
+
+msgid "Day view"
+msgstr "Просмотр дня"
+
+msgid "Month view"
+msgstr "Просмотр месяца"
+
+msgid "Add new event"
+msgstr "Добавить новое событие"
+
+msgid "Contacts"
+msgstr "Контакты"
+
+msgid "View contacts"
+msgstr "Просмотр контактов"
+
+msgid "Add new contact"
+msgstr "Добавить новый контакт"
+
+msgid "This address book is empty."
+msgstr "Это адресная книга пуста."
+
+msgid "Notes"
+msgstr "Заметки"
+
+msgid "View notes"
+msgstr "Просмотр заметок"
+
+msgid "Add new note"
+msgstr "Добавить новую заметку"
+
+msgid "View tasks"
+msgstr "Просмотр задач"
+
+msgid "Add new task"
+msgstr "Добавить новую задачу"
+
+msgid "Completed?"
+msgstr "Завершено?"
+
+msgid "Name of task"
+msgstr "Название задачи"
+
+msgid "Date due"
+msgstr "Дата выполнения"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Show All"
+msgstr "Показать все"
+
+msgid "Room list"
+msgstr "Список комнат"
+
+msgid "Rooms"
+msgstr "Комнаты"
+
+msgid "My Folders"
+msgstr "Мои Папки"
+
+msgid "Main Floor"
+msgstr "Основной зал"
+
+msgid "Log off now?"
+msgstr "Выйти из системы сейчас?"
+
+msgid "Go to page: "
+msgstr "Перейти на страницу: "
+
+msgid "Old messages"
+msgstr "Старые сообщения"
+
+msgid "New messages"
+msgstr "Новые сообщения"
+
+msgid "Read new messages"
+msgstr "Чтение новых сообщений"
+
+msgid "Read all messages"
+msgstr "Чтение всех сообщений"
+
+msgid "Enter a message"
+msgstr "Создать сообщение"
+
+msgid "Aide"
+msgstr "Помощник"
+
+msgid "Online users"
+msgstr "Пользователи в сети"
+
+msgid "From host"
+msgstr "От хоста"
+
+msgid "(edit)"
+msgstr "(изменить)"
+
+msgid "Send instant message"
+msgstr "Отправить мгновенное сообщение"
+
+msgid "Enter message text:"
+msgstr "Введите текст сообщения:"
+
+msgid "Send message"
+msgstr "Отправить сообщение"
+
+msgid "Send an instant message to: "
+msgstr "Отправить мгновенное сообщение для: "
+
+msgid "Your info"
+msgstr "Информация о вас"
+
+msgid "Advanced room commands"
+msgstr "Рассширенные команды комнаты"
+
+msgid "Change your preferences and settings"
+msgstr "Изменить настройки и параметры"
+
+msgid "Update your contact information"
+msgstr "Обновление контактной информации"
+
+msgid "Change your password"
+msgstr "Изменить ваш пароль"
+
+msgid "Enter your 'bio'"
+msgstr "Введите ваш 'bio'"
+
+msgid "Edit your online photo"
+msgstr "Изменить онлайн фото"
+
+msgid "View/edit server-side mail filters"
+msgstr "Просмотр и редактирование фильтров почтового сервера"
+
+msgid "Edit your push email settings"
+msgstr "Изменить настройки Push Email"
+
+msgid "Manage your OpenIDs"
+msgstr "Управление OpenIDs"
+
+msgid "Edit or delete this room"
+msgstr "Изменить или удалить эту комнату"
+
+msgid "Go to a 'hidden' room"
+msgstr "Перейти в 'скрытую' комнату"
+
+msgid "Create a new room"
+msgstr "Создать новую комнату"
+
+msgid "Zap (forget) this room"
+msgstr "Zap (забытой) этой комнаты"
+
+msgid "List all forgotten rooms"
+msgstr "Список всех забытых комнат"
+
+msgid "List known rooms"
+msgstr "Список известных комнат"
+
+msgid "Where can I go from here?"
+msgstr "Где я могу двигаться дальше?"
+
+msgid "...with unread messages"
+msgstr "...с непрочитанными сообщениями"
+
+msgid "Skip to next room"
+msgstr "Перейти к следующей комнате"
+
+msgid "(come back here later)"
+msgstr "(вернуться в неё позднее)"
+
+msgid "(oops! Back to )"
+msgstr "(Ой! Вернуться в)"
+
+msgid "...in this room"
+msgstr "...в этой комнате"
+
+msgid "...old and new "
+msgstr "...старые и новые"
+
+msgid "(post in this room)"
+msgstr "(сообщение в этой комнате)"
+
+msgid "Summary page"
+msgstr "Краткая страница"
+
+msgid "Summary of my account"
+msgstr "Кратко об моей учетной записи"
+
+msgid "User list"
+msgstr "Список пользователей"
+
+msgid "(all registered users)"
+msgstr "(все зарегистрированные пользователи)"
+
+msgid "Log off"
+msgstr "Выход"
+
+msgid "Bye!"
+msgstr "Пока!"
+
+msgid "Global Configuration"
+msgstr "Глобальная конфигурация"
+
+msgid "User account management"
+msgstr "Управление учетными записями"
+
+msgid "View the outbound SMTP queue"
+msgstr "Просмотр исходящих очереди SMTP"
+
+msgid "Shutdown Citadel"
+msgstr "Выключить Цитадель"
+
+msgid "Restart Now"
+msgstr "Новая перезагрузка"
+
+msgid "Restart after paging users"
+msgstr "Перезагрузка после подкачки пользователей"
+
+msgid "customize this menu"
+msgstr "настроить это меню"
+
+msgid "Configure replication with other Citadel servers"
+msgstr "Настройка репликации с другими серверами Цитадель"
+
+msgid "Site configuration"
+msgstr "Конфигурация сайта"
+
+msgid "Change Login Logo"
+msgstr "Изменение логотипа Войти"
+
+msgid "Node name"
+msgstr "Имя узла"
+
+msgid "Fully qualified domain name"
+msgstr "Полное доменное имя"
+
+msgid "Human-readable node name"
+msgstr "Человек-читаемое имя узла"
+
+msgid "Telephone number"
+msgstr "Телефонный номер"
+
+msgid "Paginator prompt (for text mode clients)"
+msgstr "Paginator строки (для клиентов в текстовом режиме)"
+
+msgid "Geographic location of this system"
+msgstr "Географическое расположение этой системы"
+
+msgid "Name of system administrator"
+msgstr "Имя системного администратора"
+
+msgid "Save changes"
+msgstr "Сохранить изменения"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "General site configuration items"
+msgstr "Общие вопросы конфигурации сайта"
+
+msgid "Change Logout Logo"
+msgstr "Изменения логотипа Выход"
+
+msgid "Access"
+msgstr "Доступ"
+
+msgid "Access controls and site policy settings"
+msgstr "Контроль доступа и настройки политики сайта"
+
+msgid "Require registration for new users"
+msgstr "Требуется регистрация для новых пользователей"
+
+msgid "Restrict access to Internet mail"
+msgstr "Ограничение доступа к интернет-почте"
+
+msgid "Administration"
+msgstr "Администрирование"
+
+msgid "System Administration Menu"
+msgstr "Меню администрирования системы"
+
+msgid "Chat"
+msgstr "Чат"
+
+msgid "Send"
+msgstr "Отправить"
+
+msgid "Edit your session display"
+msgstr "Изменить ваше отображение в сессии"
+
+msgid "Room name:"
+msgstr "Название комнаты:"
+
+msgid "Host name:"
+msgstr "Имя хоста:"
+
+msgid "User name:"
+msgstr "Имя пользователя:"
+
+msgid "Change room name"
+msgstr "Изменить название комнаты"
+
+msgid "Change host name"
+msgstr "Изменить имя хоста"
+
+msgid "Change user name"
+msgstr "Изменить имя пользователя"
+
+msgid "Advanced"
+msgstr "Дополнительные параметры"
+
+msgid "Headers"
+msgstr "Заголовки"
+
+msgid "Reply"
+msgstr "Ответить"
+
+msgid "ReplyAll"
+msgstr "ОтветитьВсем"
+
+msgid "Forward"
+msgstr "Переслать"
+
+msgid "Move"
+msgstr "Переместить"
+
+msgid "Print"
+msgstr "Распечатать"
+
+msgid "ReplyQuoted"
+msgstr "Ответить цитируя"
+
+msgid "Thanks for visiting My System - please come back soon!"
+msgstr "Спасибо за посещение моей системы - возвращайтесь, пожалуйста, скорее!"
+
+msgid "My System - powered by "
+msgstr "Эта система работает на "
+
+msgid "Password:"
+msgstr "Пароль:"
+
+msgid "General"
+msgstr "Главное"
+
+msgid "Advanced server fine-tuning controls"
+msgstr "Тонкие настройки управления сервера"
+
+msgid "Tuning"
+msgstr "Настройки"
+
+msgid "Network"
+msgstr "Сеть"
+
+msgid "Configure the LDAP connector for Citadel"
+msgstr "Настройка LDAP подключения для Цитадель"
+
+msgid "Enable full text index"
+msgstr "Включить полнотекстовую индексацию"
+
+msgid "Warning: these facilities are resource intensive."
+msgstr "Предупреждение: эти объекты являются ресурсоемкими."
+
+msgid "Indexing and Journaling"
+msgstr "Индексирования и ведения журнала"
+
+
+msgid "Indexing/Journaling"
+msgstr "Индексирование/Журналирование"
+
+
+msgid "Hour to run database auto-purge"
+msgstr "Час для запуска автоматической чистки базы данных"
+
+msgid "Number of messages or days:"
+msgstr "Количество сообщений или дней:"
+
+msgid "Host name of LDAP server (blank to disable)"
+msgstr "Имя хоста сервера LDAP (пустым, чтобы отключить)"
+
+msgid "Port number of LDAP server (blank to disable)"
+msgstr "Номер порта сервера LDAP (пустым, чтобы отключить)"
+
+msgid "Customize the icon bar"
+msgstr "Настройка панели значков"
+
+msgid "Display icons as:"
+msgstr "Показать значки, как:"
+
+msgid "pictures and text"
+msgstr "значек и текст"
+
+msgid "pictures only"
+msgstr "только значек"
+
+msgid "text only"
+msgstr "только текст"
+
+msgid "switch to menu"
+msgstr "перейти к меню"
+
+msgid "Site logo"
+msgstr "Логотип сайта"
+
+msgid "An icon describing this site"
+msgstr "Значок, описывающий этот сайт"
+msgid "Mail (inbox)"
+msgstr "Почта (входящие)"
+msgid "A shortcut to your email Inbox"
+msgstr "Ссылка на ваш электронный почтовый ящик входящие"
+msgid "Your personal address book"
+msgstr "Ваша личная адресная книга"
+msgid "Your personal notes"
+msgstr "Ваши личные заметки"
+msgid "A shortcut to your personal calendar"
+msgstr "Ссылка на ваш личный календарь"
+msgid "A shortcut to your personal task list"
+msgstr "Ссылка на ваш персональный список задач"
+msgid "Clicking this icon displays a list of all accessible rooms (or folders) available."
+msgstr "При нажатии на эту иконку выводит список всех доступных комнат (или папок)."
+msgid "Who is online?"
+msgstr "Кто на сайте?"
+msgid "Advanced options"
+msgstr "Дополнительные параметры"
+msgid "Citadel logo"
+msgstr "Логотип Цитаделя"
+msgid "Displays the 'Powered by Citadel' icon"
+msgstr "Отображается иконка 'Работает на Цитадель'"
+msgid "Access to the complete menu of Citadel functions."
+msgstr "Полный доступ к меню функций Цетаделя"
+msgid "Select the icons you would like to see displayed in the 'icon bar' menu on the left side of the screen."
+msgstr "Выберите значки которые вы хотели бы видеть в меню в левой части экрана."
+msgid "from"
+msgstr "от"
+msgid "Subject (optional):"
+msgstr "Тема (необязательно):"
+msgid "Attach file:"
+msgstr "Прикрепить файл:"
+msgid "Attachments:"
+msgstr "Прикрепленные:"
+msgid "Add"
+msgstr "Добавить"
+msgid "Remove"
+msgstr "Удалить"
+msgid "Post message"
+msgstr "Оставить сообщение"
+msgid "Delete this message?"
+msgstr "Удалить это сообщение?"
+msgid "Confirm move of message"
+msgstr "Подтвердите перемещение сообщения"
+msgid "Move this message to:"
+msgstr "Переместить это сообщение в:"
+
+msgid "No new messages."
+msgstr "Нет новых сообщений"
+
+msgid "The queue is empty."
+msgstr "Очередь пуста."
+
+msgid "Refresh this page"
+msgstr "Обновить эту страницу"
+
+msgid "Network configuration"
+msgstr "Конфигурация сети"
+
+msgid "Add a new node"
+msgstr "Добавить новый узел"
+
+msgid "Currently configured nodes"
+msgstr "В настоящее время настроены узлы"
+
+msgid "Domain names and Internet mail configuration"
+msgstr "Доменные имена и настройки интернет-почты"
+
+msgid "Edit site-wide configuration"
+msgstr "Изменить конфигурацию веб-сайта"
+
+msgid "Add, change, delete user accounts"
+msgstr "Добавление, изменение и удаление учетных записей пользователей"
+
+msgid "Validate new users"
+msgstr "Проверка новых пользователей"
+
+msgid "Users currently on My System "
+msgstr "Пользователи которые находятся в настоящее время на моей системе"
+
+msgid "Edit contact information"
+msgstr "Изменить контактную информацию"
+
+msgid "First Name"
+msgstr "Имя"
+
+msgid "Middle Name"
+msgstr "Отчество"
+
+msgid "Last Name"
+msgstr "Фамилия"
+
+msgid "Display name:"
+msgstr "Отображаемое имя:"
+
+msgid "Title:"
+msgstr "Должность:"
+
+msgid "Organization:"
+msgstr "Организация:"
+
+msgid "Home telephone:"
+msgstr "Домашний телефон:"
+
+msgid "Mobile telephone:"
+msgstr "Мобильный телефон:"
+
+msgid "Work telephone:"
+msgstr "Рабочий телефон:"
+
+msgid "Fax number:"
+msgstr "Номер факса:"
+
+msgid "Address:"
+msgstr "Адрес:"
+
+msgid "City:"
+msgstr "Город:"
+
+msgid "State:"
+msgstr "Область:"
+
+msgid "ZIP code:"
+msgstr "Индекс:"
+
+msgid "Country:"
+msgstr "Страна:"
+
+msgid "Primary Internet e-mail address"
+msgstr "Первичный Интернет адрес электронной почты"
+
+msgid "Internet e-mail aliases"
+msgstr "Псевдонимы электронной почты Интернет"
+
+msgid "User list for My System"
+msgstr "Список пользователей в этой системе"
+
+msgid "User Name"
+msgstr "Имя пользователя"
+
+msgid "Number"
+msgstr "Номер"
+
+msgid "Access Level"
+msgstr "Уровень доступа"
+
+msgid "Last Login"
+msgstr "Последний вход"
+
+msgid "Total Logins"
+msgstr "Всего входов"
+
+msgid "Total Posts"
+msgstr "Всего сообщений"
+
+msgid "Description:"
+msgstr "Описание:"
+
+msgid "No date"
+msgstr "Нет даты"
+
+msgid "Category:"
+msgstr "Категория:"
+
+msgid "Start date:"
+msgstr "Дата начала:"
+
+msgid "Due date:"
+msgstr "Дата окончания:"
+
+msgid "Edit task-"
+msgstr "Изменить задачу-"
+
+msgid "No users require validation at this time."
+msgstr "Нет пользователей, требующих проверки на данный момент."
+
+msgid "Message to your Users:"
+msgstr "Сообщение для ваших пользователей:"
+
+msgid "Hour: "
+msgstr "Часы: "
+
+msgid "Minute: "
+msgstr "Минуты: "
+
+msgid "All day event"
+msgstr "Задача на все дни"
+
+msgid "Location"
+msgstr "Местонахождение"
+
+msgid "Start"
+msgstr "Начало"
+
+msgid "End"
+msgstr "Окончание"
+
+msgid "Organizer"
+msgstr "Организатор"
+
+msgid "Show time as:"
+msgstr "Показывать время как:"
+
+msgid "Free"
+msgstr "Свободно"
+
+msgid "Busy"
+msgstr "Занято"
+
+msgid "Event"
+msgstr "Задача"
+
+msgid "Check attendee availability"
+msgstr "Проверить наличие участника"
+
+msgid "Attendees"
+msgstr "Участники"
+
+msgid "Recurrence"
+msgstr "Повторение"
+
+msgid "This is a recurring event"
+msgstr "Это повторяющееся событие"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "(One per line)"
+msgstr "(По одному на строку)"
+
+msgid "(you are the organizer)"
+msgstr "(вы организатор)"
+
+msgid "Add or edit an event"
+msgstr "Добавить или изменить события"
+
+msgid "Local host aliases"
+msgstr "Локальный псевдоним хоста"
+
+msgid "(domains for which this host receives mail)"
+msgstr "(домены, для которых этот хост получает почту)"
+
+msgid "RBL hosts"
+msgstr "RBL хосты"
+
+msgid "SpamAssassin hosts"
+msgstr "SpamAssassin хосты"
+
+msgid "ClamAV clamd hosts"
+msgstr "ClamAV clamd хосты"
+
+msgid "Masqueradable domains"
+msgstr "Маскарадинг доменов"
+
+msgid "Number of rooms"
+msgstr "Количество комнат"
+
+msgid "Floor name"
+msgstr "Название этажа"
+
+msgid "Floor number"
+msgstr "Номер этажа"
+
+msgid "Floor CSS"
+msgstr "Этаж CSS"
+
+msgid "Change CSS"
+msgstr "Изменить CSS"
+
+msgid "Add/change/delete floors"
+msgstr "Добавить/изменить/удалить этажи"
+
+msgid "(edit graphic)"
+msgstr "(изменить график)"
+
+msgid "Change name"
+msgstr "Изменить название"
+
+msgid "Create new floor"
+msgstr "Создать новый этаж"
+
+msgid "Image upload"
+msgstr "Загрузка изображения"
+
+msgid "You can upload an image directly from your computer"
+msgstr "Вы можете загрузить изображения прямо с вашего компьютера"
+
+msgid "Please select a file to upload:"
+msgstr "Пожалуйста, выберите файл для загрузки:"
+
+msgid "Upload"
+msgstr "Загрузки"
+
+msgid "Reset form"
+msgstr "Сбросить форму"
+
+msgid "Rooms and Floors"
+msgstr "Этажи и комнаты"
+
+msgid "Add, change, or delete floors"
+msgstr "Добавить изменить, или удалить этажи"
+
+msgid "Edit or delete users"
+msgstr "Изменить или удалить пользователей"
+
+msgid "Add users"
+msgstr "Добавить пользователей"
+
+msgid "Create"
+msgstr "Создать"
+
+msgid "Edit configuration"
+msgstr "Изменить конфигурацию"
+
+msgid "Edit address book entry"
+msgstr "Изменить записи в адресной книги"
+
+msgid "Delete user"
+msgstr "Удалить пользователя"
+
+msgid "Directory"
+msgstr "Директория"
+
+msgid "Create new room"
+msgstr "Создать новую комнату"
+
+msgid "Name of room: "
+msgstr "Название комнаты: "
+
+msgid "Resides on floor: "
+msgstr "Находится на этаже: "
+
+msgid "Type of room:"
+msgstr "Тип комнаты:"
+
+msgid "Public (automatically appears to everyone)"
+msgstr "Общая (автоматически появляется для всех)"
+
+msgid "Private - hidden (accessible to anyone who knows its name)"
+msgstr "Частная - скрытая (доступна для всех, кто знает его название)"
+
+msgid "Private - require password: "
+msgstr "Частная - требуется пароль: "
+
+msgid "Private - invitation only"
+msgstr "Частная - только по приглашениям"
+
+msgid "Personal (mailbox for you only)"
+msgstr "Личная (почтовый ящик только для Вас)"
+
+msgid "Delete this room"
+msgstr "Удалить эту комнату"
+
+msgid "Set or change the icon for this room's banner"
+msgstr "Установка или изменение значка для баннера этой комнаты"
+
+msgid "Edit this room's Info file"
+msgstr "Изменить информационный файл этой комнаты"
+
+msgid "Configuration"
+msgstr "Конфигурация"
+
+
+msgid "Read-only room"
+msgstr "Комната только на чтение"
+
+msgid "Preferred users only"
+msgstr "Только привилегированные пользователи"
+
+msgid "All users allowed to post may also delete messages"
+msgstr "Все пользователи с правами на размещение могут также удалять сообщения"
+
+msgid "File directory room"
+msgstr "Каталог файлов комнаты"
+
+msgid "Directory name: "
+msgstr "Навание каталога: "
+
+msgid "Uploading allowed"
+msgstr "Загрузка разрешена"
+
+msgid "Downloading allowed"
+msgstr "Скачевание разрешено"
+
+msgid "Visible directory"
+msgstr "Видимый каталог"
+
+msgid "Network shared room"
+msgstr "Общая сетевая комната"
+
+msgid "Permanent (does not auto-purge)"
+msgstr "Постоянная (очистка не автоматическая)"
+
+msgid "Anonymous messages"
+msgstr "Анонимные сообщения"
+
+msgid "No anonymous messages"
+msgstr "Нет анонимных сообщений"
+
+msgid "All messages are anonymous"
+msgstr "Все сообщения являются анонимные"
+
+msgid "Prompt user when entering messages"
+msgstr "Запрашивать пользователя при вводе сообщения"
+
+msgid "Room aide: "
+msgstr "Комната помощник: "
+
+msgid "Message expire policy"
+msgstr "Политика жизни сообщения"
+
+msgid "Use the default policy for this floor"
+msgstr "Использовать политику по умолчанию для этого этажа"
+
+msgid "Use the system default"
+msgstr "Использование системы по умолчанию"
+
+msgid "Access controls"
+msgstr "Контроль доступа"
+
+msgid "Sharing"
+msgstr "Cовместное пользование"
+
+msgid "Mailing list service"
+msgstr "Список почтовых сервисов"
+
+msgid "Remote retrieval"
+msgstr "Удаленный поиск"
+
+msgid "Retrieve messages from these remote POP3 accounts and store them in this room:"
+msgstr "Получение сообщений с этих удаленных POP3 учетных записей и хранить их в этой комнате:"
+
+msgid "Interval"
+msgstr "Интервал"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Keep messages on server?"
+msgstr "Хранить письма на сервере?"
+
+msgid "Fetch the following RSS feeds and store them in this room:"
+msgstr "Fetch следующие RSS-каналы и сохранять их в этой комнате:"
+
+msgid "Feed URL"
+msgstr "URL-адрес канала"
+
+msgid "Remote host"
+msgstr "Удаленный хост"
+
+msgid "Add recipients from Contacts or other address books"
+msgstr "Добавить получателей из списка контактов или других адресных книг"
+
+msgid "Allow self-service subscribe/unsubscribe requests."
+msgstr "Разрешить самообслуживания запросов подписаться/отписаться."
+
+msgid "The URL for subscribe/unsubscribe is: "
+msgstr "URL-адрес для подписки/отписки: "
+
+msgid "List subscribe/unsubscribe"
+msgstr "Список подписки/отписки"
+
+msgid "subscribe"
+msgstr "подписка"
+
+msgid "unsubscribe"
+msgstr "отписка"
+
+msgid "Your e-mail address:"
+msgstr "Ваш адрес электронной почты:"
+
+msgid "(If subscribing) preferred format: "
+msgstr "(Если подписка) предпочтительный формат: "
+
+msgid "Digest format"
+msgstr "Дайджест формат"
+
+msgid "One message at a time"
+msgstr "Одно сообщение в то время,"
+
+msgid "Name of list:"
+msgstr "Название списка:"
+
+msgid "Allow non-subscribers to mail to this room."
+msgstr "Разрешить доступ неподписчиков по почте в эту комнату."
+
+msgid "Restart Citadel"
+msgstr "Перезагрузка Цитадели"
+
+msgid "Host or IP address"
+msgstr "Хост или IP-адрес"
+
+msgid "Port number"
+msgstr "Номер порта"
+
+msgid "Add node?"
+msgstr "Добавить узел?"
+
+msgid "New user: "
+msgstr "Новый пользователь: "
+
+msgid "User ID number"
+msgstr "ID номер пользователя"
+
+msgid "Date and time of last login"
+msgstr "Дата и время последнего входа"
+
+msgid "Edit user account: "
+msgstr "Изменить учетную запись пользователя: "
+
+msgid "Access level"
+msgstr "Уровень доступа"
+
+msgid "Number of logins"
+msgstr "Количество входов"
+
+msgid "Permission to send Internet mail"
+msgstr "Разрешение на отправку почты в Интернет"
+
+msgid "Messages submitted"
+msgstr "Отправленные сообщения"
+
+msgid "Auto-purge after this many days"
+msgstr "Авто-чистка после дней"
+
+msgid "PO box:"
+msgstr "Абонентский ящик:"
+
+msgid "Prefix"
+msgstr "Обращ."
+
+msgid "Suffix"
+msgstr "Окончание"
+
+msgid "[edit]"
+msgstr "[изменить]"
+
+msgid "(no name)"
+msgstr "(без названия)"
+
+msgid "Go to your personal calendar"
+msgstr "Перейти в личный календарь"
+
+msgid "Advanced Options Menu: Advanced Room commands, Account Info, and Chat"
+msgstr "Меню дополнительных вариантов: Расширенный номер команды, Информация об аккаунте, и чат"
+
+msgid "List all your accessible rooms"
+msgstr "Список всех доступных вам комнат"
+
+msgid "Go to your personal notes"
+msgstr "Перейти к вашим личным заметкам"
+
+msgid "Go to your personal address book"
+msgstr "Перейти к вашей личной адресной книги"
+
+msgid "Your summary page"
+msgstr "Ваша страница статистики"
+
+msgid "Go to your email inbox"
+msgstr "Перейти на ваш электронный почтовый ящик"
+
+msgid "Go to your personal task list"
+msgstr "Перейти к вашему личному списку задач"
+
+msgid "See who is online right now"
+msgstr "Смотреть, кто сейчас в сети"
+
+msgid "Room and system administration functions"
+msgstr "Системное администрирование комнат и функций"
+
+msgid "Higher access is required to access this function."
+msgstr "Требуется более высокие права для доступа к этой функции."
+
+msgid "User profile"
+msgstr "Профиль пользователя"
+
+msgid "This command requires Aide or Room Aide access."
+msgstr "Для этой команды требуется помощник или помощник комната доступа."
+
+msgid "Shared with"
+msgstr "Совместный"
+
+msgid "Not shared with"
+msgstr "Не совместный"
+
+msgid "Remote node name"
+msgstr "Имя удаленного узла"
+
+msgid "Remote room name"
+msgstr "Название удаленной комнаты"
+
+msgid "Actions"
+msgstr "Действия"
+
+msgid "Notes:"
+msgstr "Примечания:"
+
+msgid "Subject:"
+msgstr "Тема:"
+
+msgid "Notification hosts"
+msgstr "Уведомление хостов"
+
+msgid "Edit Room info "
+msgstr "Изменить информацию о комнате"
+
+msgid "Go to a hidden room"
+msgstr "Перейти в скрытую комнату"
+
+msgid "Enter room name:"
+msgstr "Введите имя комнаты:"
+
+msgid "Author"
+msgstr "Автор"
+
+msgid "History of edits for this page"
+msgstr "История изменения для этой страницы"
+
+msgid "(Current version)"
+msgstr "(Текущая версия)"
+
+msgid "(show)"
+msgstr "(Показать)"
+
+msgid "Edit this page"
+msgstr "Изменить эту страницу"
+
+msgid "Current version"
+msgstr "Текущая версия"
+
+msgid "Wiki home"
+msgstr "Wiki дом"
+
+msgid "Invite:"
+msgstr "Приглашение:"
+
+msgid "Users"
+msgstr "Пользователи"
+
+msgid "Invite"
+msgstr "Пригласить"
+
+msgid "Kick"
+msgstr "Пнуть"
+
+msgid "Click on any note to edit it."
+msgstr "Нажмите на любую заметку, чтобы изменить её."
+
+msgid "Delete this note?"
+msgstr "Удалить эту заметку?"
+
+msgid "No"
+msgstr "Нет"
+
+msgid "Yes"
+msgstr "Да"
+
+msgid "Yes with users list"
+msgstr "Да со списком пользователей"
+
+msgid "Clicking this icon displays a list of all users currently logged in."
+msgstr "При нажатии на эту иконку выводит список всех пользователей, которые в настоящее время прошли идентификацию"
+
+msgid "Clicking this icon enters real-time chat mode with other users in the same room."
+msgstr "При нажатии на эту иконку входит в режиме реального времени режим чата с другими пользователями в той же комнате."
+
+msgid "Manage Account/OpenID Associations"
+msgstr "Управление учётной записью/Сопаставить с OpenID"
+
+msgid "Add an OpenID: "
+msgstr "Добавить OpenID: "
+
+msgid "Attach"
+msgstr "Присоеденить"
+
+msgid "Zapped (forgotten) rooms"
+msgstr "Zapped (забытые) комнаты"
+
+msgid "Preferences and settings"
+msgstr "Параметры и настройки"
+
+msgid "Calendar day view begins at:"
+msgstr "Календарь 'Обзор дня' начинается с:"
+
+msgid "Calendar day view ends at:"
+msgstr "Календарь 'Обзор дня' заканчивается в:"
+
+msgid "Tree (folders) view"
+msgstr "Просмотр деревом (папки)"
+
+msgid "Table (rooms) view"
+msgstr "Просмотр таблиц (комнат)"
+
+msgid "Time format"
+msgstr "Формат времени"
+
+msgid "12 hour (am/pm)"
+msgstr "12 часов (am/pm)"
+
+msgid "24 hour"
+msgstr "24 часа"
+
+msgid "Room list view"
+msgstr "Просмотр списка комнат"
+
+msgid "Week starts on:"
+msgstr "Неделя начинается с:"
+
+msgid "Attach signature to email messages?"
+msgstr "Присоединить подпись к сообщениям электронной почты?"
+
+msgid "No signature"
+msgstr "Нет подписи"
+
+msgid "Default character set for email headers:"
+msgstr "Шрифт по умолчанию для заголовков электронной почты:"
+
+msgid "Show empty floors"
+msgstr "Показывать пустые этажи"
+
+msgid "Preferred email address"
+msgstr "Предпочтительный адрес электронной почты"
+
+msgid "Preferred display name for bulletin board posts"
+msgstr "Предпочтительное отображаемое имя для сообщений на Доске объявлений"
+
+msgid "Preferred display name for email messages"
+msgstr "Предпочтительное отображаемое имя для сообщений электронной почты"
+
+msgid "Mailbox view mode"
+msgstr "Почтовый ящик режим просмотра"
+
+msgid "Full-functionality"
+msgstr "Полная функциональность"
+
+msgid "Safe mode"
+msgstr "Безопасный режим"
+
+msgid "Safe mode is less intensive on your web browser, but not as fully featured. "
+msgstr "Безопасный режим менее интенсивно на вашем веб-браузере, а не как полнофункциональная."
+
+msgid "Change"
+msgstr "Изменить"
+
+msgid "History"
+msgstr "История"
+
+msgid "Folder list"
+msgstr "Список папок"
+
+msgid "Room Listing"
+msgstr "Список комнат"
+
+msgid "View as folder list"
+msgstr "Просмотр как список папок"
+
+msgid "View as room list"
+msgstr "Просмотр как список комнат"
+
+msgid "My folders"
+msgstr "Мои папки"
+
+msgid "Global Address Book"
+msgstr "Глобальная адресная книга"
+
+msgid "Enter Room info below. Text is formatted to the reader's browser. A newline is forced by preceding the next line by a blank."
+msgstr "Введите информацию о комнате ниже. Текст отформатируется в браузере читателя. A newline is forced by preceding the next line by a blank."
+
+msgid "Directory domains"
+msgstr "Каталог доменов"
+
+msgid "(domains mapped with the Global Address Book)"
+msgstr "(домены отображается в глобальной адресной книги)"
+
+msgid "Smart hosts"
+msgstr "Умные хосты"
+
+msgid "(if present, forward all outbound mail to one of these hosts)"
+msgstr "(Если представлен, направлять все исходящие сообщения на один из этих хостов)"
+
+msgid "Fallback smart hosts"
+msgstr "Резервирование умных хостов"
+
+msgid "(send outbound mail to these hosts only when direct delivery fails)"
+msgstr "(Отправка исходящей почты для этих машин только тогда, когда прямая доставка не удалась)"
+
+msgid "(URLS for notifications when users receive new mails; ) Syntax: Notificationtemplatename:http[s]://user:password@hostname/path"
+msgstr "(URL-адреса для уведомлений, когда пользователи получают новые сообщения;) Синтаксис: Notificationtemplatename:http[s]://user:password@hostname/path"
+
+msgid "(hosts running a Realtime Blackhole List)"
+msgstr "Хосты на которых работает RBL (Realtime Blackhole List)"
+
+msgid "(hosts running the SpamAssassin service)"
+msgstr "(хосты на которых работает сервис SpamAssassin)"
+
+msgid "(hosts running the ClamAV clamd service)"
+msgstr "(хосты на которых работает сервис ClamAV clamd)"
+
+msgid "(Domains as which users are allowed to masquerade)"
+msgstr "(Домены в которых пользователям разрешен маскарадинг)"
+
+msgid "Delete this entry?"
+msgstr "Удалить эту запись?"
+
+msgid "Notes List"
+msgstr "Список заметок"
+
+msgid "Task List"
+msgstr "Список задач"
+
+msgid "Mail Folder"
+msgstr "Папка почты"
+
+msgid "Bulletin Board"
+msgstr "Доска объявлений"
+
+msgid "Address Book"
+msgstr "Адресная книга"
+
+msgid "in"
+msgstr "в"
+
+msgid "from "
+msgstr "от "
+
+msgid "to"
+msgstr "для"
+
+msgid "Enter new password:"
+msgstr "Введите новый пароль:"
+
+msgid "Enter it again to confirm:"
+msgstr "Введите его еще раз для подтверждения:"
+
+msgid "Change password"
+msgstr "Изменить пароль"
+
+msgid "When new mail arrives: "
+msgstr "При получении нового письма: "
+
+msgid "Leave it in my inbox without filtering"
+msgstr "Оставить его в моем почтовом ящике без фильтрации"
+
+msgid "Filter it according to rules selected below"
+msgstr "Фильтровать это в соответствии с правилами выбранном ниже"
+
+msgid "Add rule"
+msgstr "Добавить правило"
+
+msgid "Filter it through a manually edited script (advanced users only)"
+msgstr "Фильтруют ее через вручную редактировать сценарий (только для опытных пользователей)"
+
+msgid "Add or delete scripts"
+msgstr "Добавить или удалить сценарии"
+
+msgid "If"
+msgstr "Если"
+
+msgid "and then"
+msgstr ", а затем"
+
+msgid "From"
+msgstr "От"
+
+msgid "To or Cc"
+msgstr "Кому или Копия"
+
+msgid "Reply-to"
+msgstr "Ответ на"
+
+msgid "Message size"
+msgstr "Размер сообщения"
+
+msgid "contains"
+msgstr "содержит"
+
+msgid "does not contain"
+msgstr "не содержит"
+
+msgid "is"
+msgstr "является"
+
+msgid "is not"
+msgstr "не является"
+
+msgid "matches"
+msgstr "совпадение"
+
+msgid "does not match"
+msgstr "нет совпадений"
+
+msgid "Keep"
+msgstr "Содержит"
+
+msgid "Discard silently"
+msgstr "Discard silently"
+
+msgid "Message:"
+msgstr "Сообщение:"
+
+msgid "Reject"
+msgstr "Отклонить"
+
+msgid "Move message to"
+msgstr "Переместить сообщение в"
+
+msgid "Forward to"
+msgstr "Переслать на"
+
+msgid "continue processing"
+msgstr "продолжить обработку"
+
+msgid "stop"
+msgstr "остановить"
+
+msgid "All"
+msgstr "Все"
+
+msgid "Add a new script"
+msgstr "Добавить новый сценарий"
+
+msgid "Script name: "
+msgstr "Имя сценария: "
+
+msgid "Edit scripts"
+msgstr "Редактирование сценариев"
+
+msgid "Delete scripts"
+msgstr "Удалить сценарии"
+
+msgid "Delete script"
+msgstr "Удалить сценарий"
+
+msgid "Return to the script editing screen"
+msgstr "Возвращение на экран редактирования сценария"
+
+msgid "Your incoming mail will not be filtered through any scripts."
+msgstr "Входящей почта не будет фильтроваться через любые сценарии."
+
+msgid "Changes were not saved."
+msgstr "Изменения не были сохранены."
+
