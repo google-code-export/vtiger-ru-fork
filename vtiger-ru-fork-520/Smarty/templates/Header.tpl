@@ -80,7 +80,7 @@
 
 	<TABLE border=0 cellspacing=0 cellpadding=0 width=100% class="hdrNameBg">
 	<tr>
-		<td valign=top><img src="{'vtiger-crm.gif'|@vtiger_imageurl:$THEME}" alt="vtiger CRM" title="vtiger CRM" border=0></td>
+		<!-- <td valign=top><img src="{'vtiger-crm.gif'|@vtiger_imageurl:$THEME}" alt="vtiger CRM" title="vtiger CRM" border=0></td> -->
 		<td width=100% align=center>
 		{if $APP.$MODULE_NAME eq 'Dashboards'}
 		<marquee id="rss" direction="left" scrolldelay="10" scrollamount="3" behavior="scroll" class="marStyle" onMouseOver="javascript:stop();" onMouseOut="javascript:start();">&nbsp;{$ANNOUNCEMENT|escape}</marquee>
@@ -127,14 +127,14 @@
 			 </td>
 			 <!-- END -->
 			 {if $ADMIN_LINK neq ''} {* Show links only for admin *}
-			 <td style="padding-left:10px;padding-right:10px" class=small nowrap> <a href="javascript:void(0);" onclick="vtiger_news(this)">{$APP.LBL_VTIGER_NEWS}</a></td>
-			 <td style="padding-left:10px;padding-right:10px" class=small nowrap> <a href="javascript:void(0);" onclick="vtiger_feedback();">{$APP.LBL_FEEDBACK}</a></td>
+			<!-- <td style="padding-left:10px;padding-right:10px" class=small nowrap> <a href="javascript:void(0);" onclick="vtiger_news(this)">{$APP.LBL_VTIGER_NEWS}</a></td> -->
+			<!-- <td style="padding-left:10px;padding-right:10px" class=small nowrap> <a href="javascript:void(0);" onclick="vtiger_feedback();">{$APP.LBL_FEEDBACK}</a></td> -->
 			 {/if}
 
 			 <td style="padding-left:10px;padding-right:10px" class=small nowrap> <a href="index.php?module=Users&action=DetailView&record={$CURRENT_USER_ID}&modechk=prefview">{$APP.LBL_MY_PREFERENCES}</a></td>
 			 <td style="padding-left:10px;padding-right:10px" class=small nowrap><a href="http://wiki.vtiger.com/index.php/Main_Page" target="_blank">{$APP.LNK_HELP}</a></td>
-			 <td style="padding-left:10px;padding-right:10px" class=small nowrap><a href="javascript:;" onClick="openwin();">{$APP.LNK_WEARE}</a></td>
-			 <td style="padding-left:10px;padding-right:10px" class=small nowrap> <a href="index.php?module=Users&action=Logout">{$APP.LBL_LOGOUT}</a> ({$CURRENT_USER})</td>
+			<!-- <td style="padding-left:10px;padding-right:10px" class=small nowrap><a href="javascript:;" onClick="openwin();">{$APP.LNK_WEARE}</a></td> -->
+			<td style="padding-left:10px;padding-right:10px" class=small nowrap> <a href="index.php?module=Users&action=Logout">{$APP.LBL_LOGOUT}</a> ({$CURRENT_USER})</td> 
 			 </tr>
 			</table>
 		</td>
@@ -214,12 +214,14 @@
 <!-- header - master tabs -->
 <TABLE border=0 cellspacing=0 cellpadding=0 width=100% class="hdrTabBg">
 <tr>
-	<td style="width:50px" class=small>&nbsp;</td>
+<!-- LOGO -->
+	 <td style="width:150px" class=small>&nbsp;<img border="0" title="vtiger CRM" <img src="{'vtiger-crm.gif'|@vtiger_imageurl:$THEME}" width=150px height=35px></td> 
+	<!-- <td style="width:150px" class=small>&nbsp;</td> -->
 	<td class=small nowrap> 
 		<table border=0 cellspacing=0 cellpadding=0>
 
 		<tr>
-			<td class=tabSeperator><img src="{'spacer.gif'|@vtiger_imageurl:$THEME}" width=2px height=28px></td>		
+	<!--		<td class=tabSeperator><img src="{'spacer.gif'|@vtiger_imageurl:$THEME}" width=2px height=28px></td>		-->
 			{foreach key=maintabs item=detail from=$HEADERS}
 				{if $maintabs ne $CATEGORY}
 				  <td class="tabUnSelected"  onmouseover="fnDropDown(this,'{$maintabs}_sub');" onmouseout="fnHideDrop('{$maintabs}_sub');" align="center" nowrap><a href="index.php?module={$detail[0]}&action=index&parenttab={$maintabs}">{$APP[$maintabs]}</a><img src="{'menuDnArrow.gif'|@vtiger_imageurl:$THEME}" border=0 style="padding-left:5px"></td>
@@ -231,14 +233,14 @@
 			{/foreach}
 			<td style="padding-left:10px" nowrap>
 				{if $CNT eq 1}
-					<select class=small id="qccombo" style="width:110px"  onclick="QCreate(this);">
+					<select class=small id="qccombo" style="width:140px"  onclick="QCreate(this);">
 						<option value="none">{$APP.LBL_QUICK_CREATE}...</option>
                         {foreach  item=detail from=$QCMODULE}
                         <option value="{$detail.1}">{$APP.NEW}&nbsp;{$detail.0}</option>
                         {/foreach}
 					</select>
 				{else}
-					<select class=small id="qccombo" style="width:110px"  onchange="QCreate(this);">
+					<select class=small id="qccombo" style="width:140px"  onchange="QCreate(this);">
 						<option value="none">{$APP.LBL_QUICK_CREATE}...</option>
                         {foreach  item=detail from=$QCMODULE}
                         <option value="{$detail.1}">{$APP.NEW}&nbsp;{$detail.0}</option>
@@ -250,10 +252,12 @@
 
 		</table>
 	</td>
-	<td align=right style="padding-right:10px" nowrap >
-		<table border=0 cellspacing=0 cellpadding=0 id="search" style="border:1px solid #999999;background-color:white">
+	<!-- ////////////////////////////////////////////////////////////////////////// -->
+	
+	<td align=right style="padding-right:20px" nowrap >
+		<table border=1 cellspacing=0 cellpadding=0 id="search" style="border:0px solid #999999;background-color:white">
 		   <tr>
-			<form name="UnifiedSearch" method="post" action="index.php" style="margin:0px" onsubmit="VtigerJS_DialogBox.block();">
+			<form name="UnifiedSearch" method="post" action="index.php" style="margin:1px" onsubmit="VtigerJS_DialogBox.block();">
 			<td style="height:19px;background-color:#ffffef" nowrap>
 				<a href='javascript:void(0);' onclick="UnifiedSearch_SelectModuleForm(this);"><img src="{'settings_top.gif'|@vtiger_imageurl:$THEME}" align='left' border=0></a>
 				<input type="hidden" name="action" value="UnifiedSearch" style="margin:0px">
@@ -263,11 +267,17 @@
 				<input type="text" name="query_string" value="{$QUERY_STRING}" class="searchBox" onFocus="this.value=''" >
 			</td>
 			<td style="background-color:#cccccc">
-				<input type="submit" class="searchBtn" value="{$APP.LBL_FIND_BUTTON}" alt="{$APP.LBL_FIND}" title="{$APP.LBL_FIND}">
+				<input type="submit" class="searchBtn" value="{$APP.LBL_FIND_BUTTON}" alt="{$APP.LBL_FIND}" title="{$APP.LBL_FIND}"> 
 			</td>
 			</form>
-		   </tr>
+		   </tr>   
 		</table>
+		<!-- Вход и Выход 
+		<tr>
+		 <td style="padding-left:5px;padding-right:5px" class=small nowrap><a href="index.php?module=Users&action=Logout">{$APP.LBL_LOGOUT}><img src="{'exit.gif'|@vtiger_imageurl:$THEME}"</a> ({$CURRENT_USER})</td>
+		</tr> -->
+		 <!--		 <td style="padding-left:10px;padding-right:10px" class=small nowrap><img src="{'exit.gif'|@vtiger_imageurl:$THEME}"> <a href="index.php?module=Users&action=Logout">{$APP.LBL_LOGOUT}</a> ({$CURRENT_USER})</td> -->
+			 </tr>
 	</td>
 </td>
 </tr>
@@ -659,7 +669,7 @@ function getFormValidate(divValidate)
 {/foreach}
 
 
-<div id="status" style="position:absolute;display:none;left:850px;top:95px;height:27px;white-space:nowrap;"><img src="{'status.gif'|@vtiger_imageurl:$THEME}"></div>
+<div id="status" style="position:absolute;display:none;left:1450px;top:65px;height:27px;white-space:nowrap;"><img src="{'status.gif'|@vtiger_imageurl:$THEME}"></div>
 <script>
 function openwin()
 {ldelim}
@@ -697,7 +707,7 @@ function openwin()
 <script type="text/javascript">
 {literal}
 function vtiger_feedback() {
-	window.open("http://code.google.com/p/vtiger-ru-fork/issues/entry")
+	window.open("http://www.vtiger.com/products/crm/feedback.php?uid={/literal}{php}global $application_unique_key; echo $application_unique_key;{/php}{literal}","feedbackwin","height=300,width=515,top=200,left=300")
 }
 {/literal}
 </script>

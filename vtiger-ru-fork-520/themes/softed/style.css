@@ -648,7 +648,7 @@ a.dash_href{
 }
 
 .dash_row_sel{
-	background-image:url(../images/dash_sel_chart.jpg);
+	background-image:url(images/dash_sel_chart.jpg);
 	background-repeat:no-repeat;
 	background-position:center;
 	width:26px;height:26px;
@@ -660,7 +660,7 @@ a.dash_href{
 }
 
 .dash_row_unsel{
-	background-image:url(../images/dash_unsel_chart.jpg);
+	background-image:url(images/dash_unsel_chart.jpg);
 	background-repeat:no-repeat;
 	background-position:center;
 	width:26px;height:26px;
@@ -685,7 +685,7 @@ a.dash_href{
 }
 
 .dash_btm{
-	background-image:url(../images/dash_btm_center.jpg);
+	background-image:url(images/dash_btm_center.jpg);
 	background-repeat:repeat-x;
 	vertical-align:top;
 }
@@ -862,27 +862,27 @@ a.submenu:Hover{
 }
 
 .calcBackBtn {
-	background: url(../images/calc_back_btn.gif) no-repeat;
+	background: url(images/calc_back_btn.gif) no-repeat;
 	width:25px;
 }
 
 .calcBlackBtn {
-	background: url(../images/calc_black_btn.gif) no-repeat;
+	background: url(images/calc_black_btn.gif) no-repeat;
 	width:25px;
 }
 
 .calcGreyBtn {
-	background: url(../images/calc_grey_btn.gif) no-repeat;
+	background: url(images/calc_grey_btn.gif) no-repeat;
 	width:25px;
 }
 
 .calcCancBtn {
-	background: url(../images/calc_canc_btn.gif) no-repeat;
+	background: url(images/calc_canc_btn.gif) no-repeat;
 	width:25px;
 }
 
 .calcMemBtn {
-	background: url(../images/calc_mem_btn.gif) no-repeat;
+	background: url(images/calc_mem_btn.gif) no-repeat;
 	width:25px;
 }
 
@@ -903,7 +903,7 @@ a.submenu:Hover{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	color:#FFFFFF;
-	background-image:url(../images/rssHeader.gif);
+	background-image:url(images/rssHeader.gif);
 	background-position:top left;
 	background-repeat:repeat-x;
 	height:27px;
@@ -915,7 +915,7 @@ a.submenu:Hover{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	color:#FFFFFF;
-	background-image:url(../images/rssdelete.gif);
+	background-image:url(images/rssdelete.gif);
 	background-position:top left;
 	background-repeat:repeat-x;
 	height:27px;
@@ -964,7 +964,7 @@ a.submenu:Hover{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:12px;
 	color:#000000;
-	background-image:url(../images/rssforward.gif);
+	background-image:url(images/rssforward.gif);
 	background-position:top left;
 	background-repeat:repeat-x;
 	height:27px;
@@ -1008,7 +1008,7 @@ a.submenu:Hover{
 }
 
 .prvPrfTexture {
-	background:url(../images/prvPrfTexture1.gif);
+	background:url(images/prvPrfTexture1.gif);
 }
 
 .prvPrfHoverOn {
@@ -1824,7 +1824,7 @@ ul {
 .settingsSelectedUI {
   padding-bottom: 5px;
   background-color:#ffffff;  
-  background:url(../images/settingsSelUIBg.gif) repeat-x;
+  background:url(images/settingsSelUIBg.gif) repeat-x;
   padding:  15px 25px ;
 	
 }
@@ -2330,19 +2330,19 @@ a.drop_down:Hover{
 }
 
 .winmarkModulesusr{
-    background-image:url(../images/windowmarkModulesusr.jpg);
+    background-image:url(images/windowmarkModulesusr.jpg);
     background-position:top right;
     background-repeat:no-repeat;
 }
 
 .winmarkRSS{
-    background-image:url(../images/windowmarkRSS.jpg);
+    background-image:url(images/windowmarkRSS.jpg);
     background-position:top right;
     background-repeat:no-repeat;
 }
 
 .winmarkDashboardusr{
-    background-image:url(../images/windowmarkDashboardusr.jpg);
+    background-image:url(images/windowmarkDashboardusr.jpg);
     background-position:top right;
     background-repeat:no-repeat;
 }
