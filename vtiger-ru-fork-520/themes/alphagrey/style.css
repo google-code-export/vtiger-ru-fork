@@ -680,7 +680,7 @@ a.submenu:Hover{
 #theClockLayer{
 	position:relative;
 	height:180px;
-	left:20px;
+	left:0px;
 	text-align:center;
 }
 

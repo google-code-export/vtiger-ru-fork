@@ -132,7 +132,9 @@ function set_focus() {
 				<input type="hidden" name="return_module" value="Users">
 				<input type="hidden" name="return_action" value="Login">
 					<table border="0" cellpadding="0" cellspacing="0" width="80%">
-			
+					<tr>
+						<td class="signinHdr"><img src="themes/images/signin.gif" alt="<?php echo $app_strings['LBL_SIGN_IN']?>" title="<?php echo $app_strings['LBL_SIGN_IN']?>"></td>
+					</tr>
 					<tr>
 						<td class="small">
 						<!-- form elements -->
@@ -181,17 +183,15 @@ function set_focus() {
 							?>
 							<tr>
 								<td class="small">&nbsp;</td>
-								<td class="small" align="center"><input title="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" alt="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" accesskey="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>"src="themes/images/signin.gif" type="image" name="Login" value="  <?php echo $current_module_strings['LBL_LOGIN_BUTTON_LABEL'] ?>  "  tabindex="5"></td>
+								<td class="small"><input title="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" alt="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" accesskey="<?php echo $current_module_strings['LBL_LOGIN_BUTTON_TITLE'] ?>" src="themes/images/btnSignIn.gif" type="image" name="Login" value="  <?php echo $current_module_strings['LBL_LOGIN_BUTTON_LABEL'] ?>  "  tabindex="5"></td>
 							</tr>
 							</table>
 							<br><br>
 						</td>
-						
 					</tr>
 					</table>
 				</form>
 			</td>
 		</tr>
 	</table>
-<td class="small" align="center" width="20%">☺2010 vtiger-ru-fork.googlecode.com</td>
 </div>
