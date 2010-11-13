@@ -1,0 +1,115 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+ <title>/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images/layerPopupBg.gif - vtiger development - Trac</title><link rel="start" href="/cgi-bin/trac.cgi/wiki" /><link rel="search" href="/cgi-bin/trac.cgi/search" /><link rel="help" href="/cgi-bin/trac.cgi/wiki/TracGuide" /><link rel="stylesheet" href="/cgi-bin/trac.cgi/chrome/common/css/trac.css" type="text/css" /><link rel="stylesheet" href="/cgi-bin/trac.cgi/chrome/common/css/code.css" type="text/css" /><link rel="stylesheet" href="/cgi-bin/trac.cgi/chrome/common/css/browser.css" type="text/css" /><link rel="icon" href="/cgi-bin/trac.cgi/chrome/common/trac.ico" type="image/x-icon" /><link rel="shortcut icon" href="/cgi-bin/trac.cgi/chrome/common/trac.ico" type="image/x-icon" /><link rel="up" href="/cgi-bin/trac.cgi/browser/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images?rev=12053" title="Parent directory" /><link rel="alternate" href="/cgi-bin/trac.cgi/browser/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images/layerPopupBg.gif?rev=12053&amp;format=raw" title="Original Format" type="image/gif; charset=iso-8859-15" /><style type="text/css">
+</style>
+ <script type="text/javascript" src="/cgi-bin/trac.cgi/chrome/common/js/trac.js"></script>
+</head>
+<body>
+
+
+<div id="banner">
+
+<div id="header"><a id="logo" href="http://www.vtiger.com/"><img src="/cgi-bin/trac.cgi/chrome/common/vtiger_logo.jpg" width="122" height="57" alt="Trac" /></a><hr /></div>
+
+<form id="search" action="/cgi-bin/trac.cgi/search" method="get">
+ 
+</form>
+
+
+
+<div id="metanav" class="nav"><ul><li class="first"><a href="/cgi-bin/trac.cgi/login">Login</a></li><li><a href="/cgi-bin/trac.cgi/settings">Settings</a></li><li><a accesskey="6" href="/cgi-bin/trac.cgi/wiki/TracGuide">Help/Guide</a></li><li class="last"><a href="/cgi-bin/trac.cgi/about">About Trac</a></li></ul></div>
+</div>
+
+<div id="mainnav" class="nav"><ul><li class="first"><a accesskey="1" href="/cgi-bin/trac.cgi/wiki">Wiki</a></li><li><a accesskey="2" href="/cgi-bin/trac.cgi/timeline">Timeline</a></li><li><a accesskey="3" href="/cgi-bin/trac.cgi/roadmap">Roadmap</a></li><li class="active"><a href="/cgi-bin/trac.cgi/browser">Browse Source</a></li><li class="last"><a href="/cgi-bin/trac.cgi/report">View Tickets</a></li></ul></div>
+<div id="main">
+
+
+
+
+<div id="ctxtnav" class="nav">
+ <ul>
+  <li class="first"><a href="/cgi-bin/trac.cgi/changeset/9374/vtigercrm/trunk/themes/alphagrey/images/layerPopupBg.gif">
+   Last Change</a></li>
+  <li class="last"><a href="/cgi-bin/trac.cgi/log/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images/layerPopupBg.gif?rev=12053">
+   Revision Log</a></li>
+ </ul>
+</div>
+
+
+<div id="searchable">
+<div id="content" class="browser">
+ <h1><a class="first" title="Go to root directory" href="/cgi-bin/trac.cgi/browser?rev=12053">root</a><span class="sep">/</span><a title="View vtigercrm" href="/cgi-bin/trac.cgi/browser/vtigercrm?rev=12053">vtigercrm</a><span class="sep">/</span><a title="View tags" href="/cgi-bin/trac.cgi/browser/vtigercrm/tags?rev=12053">tags</a><span class="sep">/</span><a title="View vtigercrm-5.0.4" href="/cgi-bin/trac.cgi/browser/vtigercrm/tags/vtigercrm-5.0.4?rev=12053">vtigercrm-5.0.4</a><span class="sep">/</span><a title="View themes" href="/cgi-bin/trac.cgi/browser/vtigercrm/tags/vtigercrm-5.0.4/themes?rev=12053">themes</a><span class="sep">/</span><a title="View alphagrey" href="/cgi-bin/trac.cgi/browser/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey?rev=12053">alphagrey</a><span class="sep">/</span><a title="View images" href="/cgi-bin/trac.cgi/browser/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images?rev=12053">images</a><span class="sep">/</span><a title="View layerPopupBg.gif" href="/cgi-bin/trac.cgi/browser/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images/layerPopupBg.gif?rev=12053">layerPopupBg.gif</a></h1>
+
+ <div id="jumprev">
+  <form action="" method="get">
+   <div>
+    <label for="rev">View revision:</label>
+    <input type="text" id="rev" name="rev" value="12053" size="4" />
+   </div>
+  </form>
+ </div>
+
+ 
+
+ 
+  <table id="info" summary="Revision info"><tr>
+    <th scope="col">
+     Revision <a href="/cgi-bin/trac.cgi/changeset/9374">9374</a>, 87 bytes
+     (checked in by jerrydgeorge, 4 years ago)
+    </th></tr><tr>
+    <td class="message"><p>
+alpha grey theme added --Jeri <br />
+</p>
+</td>
+   </tr><tr>
+    <td colspan="2"><ul class="props">
+      <li>Property <strong>svn:mime-type</strong> set to <em><code>application/octet-stream</code></em></li>
+    </ul></td></tr>
+  </table>
+  <div id="preview"><div class="image-file"><img src="/cgi-bin/trac.cgi/browser/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images/layerPopupBg.gif?rev=12053&amp;format=raw" alt="vtigercrm/trunk/themes/alphagrey/images/layerPopupBg.gif" /></div>
+  </div>
+
+ <div id="help">
+  <strong>Note:</strong> See <a href="/cgi-bin/trac.cgi/wiki/TracBrowser">TracBrowser</a> for help on using the browser.
+ </div>
+
+  <div id="anydiff">
+   <form action="/cgi-bin/trac.cgi/anydiff" method="get">
+    <div class="buttons">
+     <input type="hidden" name="new_path" value="/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images/layerPopupBg.gif" />
+     <input type="hidden" name="old_path" value="/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images/layerPopupBg.gif" />
+     <input type="hidden" name="new_rev" value="12053" />
+     <input type="hidden" name="old_rev" value="12053" />
+     <input type="submit" value="View changes..." title="Prepare an Arbitrary Diff" />
+    </div>
+   </form>
+  </div>
+
+</div>
+</div>
+<script type="text/javascript">searchHighlight()</script>
+<div id="altlinks"><h3>Download in other formats:</h3><ul><li class="first last"><a href="/cgi-bin/trac.cgi/browser/vtigercrm/tags/vtigercrm-5.0.4/themes/alphagrey/images/layerPopupBg.gif?rev=12053&amp;format=raw">Original Format</a></li></ul></div>
+
+</div>
+
+<div id="footer">
+ <hr />
+ <a id="tracpowered" href="http://trac.edgewall.org/"><img src="/cgi-bin/trac.cgi/chrome/common/trac_logo_mini.png" height="30" width="107"
+   alt="Trac Powered"/></a>
+ <p class="left">
+  Powered by <a href="/cgi-bin/trac.cgi/about"><strong>Trac 0.10.3</strong></a><br />
+  By <a href="http://www.edgewall.org/">Edgewall Software</a>.
+ </p>
+ <p class="right">
+  Visit the vtiger open source projects at <br /><a href="http://vtiger.com/">http://www.vtiger.com/</a>
+ </p>
+</div>
+
+
+
+ </body>
+</html>
+
