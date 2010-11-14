@@ -218,7 +218,7 @@ function alphabetic(module,url,dataid)
                                         <table border=0 cellspacing=0 cellpadding=0 width=100%>
                                         <tr>
                                                 <td align=center>
-                                                <img src="{'searching.gif'|@vtiger_imageurl:$THEME}" alt="{$APP.LBL_SEARCHING}"  title="{$APP.LBL_SEARCHING}">
+                                                <img src="{$IMAGE_PATH}searching.gif" alt="{$APP.LBL_SEARCHING}"  title="{$APP.LBL_SEARCHING}">
                                                 </td>
                                         </tr>
                                         </table>
@@ -234,7 +234,7 @@ function alphabetic(module,url,dataid)
 {*<!-- Contents -->*}
 <table border=0 cellspacing=0 cellpadding=0 width=98% align=center>
      <tr>
-        <td valign=top><img src="{'showPanelTopLeft.gif'|@vtiger_imageurl:$THEME}"></td>
+        <td valign=top><img src="{$IMAGE_PATH}showPanelTopLeft.gif"></td>
 
 	<td class="showPanelBg" valign="top" width=100% style="padding:10px;">
 	 <!-- SIMPLE SEARCH -->
@@ -244,7 +244,7 @@ function alphabetic(module,url,dataid)
 	<tr>
 		<td class="searchUIName small" nowrap align="left">
 		<span class="moduleName">{$APP.LBL_SEARCH}</span><br><span class="small"><a href="#" onClick="fnhide('searchAcc');show('advSearch');updatefOptions(document.getElementById('Fields0'), 'Condition0');document.basicSearch.searchtype.value='advance';">{$APP.LBL_GO_TO} {$APP.LNK_ADVANCED_SEARCH}</a></span>
-		<!-- <img src="{'basicSearchLens.gif'|@vtiger_imageurl:$THEME}" align="absmiddle" alt="{$APP.LNK_BASIC_SEARCH}" title="{$APP.LNK_BASIC_SEARCH}" border=0>&nbsp;&nbsp;-->
+		<!-- <img src="{$IMAGE_PATH}basicSearchLens.gif" align="absmiddle" alt="{$APP.LNK_BASIC_SEARCH}" title="{$APP.LNK_BASIC_SEARCH}" border=0>&nbsp;&nbsp;-->
 		</td>
 		<td class="small" nowrap align=right><b>{$APP.LBL_SEARCH_FOR}</b></td>
 		<td class="small"><input type="text"  class="txtBox" style="width:120px" name="search_text"></td>
@@ -408,7 +408,7 @@ function alphabetic(module,url,dataid)
 						{if $CUSTOM_LINKS && !empty($CUSTOM_LINKS.LISTVIEW)}
 							&nbsp;
 							<a href="javascript:;" onmouseover="fnvshobj(this,'vtlib_customLinksLay');" onclick="fnvshobj(this,'vtlib_customLinksLay');">
-									<b>{$APP.LBL_MORE} {$APP.LBL_ACTIONS} <img src="{'arrow_down.gif'|@vtiger_imageurl:$THEME}" border="0"></b>
+									<b>{$APP.LBL_MORE} {$APP.LBL_ACTIONS} <img src="{$IMAGE_PATH}arrow_down.gif" border="0"></b>
 							</a>
 							<div style="display: none; left: 193px; top: 106px;width:155px; position:absolute;" id="vtlib_customLinksLay" 
 								onmouseout="fninvsh('vtlib_customLinksLay')" onmouseover="fnvshNrm('vtlib_customLinksLay')">
@@ -565,7 +565,7 @@ function alphabetic(module,url,dataid)
 						{if $CUSTOM_LINKS && !empty($CUSTOM_LINKS.LISTVIEW)}
 							&nbsp;
 							<a href="javascript:;" onmouseover="fnvshobj(this,'vtlib_customLinksLay');" onclick="fnvshobj(this,'vtlib_customLinksLay');">
-									<b>{$APP.LBL_MORE} {$APP.LBL_ACTIONS} <img src="{'arrow_down.gif'|@vtiger_imageurl:$THEME}" border="0"></b>
+									<b>{$APP.LBL_MORE} {$APP.LBL_ACTIONS} <img src="{$IMAGE_PATH}arrow_down.gif" border="0"></b>
 							</a>
 							<div style="display: none; left: 193px; top: 106px;width:155px; position:absolute;" id="vtlib_customLinksLay" 
 								onmouseout="fninvsh('vtlib_customLinksLay')" onmouseover="fnvshNrm('vtlib_customLinksLay')">
@@ -622,7 +622,7 @@ function alphabetic(module,url,dataid)
         </div>
 
      </td>
-        <td valign=top><img src="{'showPanelTopRight.gif'|@vtiger_imageurl:$THEME}"></td>
+        <td valign=top><img src="{$IMAGE_PATH}showPanelTopRight.gif}"></td>
    </tr>
 </table>
 

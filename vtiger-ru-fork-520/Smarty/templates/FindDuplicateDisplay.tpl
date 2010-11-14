@@ -20,7 +20,7 @@
     				<table border=0 cellspacing=0 cellpadding=0 width=100%>
     					<tr>
     						<td align=center>
-        						<img src="{'searching.gif'|@vtiger_imageurl:$THEME}" alt="{$APP.LBL_SEARCHING}"  title="{$APP.LBL_SEARCHING}">
+        						<img src="{$IMAGE_PATH}searching.gif" alt="{$APP.LBL_SEARCHING}"  title="{$APP.LBL_SEARCHING}">
         					</td>
     					</tr>
     				</table>
@@ -39,7 +39,7 @@
 {if $MODULE eq $smarty.request.module}
 <table border=0 cellspacing=0 cellpadding=0 width=98% align=center>
      <tr>
-        <td valign=top><img src="{'showPanelTopLeft.gif'|@vtiger_imageurl:$THEME}"></td>
+        <td valign=top><img src="{$IMAGE_PATH}showPanelTopLeft.gif"></td>
 
 		<td class="showPanelBg" valign="top" width=100% style="padding:10px;">
 {/if}
@@ -53,7 +53,7 @@
 			
 {if $MODULE eq $smarty.request.module}
      	</td>
-        <td valign=top><img src="{'showPanelTopRight.gif'|@vtiger_imageurl:$THEME}"></td>
+        <td valign=top><img src="{$IMAGE_PATH}showPanelTopRight.gif"></td>
    </tr>
 </table>
 {/if}
