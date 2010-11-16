@@ -47,7 +47,7 @@
 				<tr align="left" id="template_select_field" style="display:none;">
 					<td>{$MOD.LBL_CHOOSE_A_TEMPLATE}</td>
 					<td>
-						<span id="template_list_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span>
+						<span id="template_list_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 						<span id="template_list_foundnone" style='display:none;'><b>{$MOD.LBL_NO_TEMPLATES}</b></span>
 						<select id="template_list" name="template_id" class="small"></select>						
 					</td>

@@ -198,7 +198,7 @@ function sendfile_email()
 		  		{* Module Record numbering, used MOD_SEQ_ID instead of ID *}
 		  		{assign var="USE_ID_VALUE" value=$MOD_SEQ_ID}
 		  		{if $USE_ID_VALUE eq ''} {assign var="USE_ID_VALUE" value=$ID} {/if}
-		 		<span class="dvHeaderText">[ {$USE_ID_VALUE} ] {$NAME} -  {$SINGLE_MOD|@getTranslatedString:$MODULE} {$APP.LBL_INFORMATION}</span>&nbsp;&nbsp;&nbsp;<span class="small">{$UPDATEINFO}</span>&nbsp;<span id="vtbusy_info" style="display:none;" valign="bottom"><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span><span id="vtbusy_info" style="visibility:hidden;" valign="bottom"><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span>
+		 		<span class="dvHeaderText">[ {$USE_ID_VALUE} ] {$NAME} -  {$SINGLE_MOD|@getTranslatedString:$MODULE} {$APP.LBL_INFORMATION}</span>&nbsp;&nbsp;&nbsp;<span class="small">{$UPDATEINFO}</span>&nbsp;<span id="vtbusy_info" style="display:none;" valign="bottom"><img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span><span id="vtbusy_info" style="visibility:hidden;" valign="bottom"><img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 		 	</td></tr>
 		 </table>			 
 		<br>
@@ -526,7 +526,7 @@ function sendfile_email()
 		                    <a href="javascript:;" onClick="checkFileIntegrityDetailView({$NOTESID});">{$MOD.LBL_CHECK_INTEGRITY}</a>&nbsp;
 		                    <input type="hidden" id="dldfilename" name="dldfilename" value="{$FILEID}-{$FILENAME}">
 		                    <span id="vtbusy_integrity_info" style="display:none;">
-								<img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span>
+								<img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 							<span id="integrity_result" style="display:none"></span>						
 							</td></tr>
 						{/if}
@@ -668,7 +668,7 @@ function sendfile_email()
 			  				<tr>
 								<td class="rightMailMergeHeader">
 									<b>{$customlink_label}</b>
-									<img id="detailview_block_{$CUSTOMLINK_NO}_indicator" style="display:none;" src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0" align="absmiddle" />
+									<img id="detailview_block_{$CUSTOMLINK_NO}_indicator" style="display:none;" src="{$IMAGE_PATH}vtbusy.gif" border="0" align="absmiddle" />
 								</td>
 			  				</tr>
 			  				<tr style="height:25px">

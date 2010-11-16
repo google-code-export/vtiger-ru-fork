@@ -225,7 +225,7 @@
   				<tr>
 					<td class="rightMailMergeHeader">
 						<b>{$customlink_label}</b>
-						<img id="detailview_block_{$CUSTOMLINK_NO}_indicator" style="display:none;" src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0" align="absmiddle" />
+						<img id="detailview_block_{$CUSTOMLINK_NO}_indicator" style="display:none;" src="{$IMAGE_PATH}vtbusy.gif" border="0" align="absmiddle" />
 					</td>
   				</tr>
   				<tr style="height:25px">

@@ -21,14 +21,14 @@ var taskPriority = '{$task->priority}';
 	<tr valign="top">
 		<td class='dvtCellLabel' align="right" width=15% nowrap="nowrap"><b>Status</b></td>
 		<td class='dvtCellLabel'>
-			<span id="task_status_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span>
+			<span id="task_status_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 			<select id="task_status" value="{$task->status}" name="status" class="small" style="display: none;"></select>
 		</td>
 	</tr> 
 	<tr valign="top">
 		<td class='dvtCellLabel' align="right" width=15% nowrap="nowrap"><b>Priority</b></td>
 		<td class='dvtCellLabel'>
-			<span id="task_priority_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span>
+			<span id="task_priority_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 			<select id="task_priority" value="{$task->priority}" name="priority" class="small" style="display: none;"></select>
 		</td>
 	</tr>

@@ -394,7 +394,7 @@ var gselected_fieldtype = '';
 					</td>
 					<td align="right" width="8%"><input type="button" class="crmButton create small" onclick="fnvshobj(this,'addblock');" alt="{$MOD.ADD_BLOCK}" title="{$MOD.ADD_BLOCK}" value="{$MOD.ADD_BLOCK}"/>
 					</td>
-					&nbsp; <img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" id="vtbusy_info" style="display:none;position:absolute;top:180px;right:100px;" border="0" />
+					&nbsp; <img src="{$IMAGE_PATH}vtbusy.gif" id="vtbusy_info" style="display:none;position:absolute;top:180px;right:100px;" border="0" />
 				</tr>
 			</table>
 				

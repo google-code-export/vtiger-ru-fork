@@ -98,7 +98,7 @@ alt="Clear" title="Clear" LANGUAGE=javascript	onClick="this.form.{$fldname}.valu
 				<td width=30% align=left class="dvtCellInfo">
 					<input type="text" name="{$fldname}" tabindex="{$vt_tab}" id ="{$fldname}" value="{$fldvalue}" class=detailedViewTextBox onFocus="this.className='detailedViewTextBoxOn';" onBlur="this.className='detailedViewTextBox';{if $fldname eq 'tickersymbol' && $MODULE eq 'Accounts'}sensex_info(){/if}">
 					<span id="vtbusy_info" style="display:none;">
-						<img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span>
+						<img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 				</td>
 
 			{else}

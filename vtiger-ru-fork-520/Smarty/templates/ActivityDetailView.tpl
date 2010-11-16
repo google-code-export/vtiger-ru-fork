@@ -119,7 +119,7 @@ function DeleteTag(id,recordid)
 		<table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td align="left">		
-					<span class="lvtHeaderText"><font color="purple">[ {$ID} ] </font>{$NAME} -  {$SINGLE_MOD} {$APP.LBL_INFORMATION}</span>&nbsp;&nbsp;<span class="small">{$UPDATEINFO}</span>&nbsp;<span id="vtbusy_info" style="display:none;" valign="bottom"><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span><span id="vtbusy_info" style="visibility:hidden;" valign="bottom"><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span>
+					<span class="lvtHeaderText"><font color="purple">[ {$ID} ] </font>{$NAME} -  {$SINGLE_MOD} {$APP.LBL_INFORMATION}</span>&nbsp;&nbsp;<span class="small">{$UPDATEINFO}</span>&nbsp;<span id="vtbusy_info" style="display:none;" valign="bottom"><img src="{$IMAGEPATH}vtbusy.gif" border="0"></span><span id="vtbusy_info" style="visibility:hidden;" valign="bottom"><img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 				</td>
 				<td align="right">		
 					{if $EDIT_DUPLICATE eq 'permitted'}
@@ -674,7 +674,7 @@ function DeleteTag(id,recordid)
 	  				<tr>
 						<td class="rightMailMergeHeader">
 							<b>{$customlink_label}</b>
-							<img id="detailview_block_{$CUSTOMLINK_NO}_indicator" style="display:none;" src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0" align="absmiddle" />
+							<img id="detailview_block_{$CUSTOMLINK_NO}_indicator" style="display:none;" src="{$IMAGE_PATH}vtbusy.gif" border="0" align="absmiddle" />
 						</td>
 	  				</tr>
 	  				<tr style="height:25px">

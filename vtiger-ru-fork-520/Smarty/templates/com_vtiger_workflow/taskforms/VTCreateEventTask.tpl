@@ -21,14 +21,14 @@ var eventType = '{$task->eventType}';
 	<tr valign="top">
 		<td class='dvtCellLabel' align="right" width=15% nowrap="nowrap"><b>Status</b></td>
 		<td class='dvtCellInfo'>
-			<span id="event_status_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span>
+			<span id="event_status_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 			<select id="event_status" value="{$task->status}" name="status" class="small" style="display: none;"></select>
 		</td>
 	</tr> 
 	<tr valign="top">
 		<td class='dvtCellLabel' align="right" width=15% nowrap="nowrap"><b>Type</b></td>
 		<td class='dvtCellInfo'>
-			<span id="event_type_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0"></span>
+			<span id="event_type_busyicon"><b>{$MOD.LBL_LOADING}</b><img src="{$IMAGE_PATH}vtbusy.gif" border="0"></span>
 			<select id="event_type" value="{$task->eventType}" name="eventType" class="small" style="display: none;"></select>
 		</td>
 	</tr>

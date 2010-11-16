@@ -162,7 +162,7 @@
 				</td>
 				<td class="small" align="right">
 					<span id="workflow_loading" style="display:none">
-					  <b>{$MOD.LBL_LOADING}</b><img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0">
+					  <b>{$MOD.LBL_LOADING}</b><img src="{$IMAGE_PATH}vtbusy.gif" border="0">
 					</span>
 					<input type="button" class="crmButton create small" 
 						value="{$MOD.LBL_NEW_CONDITION_BUTTON_LABEL}" id="save_conditions_add" style='display: none;'/>

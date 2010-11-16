@@ -20,7 +20,7 @@
 
 {include file="Home/HomeButtons.tpl"}
 <div id="vtbusy_homeinfo" style="display:none;">
-	<img src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0">
+	<img src="{$IMAGE_PATH}vtbusy.gif" border="0">
 </div>
 
 {*<!-- Main Contents Start Here -->*}

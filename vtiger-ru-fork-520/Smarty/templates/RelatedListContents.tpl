@@ -128,7 +128,7 @@ function disableRelatedListBlock(urldata,target,imagesuffix){
 					</a>					
 				</span>
 				&nbsp;{$HEADERLABEL}&nbsp;
-				<img id="indicator_{$MODULE}_{$header|replace:' ':''}" style="display:none;" src="{'vtbusy.gif'|@vtiger_imageurl:$THEME}" border="0" align="absmiddle" />
+				<img id="indicator_{$MODULE}_{$header|replace:' ':''}" style="display:none;" src="{$IMAGE_PATH}vtbusy.gif" border="0" align="absmiddle" />
 				<div style="float: right;width: 2em;">
 					<a href="javascript:disableRelatedListBlock(
 						'module={$MODULE}&action={$MODULE}Ajax&file=DetailViewAjax&ajxaction=DISABLEMODULE&relation_id={$detail.relationId}&header={$header}',
