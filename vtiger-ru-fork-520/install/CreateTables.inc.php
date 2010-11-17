@@ -49,25 +49,36 @@ function create_default_users_access() {
 		$profile2_id = $adb->getUniqueID("vtiger_profile");
 		$profile3_id = $adb->getUniqueID("vtiger_profile");
 		$profile4_id = $adb->getUniqueID("vtiger_profile");
-		
+
+			/*Old records
 		$adb->query("insert into vtiger_role values('H".$role1_id."','Organisation','H".$role1_id."',0)");
         $adb->query("insert into vtiger_role values('H".$role2_id."','CEO','H".$role1_id."::H".$role2_id."',1)");
         $adb->query("insert into vtiger_role values('H".$role3_id."','Vice President','H".$role1_id."::H".$role2_id."::H".$role3_id."',2)");
         $adb->query("insert into vtiger_role values('H".$role4_id."','Sales Manager','H".$role1_id."::H".$role2_id."::H".$role3_id."::H".$role4_id."',3)");
         $adb->query("insert into vtiger_role values('H".$role5_id."','Sales Man','H".$role1_id."::H".$role2_id."::H".$role3_id."::H".$role4_id."::H".$role5_id."',4)");
+		*/
+
+		//vtiger-ru-fork 28.10.2010 Eugene Babiy. Добавлен Администратор
+		$adb->query("insert into vtiger_role values('H".$role1_id."','Организация','H".$role1_id."',0)");
+        $adb->query("insert into vtiger_role values('H".$role2_id."','Директор','H".$role1_id."::H".$role2_id."',1)");
+        $adb->query("insert into vtiger_role values('H".$role3_id."','Администратор','H".$role1_id."::H".$role2_id."',2)");
+        $adb->query("insert into vtiger_role values('H".$role4_id."','Заместитель Директора','H".$role1_id."::H".$role2_id."::H".$role3_id."',3)");
+        $adb->query("insert into vtiger_role values('H".$role5_id."','Менеджер по Продажам','H".$role1_id."::H".$role2_id."::H".$role3_id."::H".$role4_id."',4)");
+        $adb->query("insert into vtiger_role values('H".$role6_id."','Продавец','H".$role1_id."::H".$role2_id."::H".$role3_id."::H".$role4_id."::H".$role5_id."',5)");
         
 		//Insert into vtiger_role2profile
 		$adb->query("insert into vtiger_role2profile values ('H".$role2_id."',".$profile1_id.")");
-		$adb->query("insert into vtiger_role2profile values ('H".$role3_id."',".$profile2_id.")");
+		$adb->query("insert into vtiger_role2profile values ('H".$role3_id."',".$profile1_id.")");
 	  	$adb->query("insert into vtiger_role2profile values ('H".$role4_id."',".$profile2_id.")");
-		$adb->query("insert into vtiger_role2profile values ('H".$role5_id."',".$profile2_id.")"); 
+		$adb->query("insert into vtiger_role2profile values ('H".$role5_id."',".$profile2_id.")");
+		$adb->query("insert into vtiger_role2profile values ('H".$role6_id."',".$profile2_id.")");  
 	   
 		//New Security Start
 		//Inserting into vtiger_profile vtiger_table
-		$adb->query("insert into vtiger_profile values ('".$profile1_id."','Administrator','Admin Profile')");	
-		$adb->query("insert into vtiger_profile values ('".$profile2_id."','Sales Profile','Profile Related to Sales')");
-		$adb->query("insert into vtiger_profile values ('".$profile3_id."','Support Profile','Profile Related to Support')");
-		$adb->query("insert into vtiger_profile values ('".$profile4_id."','Guest Profile','Guest Profile for Test Users')");
+		$adb->query("insert into vtiger_profile values ('".$profile1_id."','Администратор','Профиль Администратора Системы')");	
+		$adb->query("insert into vtiger_profile values ('".$profile2_id."','Продажи','Профиль относящийся к Продажам')");
+		$adb->query("insert into vtiger_profile values ('".$profile3_id."','Поддержка','Профиль относящийся к Поддержке')");
+		$adb->query("insert into vtiger_profile values ('".$profile4_id."','Гости','Гостевой профиль для Тестирования')");
 		
 		//Inserting into vtiger_profile2gloabal permissions
 		$adb->query("insert into vtiger_profile2globalpermissions values ('".$profile1_id."',1,0)");
@@ -716,33 +727,34 @@ function create_default_users_access() {
     	VTCacheUtils::clearRoleSubordinates();
 
         // create default admin user
+        //vtiger-ru-fork 28.10.2010 Eugene Babiy
     	$user = new Users();
-        $user->column_fields["last_name"] = 'Administrator';
+        $user->column_fields["last_name"] = 'Администратор';
         $user->column_fields["user_name"] = 'admin';
         $user->column_fields["status"] = 'Active';
         $user->column_fields["is_admin"] = 'on';
         $user->column_fields["user_password"] = $admin_password;
-        $user->column_fields["tz"] = 'Europe/Berlin';
-        $user->column_fields["holidays"] = 'de,en_uk,fr,it,us,';
-        $user->column_fields["workdays"] = '0,1,2,3,4,5,6,';
+        $user->column_fields["tz"] = 'Europe/Kiev';
+        $user->column_fields["holidays"] = 'ru,ua,';
+        $user->column_fields["workdays"] = '1,2,3,4,5,6,0,';
         $user->column_fields["weekstart"] = '1';
         $user->column_fields["namedays"] = '';
         $user->column_fields["currency_id"] = 1;
         $user->column_fields["reminder_interval"] = '1 Minute';
         $user->column_fields["reminder_next_time"] = date('Y-m-d H:i');
 		$user->column_fields["date_format"] = 'yyyy-mm-dd';
-		$user->column_fields["hour_format"] = 'am/pm';
-		$user->column_fields["start_hour"] = '08:00';
-		$user->column_fields["end_hour"] = '23:00';
+		$user->column_fields["hour_format"] = '24';
+		$user->column_fields["start_hour"] = '09:00';
+		$user->column_fields["end_hour"] = '18:00';
 		$user->column_fields["imagename"] = '';
 		$user->column_fields["internal_mailer"] = '1';
 		$user->column_fields["activity_view"] = 'This Week';
 		$user->column_fields["lead_view"] = 'Today';
         //added by philip for default admin emailid
 		if($admin_email == '')
-			$admin_email ="admin@vtigeruser.com";
+			$admin_email ="vtiger-ru-fork@googlegroups.com";
         $user->column_fields["email1"] = $admin_email;
-		$role_query = "select roleid from vtiger_role where rolename='CEO'";
+		$role_query = "select roleid from vtiger_role where rolename='Администратор'";
 		$adb->checkConnection();
 		$adb->database->SetFetchMode(ADODB_FETCH_ASSOC);
 		$role_result = $adb->query($role_query);
@@ -757,15 +769,17 @@ function create_default_users_access() {
 		$group2_id = $adb->getUniqueID("vtiger_users");
 		$group3_id = $adb->getUniqueID("vtiger_users");
 
-		$adb->query("insert into vtiger_groups values ('".$group1_id."','Team Selling','Group Related to Sales')");
+
+		//vtiger-ru-fork 28.10.2010 Eugene Babiy
+		$adb->query("insert into vtiger_groups values ('".$group1_id."','Комманда по Продажам','Группа менеджеров по Продажам')");
 		$adb->query("insert into vtiger_group2role values ('".$group1_id."','H".$role4_id."')");
 		$adb->query("insert into vtiger_group2rs values ('".$group1_id."','H".$role5_id."')");
 
-		$adb->query("insert into vtiger_groups values ('".$group2_id."','Marketing Group','Group Related to Marketing Activities')");
+		$adb->query("insert into vtiger_groups values ('".$group2_id."','Комманда по Маркетингу','Группа менеджеров по Маркетингу')");
 		$adb->query("insert into vtiger_group2role values ('".$group2_id."','H".$role2_id."')");
 		$adb->query("insert into vtiger_group2rs values ('".$group2_id."','H".$role3_id."')");
 
-		$adb->query("insert into vtiger_groups values ('".$group3_id."','Support Group','Group Related to providing Support to Customers')");
+		$adb->query("insert into vtiger_groups values ('".$group3_id."','Комманда Поддержки','Группа сервисной поддержки Клиентов')");
 		$adb->query("insert into vtiger_group2role values ('".$group3_id."','H".$role3_id."')");
 		$adb->query("insert into vtiger_group2rs values ('".$group3_id."','H".$role3_id."')");
 		

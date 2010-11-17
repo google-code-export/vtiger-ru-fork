@@ -1269,7 +1269,7 @@ class DefaultDataPopulator extends CRMEntity {
 
 	//inserting actions for get_attachments 
 	$folderid = $this->db->getUniqueID("vtiger_attachmentsfolder");
-	$this->db->query("insert into vtiger_attachmentsfolder values(".$folderid.",'Default','This is a Default Folder',1,1)");	
+	$this->db->query("insert into vtiger_attachmentsfolder values(".$folderid.",'По умолчанию','Это папка по умолчанию',1,1)");	
 
 	//Inserting Inventory Notifications
 	//vtiger-ru-fork 27.10.2010 Eugene Babiy
@@ -1284,7 +1284,7 @@ class DefaultDataPopulator extends CRMEntity {
 С уважением,
 {CURRENTUSER}';
 
-		
+//TODO
 		$this->db->query("insert into vtiger_inventorynotification(notificationid,notificationname,notificationsubject,notificationbody,label) values (".$this->db->getUniqueID("vtiger_inventorynotification").",'InvoiceNotification','{PRODUCTNAME} Stock Level is Low','".$invoice_body." ','InvoiceNotificationDescription')");
 
 		$quote_body = 'Dear {HANDLER},
@@ -1296,7 +1296,7 @@ Severity: Minor
 Thanks,
 {CURRENTUSER}';	
 		
-		
+//TODO		
 		$this->db->query("insert into vtiger_inventorynotification(notificationid,notificationname,notificationsubject,notificationbody,label) values (".$this->db->getUniqueID("vtiger_inventorynotification").",'QuoteNotification','Quote given for {PRODUCTNAME}','".$quote_body." ','QuoteNotificationDescription')");
 
 		$so_body = 'Dear {HANDLER},
@@ -2009,21 +2009,21 @@ $body='<table width="700" cellspacing="0" cellpadding="0" border="0" align="cent
 	 * Setup module sequence numbering.
 	 */
 	$modseq = array(
-		'Leads'     =>'LEA',
-		'Accounts'  =>'ACC',
-		'Campaigns' =>'CAM',	
-		'Contacts'  =>'CON',
-		'Potentials'=>'POT',
-		'HelpDesk'  =>'TT',
-		'Quotes'    =>'QUO',
-		'SalesOrder'=>'SO',
-		'PurchaseOrder'=>'PO',
-		'Invoice'   =>'INV',
-		'Products'  =>'PRO',
-		'Vendors'   =>'VEN',
-		'PriceBooks'=>'PB',
-		'Faq'       =>'FAQ',
-		'Documents' =>'DOC'
+		'Leads'     =>'ЗАЦ_',
+		'Accounts'  =>'КОНТР_',
+		'Campaigns' =>'КАМП_',	
+		'Contacts'  =>'КОНТАКТ_',
+		'Potentials'=>'СДЕЛКА_',
+		'HelpDesk'  =>'ЗАЯВКА_',
+		'Quotes'    =>'ПРЕДЛ_',
+		'SalesOrder'=>'ПРОД_',
+		'PurchaseOrder'=>'ЗАК_',
+		'Invoice'   =>'СЧЕТ_',
+		'Products'  =>'ТОВ_',
+		'Vendors'   =>'ПОСТ_',
+		'PriceBooks'=>'КАТ_',
+		'Faq'       =>'ЧаВо_',
+		'Documents' =>'ДОК_'
 	);
 	foreach($modseq as $modname => $prefix) {
 		$this->addInventoryRows(

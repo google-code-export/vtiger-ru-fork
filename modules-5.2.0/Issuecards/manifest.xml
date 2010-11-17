@@ -1,0 +1,433 @@
+<?xml version='1.0'?>
+<module>
+<exporttime>2010-10-21</exporttime>
+<name>Issuecards</name>
+<label>Issuecards</label>
+<parent>Inventory</parent>
+<version>5.2.0</version>
+<author>Eugene Babiy (based on Issuecards module by IT-Solutions 4 You)</author>
+<dependencies>
+<vtiger_version>5.2.0</vtiger_version>
+</dependencies>
+<license>
+<inline><![CDATA[  ********************************************************************************
+ * The contents of these file is are subject to GPL 2.
+ ********************************************************************************
+ *  Module       : Issuecards
+ *  Version      : 1.0 
+ *  Vtiger       : 5.1.0
+ *  Author       : IT-Solutions4You s.r.o - www.its4you.sk
+ ********************************************************************************
+  
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ This module deducts the quantity of products in stock.
+ Please set Task in Workflow "UpdateInventoryProducts On Every Save" as Inactive.
+ 
+   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ВАЖНО !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ This module deducts the quantity of products in stock.
+ Please set Task in Workflow "UpdateInventoryProducts On Every Save" as Inactive.
+ 
+ ]]></inline>
+</license>
+<tables>
+<table>
+<name>vtiger_issuecards</name>
+<sql><![CDATA[CREATE TABLE `vtiger_issuecards` (
+  `issuecardid` int(19) NOT NULL,
+  `issuecards_no` varchar(100) default NULL,
+  `invoiceid` int(19) NOT NULL,
+  `issue_date` date default NULL,
+  `type` varchar(100) default NULL,
+  `adjustment` decimal(25,3) default NULL,
+  `salescommission` decimal(29,3) default NULL,
+  `exciseduty` decimal(29,3) default NULL,
+  `subtotal` decimal(29,3) default NULL,
+  `total` decimal(29,3) default NULL,
+  `taxtype` varchar(25) default '',
+  `discount_percent` decimal(29,3) default NULL,
+  `discount_amount` decimal(29,3) default NULL,
+  `s_h_amount` decimal(29,3) default NULL,
+  `currency_id` varchar(19) default '',
+  `conversion_rate` decimal(14,3) default NULL,
+  PRIMARY KEY  (`issuecardid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8]]></sql>
+</table>
+<table>
+<name>vtiger_issuecardscf</name>
+<sql><![CDATA[CREATE TABLE `vtiger_issuecardscf` (
+  `issuecardid` int(19) NOT NULL,
+  PRIMARY KEY  (`issuecardid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8]]></sql>
+</table>
+</tables>
+<blocks>
+<block>
+<label>LBL_ISSUECARDS_INFO</label>
+<fields>
+<field>
+<fieldname>issuecards_no</fieldname>
+<uitype>4</uitype>
+<columnname>issuecards_no</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Issuecards No</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~M</typeofdata>
+<quickcreate>0</quickcreate>
+<quickcreatesequence>1</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+<entityidentifier>
+<entityidfield>issuecardid</entityidfield>
+<entityidcolumn>issuecardid</entityidcolumn>
+</entityidentifier>
+</field>
+<field>
+<fieldname>assigned_user_id</fieldname>
+<uitype>53</uitype>
+<columnname>smownerid</columnname>
+<tablename>vtiger_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Assigned To</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>20</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>invoice_id</fieldname>
+<uitype>81</uitype>
+<columnname>invoiceid</columnname>
+<tablename>vtiger_invoice</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Invoice</fieldlabel>
+<readonly>0</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>3</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>I~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence>3</quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>createdtime</fieldname>
+<uitype>70</uitype>
+<columnname>createdtime</columnname>
+<tablename>vtiger_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Created Time</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>21</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>modifiedtime</fieldname>
+<uitype>70</uitype>
+<columnname>modifiedtime</columnname>
+<tablename>vtiger_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Modified Time</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>22</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>T~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>2</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+<field>
+<fieldname>issue_date</fieldname>
+<uitype>5</uitype>
+<columnname>issue_date</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Issuecard Date</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>2</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>D~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_DESCRIPTION_INFO</label>
+<fields>
+<field>
+<fieldname>description</fieldname>
+<uitype>19</uitype>
+<columnname>description</columnname>
+<tablename>vtiger_crmentity</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Description</fieldlabel>
+<readonly>1</readonly>
+<presence>0</presence>
+<selected>0</selected>
+<sequence>1</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>1</quickcreate>
+<quickcreatesequence></quickcreatesequence>
+<displaytype>1</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>0</masseditable>
+</field>
+</fields>
+</block>
+<block>
+<label>LBL_CUSTOM_INFORMATION</label>
+</block>
+<block>
+<label>LBL_RELATED_PRODUCTS</label>
+<fields>
+<field>
+<fieldname>txtAdjustment</fieldname>
+<uitype>1</uitype>
+<columnname>adjustment</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Adjustment</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>10</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>NN~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>0</quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnSubTotal</fieldname>
+<uitype>1</uitype>
+<columnname>subtotal</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Sub Total</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>13</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>0</quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnGrandTotal</fieldname>
+<uitype>1</uitype>
+<columnname>total</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Total</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>14</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>0</quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnTaxType</fieldname>
+<uitype>16</uitype>
+<columnname>taxtype</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Tax Type</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>15</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>V~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>0</quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+<picklistvalues>
+</picklistvalues>
+</field>
+<field>
+<fieldname>hdnDiscountPercent</fieldname>
+<uitype>1</uitype>
+<columnname>discount_percent</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Discount Percent</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>16</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>0</quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnDiscountAmount</fieldname>
+<uitype>1</uitype>
+<columnname>discount_amount</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Discount Amount</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>17</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>0</quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>hdnS_H_Amount</fieldname>
+<uitype>1</uitype>
+<columnname>s_h_amount</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>S&amp;H Amount</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>18</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>0</quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>currency_id</fieldname>
+<uitype>117</uitype>
+<columnname>currency_id</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Currency</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>0</selected>
+<sequence>20</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>I~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>0</quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+<field>
+<fieldname>conversion_rate</fieldname>
+<uitype>1</uitype>
+<columnname>conversion_rate</columnname>
+<tablename>vtiger_issuecards</tablename>
+<generatedtype>1</generatedtype>
+<fieldlabel>Conversion Rate</fieldlabel>
+<readonly>1</readonly>
+<presence>2</presence>
+<selected>1</selected>
+<sequence>19</sequence>
+<maximumlength>100</maximumlength>
+<typeofdata>N~O</typeofdata>
+<quickcreate>3</quickcreate>
+<quickcreatesequence>0</quickcreatesequence>
+<displaytype>3</displaytype>
+<info_type>BAS</info_type>
+<helpinfo><![CDATA[]]></helpinfo>
+<masseditable>1</masseditable>
+</field>
+</fields>
+</block>
+</blocks>
+<customviews>
+<customview>
+<viewname>All</viewname>
+<setdefault>true</setdefault>
+<setmetrics>false</setmetrics>
+<fields>
+<field>
+<fieldname>issuecards_no</fieldname>
+<columnindex>0</columnindex>
+</field>
+<field>
+<fieldname>description</fieldname>
+<columnindex>1</columnindex>
+</field>
+<field>
+<fieldname>issue_date</fieldname>
+<columnindex>2</columnindex>
+</field>
+</fields>
+</customview>
+</customviews>
+<sharingaccess>
+<default>public_readwritedelete</default>
+</sharingaccess>
+</module>

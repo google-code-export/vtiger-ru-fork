@@ -81,6 +81,17 @@ function create_date()
 	return $date;
 }
 
+//vtiger-ru-fork Eugene Babiy. Транслитерация с русского в латиницу
+function translit( $s ) {
+	$r = array('а','б','в','г','д','е','ё','ж','з','и','й','к','л','м', 'н','о','п','р','с','т','у','ф','х','ц','ч', 'ш', 'щ', 'ъ','ы','ь','э', 'ю', 'я',' ');
+	$l = array('a','b','v','g','d','e','e','g','z','i','y','k','l','m','n', 'o','p','r','s','t','u','f','h','c','ch','sh','sh','', 'y','y', 'e','yu','ya','-');
+	$s = str_replace( $r, $l, strtolower($s) );
+	$s = preg_replace("/[^\w\-]/","$1",$s);
+	$s = preg_replace("/\-{2,}/",'-',$s);
+	return trim($s,'-');
+}
+
+
 $account_ids = Array();
 $opportunity_ids = Array();
 $vendor_ids = Array();
@@ -120,7 +131,7 @@ $comboFieldArray = getComboArray($comboFieldNames);
 $adb->println("company_name_array");
 $adb->println($company_name_array);
 
-$cloudtag = Array ('SO_vendtl', 'X-CEED', 'X-CEED', 'vtiger_50usr');
+$cloudtag = Array ('СУПЕР', 'VIP', 'VIP', '50юзеров');
 
 for($i = 0; $i < $company_name_count; $i++) {
 	
@@ -138,9 +149,9 @@ for($i = 0; $i < $company_name_count; $i++) {
 	
 	$account->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$account->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$account->column_fields["bill_state"] = "Киевская";
+	$account->column_fields["bill_state"] = "";
 	$account->column_fields["bill_code"] = rand(10000, 99999);
-	$account->column_fields["bill_country"] = 'Украина';	
+	$account->column_fields["bill_country"] = "";	
 
 	$account->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$account->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -206,7 +217,7 @@ for($i=0; $i<10; $i++)
 	$contact->column_fields["lastname"] = $last_name_array[$i];
 
 	$contact->column_fields["assigned_user_id"] = $assigned_user_id;
-	
+	//TODO vtiger-ru-fork Eugene Babiy. Добавить транслит на имена.
 	$contact->column_fields["email"] = strtolower($contact->column_fields["firstname"])."_".strtolower($contact->column_fields["lastname"])."@company.com";
 
 	$contact->column_fields["phone"] = create_phone_number();
@@ -218,9 +229,9 @@ for($i=0; $i<10; $i++)
 	$contact->column_fields["mailingstreet"] = $street_address_array[$key];
 	$key = array_rand($city_array);
 	$contact->column_fields["mailingcity"] = $city_array[$key];
-	$contact->column_fields["mailingstate"] = "Киевская";
+	$contact->column_fields["mailingstate"] = "";
 	$contact->column_fields["mailingzip"] = '99999';
-	$contact->column_fields["mailingcountry"] = 'Украина';	
+	$contact->column_fields["mailingcountry"] = "";	
 
 	$key = array_rand($comboFieldArray['leadsource_dom']);
 	$contact->column_fields["leadsource"] = $comboFieldArray['leadsource_dom'][$key];
@@ -282,7 +293,7 @@ for($i=0; $i<10; $i++)
        	}
 
 	$lead->column_fields["assigned_user_id"] = $assigned_user_id;
-	
+	//TODO vtiger-ru-fork Eugene Babiy. добавлен транслит на имена.
 	$lead->column_fields["email"] = strtolower($lead->column_fields["firstname"])."_".strtolower($lead->column_fields["lastname"])."@company.com";
 	
 	$website = str_replace($whitespace, "", strtolower(ucfirst(strtolower($company_name_array[$i]))));
@@ -297,9 +308,9 @@ for($i=0; $i<10; $i++)
 	$lead->column_fields["lane"] = $street_address_array[$key];
 	$key = array_rand($city_array);
 	$lead->column_fields["city"] = $city_array[$key];
-	$lead->column_fields["state"] = "Киевская";
+	$lead->column_fields["state"] = "";
 	$lead->column_fields["code"] = '99999';
-	$lead->column_fields["country"] = 'Украина';
+	$lead->column_fields["country"] = '';
 	
 	$key = array_rand($comboFieldArray['leadsource_dom']);
 	$lead->column_fields["leadsource"] = $comboFieldArray['leadsource_dom'][$key];
@@ -339,9 +350,9 @@ for($i=0; $i<10; $i++)
 	$vendor->column_fields["street"] = $street_address_array[rand(0,$street_address_count-1)]; 
 	$key = array_rand($city_array);
 	$vendor->column_fields["city"] = $city_array[$key];
-	$vendor->column_fields["state"] = "Киевская";
+	$vendor->column_fields["state"] = "";
 	$vendor->column_fields["postalcode"] = '99999';
-	$vendor->column_fields["country"] = 'Украина';	
+	$vendor->column_fields["country"] = '';	
 
 	$vendor->save("Vendors");
 	$vendor_ids[] = $vendor->id;
@@ -350,10 +361,10 @@ for($i=0; $i<10; $i++)
 //Populating Product Data
 
 //TODO vtiger-ru-fork 28.10.2010 Eugene Babiy
-$product_name_array= array( "Vtiger Single User Pack", "Vtiger 5 Users Pack", "Vtiger 10 Users Pack",
-        "Vtiger 25 Users Pack", "Vtiger 50 Users Pack", "Double Panel See-thru Clipboard",
-        "abcd1234", "Cd-R CD Recordable", "Sharp - Plain Paper Fax" , "Brother Ink Jet Cartridge"); 
-$product_code_array= array("001","002","003","023","005","sg-106","1324356","sg-108","sg-119","sg-125");
+$product_name_array= array( "Пакет ПО на Одного Пользователя", "Пакет ПО на 5 Пользователей", "Пакет ПО на 10 Пользователей",
+        "Пакет ПО на 25 Пользователей", "Пакет ПО на 50 Пользователей", "ЖК-панель",
+        "abcd1234", "Cd-R CD Recordable", "Факсовая Бумага - Sharp" , "Картридж принтера Brother Ink Jet"); 
+$product_code_array= array("00001","00002","00003","00004","00005","жк-106","1324356","по-108","по-119","по-125");
 $subscription_rate=array("149","699","1299","2999","4995");
 //added by jeri to populate product images
 $product_image_array = array("","","","");
@@ -380,7 +391,7 @@ for($i=0; $i<10; $i++) {
 		$qty_per_unit	=	1;
 		$qty_in_stock	=	rand(10000, 99999);
 		$category 	= 	"Software";	
-		$website 	=	"www.vtiger.com";
+		$website 	=	"http://code.google.com/p/vtiger-ru-fork/";
 		$manufacturer	= 	"LexPon Inc.";
 		$commission_rate=	rand(1,10);
 		$unit_price	=	$subscription_rate[$i];
@@ -483,10 +494,11 @@ for($i=0;$i<12;$i++) {
 
 //Populate Quote Data
 
-$sub_array = array ("Prod_Quote", "Cont_Quote", "SO_Quote", "PO_Quote", "Vendor_Quote");
+//TODO vtiger-ru-fork
+$sub_array = array ("Предложение по периферии", "Устройства", "Настройка сети", "Супер предложение", "Цены от поставщиков");
 $stage_array = array ("Created", "Reviewed", "Delivered", "Accepted" , "Rejected");
 $carrier_array = array ("FedEx", "UPS", "USPS", "DHL", "BlueDart");
-$validtill_array = array ("2007-09-21", "2007-10-29", "2007-12-11", "2007-03-29", "2007-06-18");
+$validtill_array = array ("2010-09-21", "2010-10-29", "2010-12-11", "2010-03-29", "2010-06-18");
 
 for($i=0;$i<5;$i++)
 {
@@ -507,9 +519,9 @@ for($i=0;$i<5;$i++)
 
 	$quote->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$quote->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$quote->column_fields["bill_state"] = "Киевская";
+	$quote->column_fields["bill_state"] = "";
 	$quote->column_fields["bill_code"] = rand(10000, 99999);
-	$quote->column_fields["bill_country"] = 'Украина';	
+	$quote->column_fields["bill_country"] = '';	
 
 	$quote->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$quote->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -533,7 +545,7 @@ for($i=0;$i<5;$i++)
 	$_REQUEST['hdnProductId1'] = $productid;
 	$_REQUEST['qty1'] = $qty = 1;
 	$_REQUEST['listPrice1'] = $listprice = 130;
-	$_REQUEST['comment1'] = "This is test comment for product of Quotes";
+	$_REQUEST['comment1'] = "Это тестовый комментарий для позиции Предложения";
 	
 	$_REQUEST['deleted1'] = 0;
 	$_REQUEST['discount_type1'] = 'amount';
@@ -558,10 +570,10 @@ for($i=0;$i<5;$i++)
 
 //Populate SalesOrder Data
 
-$subj_array = array ("SO_vtiger", "SO_zoho", "SO_vtiger5usrp", "SO_vt100usrpk", "SO_vendtl");
+$subj_array = array ("Первая Продажа", "Сервисная поддержка", "Пакет на 5 юзеров", "Пакет на 100 юзеров", "Новый Заказ");
 $status_array = array ("Created",  "Delivered", "Approved" , "Cancelled" , "Created");
 $carrier_array = array ("FedEx", "UPS", "USPS", "DHL", "BlueDart");
-$duedate_array = array ("2007-04-21", "2007-05-29", "2007-08-11", "2007-09-09", "2007-02-28");
+$duedate_array = array ("2011-04-21", "2011-05-29", "2011-08-11", "2011-09-09", "2011-02-28");
 
 for($i=0;$i<5;$i++)
 {
@@ -583,9 +595,9 @@ for($i=0;$i<5;$i++)
 
 	$so->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$so->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$so->column_fields["bill_state"] = "Киевская";
+	$so->column_fields["bill_state"] = "";
 	$so->column_fields["bill_code"] = rand(10000, 99999);
-	$so->column_fields["bill_country"] = 'Украина';	
+	$so->column_fields["bill_country"] = '';	
 
 	$so->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$so->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -609,7 +621,7 @@ for($i=0;$i<5;$i++)
 	$_REQUEST['hdnProductId1'] = $productid;
 	$_REQUEST['qty1'] = $qty = 1;
 	$_REQUEST['listPrice1'] = $listprice = 1230;
-	$_REQUEST['comment1'] = "This is test comment for product of SalesOrder";
+	$_REQUEST['comment1'] = "Это тестовый комментарий для позиции Продажи";
 	
 	$_REQUEST['deleted1'] = 0;
 	$_REQUEST['discount_type1'] = 'amount';
@@ -634,11 +646,11 @@ for($i=0;$i<5;$i++)
 
 //Populate PurchaseOrder Data
 
-$psubj_array = array ("PO_vtiger", "PO_zoho", "PO_vtiger5usrp", "PO_vt100usrpk", "PO_vendtl");
+$psubj_array = array ("Установка и Настройка Russian VtigerCRM Fork", "Russian VtigerCRM Fork - Пакет Поддержки на 1 Пользователя", "Russian VtigerCRM Fork - Пакет Поддержки на 5 Пользователей", "Russian VtigerCRM Fork - Пакет Поддержки на 10 Пользователей", "Серверное Оборудование");
 $pstatus_array = array ("Created",  "Delivered", "Approved" , "Cancelled", "Received Shipment");
 $carrier_array = array ("FedEx", "UPS", "USPS", "DHL", "BlueDart");
 $trkno_array = array ("po1425", "po2587", "po7974", "po7979", "po6411"); 
-$duedate_array = array ("2007-04-21", "2007-05-29", "2007-07-11", "2007-04-09", "2006-08-18");
+$duedate_array = array ("2011-04-21", "2011-05-29", "2011-07-11", "2011-04-09", "2011-08-18");
 
 for($i=0;$i<5;$i++)
 {
@@ -658,9 +670,9 @@ for($i=0;$i<5;$i++)
 
 	$po->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$po->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$po->column_fields["bill_state"] = "Киевская";
+	$po->column_fields["bill_state"] = "";
 	$po->column_fields["bill_code"] = rand(10000, 99999);
-	$po->column_fields["bill_country"] = 'Украина';	
+	$po->column_fields["bill_country"] = "";	
 
 	$po->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$po->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -684,7 +696,7 @@ for($i=0;$i<5;$i++)
 	$_REQUEST['hdnProductId1'] = $productid;
 	$_REQUEST['qty1'] = $qty = 1;
 	$_REQUEST['listPrice1'] = $listprice = 2200;
-	$_REQUEST['comment1'] = "This is test comment for product of PurchaseOrder";
+	$_REQUEST['comment1'] = "Это демонстрационный комментарий для позиции Закупки";
 	
 	$_REQUEST['deleted1'] = 0;
 	$_REQUEST['discount_type1'] = 'amount';
@@ -731,9 +743,9 @@ for($i=0;$i<5;$i++)
 
 	$invoice->column_fields["bill_street"] = $street_address_array[rand(0,$street_address_count-1)];
 	$invoice->column_fields["bill_city"] = $city_array[rand(0,$city_array_count-1)];
-	$invoice->column_fields["bill_state"] = "Киевская";
+	$invoice->column_fields["bill_state"] = "";
 	$invoice->column_fields["bill_code"] = rand(10000, 99999);
-	$invoice->column_fields["bill_country"] = 'Украина';	
+	$invoice->column_fields["bill_country"] = "";	
 
 	$invoice->column_fields["ship_street"] = $account->column_fields["bill_street"];
 	$invoice->column_fields["ship_city"] = $account->column_fields["bill_city"];
@@ -769,7 +781,7 @@ for($i=0;$i<5;$i++)
 	$_REQUEST['hdnProductId1'] = $productid;
 	$_REQUEST['qty1'] = $qty = 1;
 	$_REQUEST['listPrice1'] = $listprice = 4300;
-	$_REQUEST['comment1'] = "This is test comment for product of Invoice";
+	$_REQUEST['comment1'] = "Это демонстрационный комментарий для позиции Счета";
 	
 	$_REQUEST['deleted1'] = 0;
 	$_REQUEST['discount_type1'] = 'amount';
@@ -803,7 +815,12 @@ $to_array = array("a@a.com","b@b.com", "tester@testvtiger.com","xanth@yaz.com","
 $cc_array = array("andrewa@a.com","casterb@b.com", "indomine@variancevtiger.com","becker@nosbest.com","electra@violet.com");
 $bcc_array = array("nathan@nathantests.com","jeff@karl1.com", "isotope@uranium.com","bunny@bugs.com","explosive@dud.com");
 $from_array = array("harvest@zss.com","rain@sunshine.com", "gloom@rainyday.com","joy@happyday.com","success@goodjob.com");
-$body_array = array("This release has close to 500 fixes in it and has gone through almost 7 rounds of validation. We think it is a stable product that you can directly use in deployment! ","Nice to have you visit us, very nice of you. Stay for sometime and have a look at our product. I am sure you will like it", "This will take some time to fix. Can you provide me more details please?","What a cool tool! I wish I had found it earlier. Oh it has a lot of my friends name in it too! I too can contribute. But how?","Urgent. I need this done last week! Guys, you are the ones I am depending on. Do something!");
+$body_array = array(
+"This release has close to 500 fixes in it and has gone through almost 7 rounds of validation. We think it is a stable product that you can directly use in deployment! ",
+"Nice to have you visit us, very nice of you. Stay for sometime and have a look at our product. I am sure you will like it",
+"This will take some time to fix. Can you provide me more details please?","What a cool tool! I wish I had found it earlier. Oh it has a lot of my friends name in it too! I too can contribute. But how?",
+"Urgent. I need this done last week! Guys, you are the ones I am depending on. Do something!"
+);
 
 for($i=0;$i<5;$i++)
 {
@@ -827,8 +844,8 @@ for($i=0;$i<5;$i++)
 
 //Populate PriceBook data
 
-$PB_array = array ("Cd-R PB", "Vtiger PB", "Gator PB", "Kyple PB", "Pastor PB", "Zoho PB", "PB_100", "Per_PB", "CST_PB", "GATE_PB", "Chevron_PB", "Pizza_PB");
-$Active_array = array ("0", "1", "1", "0", "1","0", "1", "1", "0", "1","0","1");
+$PB_array = array ("CRM", "ERP", "Носки", "Майки", "Компьютеры", "Прикладное ПО", "Розница", "Мелкий Опт", "Средний Опт", "Опт", "VIP");
+$Active_array = array ("0", "1", "1", "0", "1","0", "1", "1", "0", "1","0");
 
 //$num_array = array(0,1,2,3,4);
 for($i=0;$i<12;$i++)
@@ -988,7 +1005,7 @@ $expected_revenue = Array("250000","750000","500000");
 $budget_cost = Array("25000","50000","90000");
 $actual_cost = Array("23500","45000","80000");
 $num_sent = Array("2000","2500","3000");
-$clo_date = Array('2003-1-2','2004-2-3','2005-4-12');
+$clo_date = Array('2011-1-2','2011-2-3','2011-4-12');
 
 $expected_response_count = Array("2500","7500","5000");
 $expected_sales_count = Array("25000","50000","90000");
@@ -1000,7 +1017,7 @@ $actual_roi = Array("21","14","12");
 
 $sponsor = Array("Finace","Marketing","Sales");
 $targetsize = Array("210000","13390","187424");
-$targetaudience = Array("Managers","CEOs","Rookies");
+$targetaudience = Array("Менеджеры","Директора","Сотрудники");
 
 //$expected_response = Array(null,null,null);
 for($i=0;$i<count($campaign_name_array);$i++)
@@ -1033,8 +1050,10 @@ for($i=0;$i<count($campaign_name_array);$i++)
 
 //Populate My Sites Data 
 
-$portalname = array ("Vtiger", "Vtiger Blogs", "Vtiger Forums", "VtigerForge", "Vtiger Docs");
-$portalurl = array ("http://vtiger.com", "http://blogs.vtiger.com", "http://forums.vtiger.com", "http://vtigerforge.com", "http://wiki.vtiger.com");
+$portalname = array ("Russian VtigerCRM Fork - Project", "Russian VtigerCRM
+Fork - Group");
+$portalurl = array ("http://code.google.com/p/vtiger-ru-fork/",
+"http://groups.google.com/group/vtiger-ru-fork");
 
 for($i=0;$i<5;$i++)
 {
@@ -1045,8 +1064,11 @@ for($i=0;$i<5;$i++)
 }
 
 //Populate RSS Data
-$rssname = array("vtiger - Forums","vtiger development - Active Tickets");
-$rssurl = array("http://forums.vtiger.com/rss.php?name=forums&file=rss","http://trac.vtiger.com/cgi-bin/trac.cgi/report/8?format=rss&USER=anonymous");
+$rssname = array("Russian VtigerCRM Fork - Новости Проекта","Russian VtigerCRM
+Fork - Wiki");
+$rssurl =
+array("http://code.google.com/feeds/p/vtiger-ru-fork/updates/basic","http://code
+.google.com/feeds/p/vtiger-ru-fork/hgchanges/basic?repo=wiki");
 
 for($i=0;$i<2;$i++)
 {

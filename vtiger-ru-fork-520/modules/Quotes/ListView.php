@@ -100,8 +100,10 @@ $theme_path="themes/".$theme."/";
 $image_path=$theme_path."images/";
 $smarty->assign("MOD", $mod_strings);
 $smarty->assign("APP", $app_strings);
+//vtiger-ru-fork Eugene Babiy - images display bug
+$smarty->assign("THEME", $theme);
 $smarty->assign("IMAGE_PATH",$image_path);
-$smarty->assign("IMAGE_PATH",$image_path);
+//$smarty->assign("IMAGE_PATH",$image_path);
 $smarty->assign("MODULE",$currentModule);
 $smarty->assign("SINGLE_MOD",'Quote');
 $smarty->assign("CUSTOMVIEW_OPTION",$customviewcombo_html);
