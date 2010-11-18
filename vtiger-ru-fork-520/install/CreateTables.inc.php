@@ -44,6 +44,7 @@ function create_default_users_access() {
 		$role3_id = $adb->getUniqueID("vtiger_role");
 		$role4_id = $adb->getUniqueID("vtiger_role");
 		$role5_id = $adb->getUniqueID("vtiger_role");
+		$role6_id = $adb->getUniqueID("vtiger_role");
 		
 		$profile1_id = $adb->getUniqueID("vtiger_profile");
 		$profile2_id = $adb->getUniqueID("vtiger_profile");

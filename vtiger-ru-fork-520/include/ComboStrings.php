@@ -267,16 +267,13 @@ $combo_strings = Array(
 				'Active'=>'Active',
 				'Inactive'=>'Inactive',
 				'Completed'=>'Completed',
-				'Cancelled'=>'Cancelled',
-				),
+				'Cancelled'=>'Cancelled',							      ),
 			
 
 'campaigntype_dom' => Array(''=>'',
 			    'Conference'=>'Conference',
 			    'Webinar'=>'Webinar',
-			    'Trade Show'=>'Trade Show',
-    			    'Public Relations'=>'Public Relations',
-			    'Partners'=>'Partners',
+			    'Trade Show'=>'Trade Show',				    			    'Public Relations'=>'Public Relations',					    'Partners'=>'Partners',
 			    'Referral Program'=>'Referral Program',
 			    'Advertisement'=>'Advertisement',
 			    'Banner Ads'=>'Banner Ads',
@@ -305,8 +302,8 @@ $combo_strings = Array(
                               'Last Week'=>'Last Week'
 		      ),
 'date_format_dom' => Array('dd-mm-yyyy'=>'dd-mm-yyyy',
-			   'mm-dd-yyyy'=>'mm-dd-yyyy',
-                           'yyyy-mm-dd'=>'yyyy-mm-dd'
+			      'mm-dd-yyyy'=>'mm-dd-yyyy',
+                              'yyyy-mm-dd'=>'yyyy-mm-dd'
 			      ),
 'reminder_interval_dom' => Array('None'=>'None',
 								'1 Minute'=>'1 Minute',
