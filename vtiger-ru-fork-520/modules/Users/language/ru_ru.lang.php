@@ -567,7 +567,7 @@ $mod_strings = array (
 
       'Asterisk Configuration' => 'Конфигурация Asterisk',
       'Asterisk Extension' => 'Внутренний телефонный номер',
-      'Receive Incoming Calls' => 'Получать Входящие Звонки',
+      ' Receive Incoming Calls' => 'Получать Входящие Звонки',
 );
 
 ?>
