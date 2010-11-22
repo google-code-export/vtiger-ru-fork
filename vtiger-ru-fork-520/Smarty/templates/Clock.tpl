@@ -118,7 +118,7 @@
 <option value="7">Таиланд</option>
 <option value="12">Тонга</option>
 <option value="2">Турция</option>
-<option value="3">Украина</option>
+<option value="2">Украина</option>
 <option value="5">Узбекистан</option>
 <option value="7">Вьетнам</option>
 <option value="4">ОАЭ</option>
