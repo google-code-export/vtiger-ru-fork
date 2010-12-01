@@ -318,6 +318,7 @@ if(isset($action) && isset($module))
 		preg_match("/^SalesOrderPopup/",$action) ||
 		preg_match("/^CreatePDF/",$action) ||
 		preg_match("/^CreateSOPDF/",$action) ||
+		preg_match("/^CreateSNPDF/",$action) ||
 		preg_match("/^redirect/",$action) ||
 		preg_match("/^webmail/",$action) ||
 		preg_match("/^left_main/",$action) ||
@@ -355,7 +356,11 @@ if(isset($action) && isset($module))
 		preg_match("/^AddBlockFieldToDB/", $action) ||
 		preg_match("/^AddBlockToDB/", $action)  ||
 		preg_match("/^MassEditSave/", $action) ||
-		preg_match("/^iCalExport/",$action)
+		preg_match("/^iCalExport/",$action) ||
+		//pdf configurator     
+		preg_match("/^pdfconfig/",$action) ||
+		preg_match("/^UpdatePDFSettings/",$action) ||
+		preg_match("/^pdfsettings/",$action)
 		)
 	{
 		$skipHeaders=true;
@@ -379,7 +384,10 @@ if(isset($action) && isset($module))
 			preg_match("/^massdelete/", $action ) ||
 			preg_match("/^getListOfRecords/", $action) ||
 			preg_match("/^MassEditSave/", $action) ||
-			preg_match("/^iCalExport/",$action)
+			preg_match("/^iCalExport/",$action) ||
+			//pdf configurator
+ 			preg_match("/^pdfconfig/",$action) ||
+			preg_match("/^pdfsettings/", $action )
 			)
 			$skipFooters=true;
 		//skip footers for all these invocations as they are mostly popups
@@ -414,7 +422,7 @@ if(isset($action) && isset($module))
  	         header( "Pragma: no-cache" );        
  	}
 
-        if(($module == 'Users' || $module == 'Home' || $module == 'uploads') && $_REQUEST['parenttab'] != 'Settings')
+        if($module == 'Users' || $module == 'Home' || $module == 'uploads')
         {
           $skipSecurityCheck=true;
         }

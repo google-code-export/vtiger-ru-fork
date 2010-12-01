@@ -25,6 +25,7 @@ require_once('data/Tracker.php');
 require_once('include/CustomFieldUtil.php');
 require_once('include/utils/utils.php');
 require_once('user_privileges/default_module_view.php');
+require_once('include/utils/PDFutils.php');
 global $mod_strings,$app_strings,$currentModule,$theme,$singlepane_view;
 
 $focus = CRMEntity::getInstance($currentModule);
@@ -126,6 +127,13 @@ if(PerformancePrefs::getBoolean('DETAILVIEW_RECORD_NAVIGATION', true) && isset($
 // Record Change Notification
 $focus->markAsViewed($current_user->id);
 // END
+
+//crm-now: added for PDF as attachment to mail
+//crm-now extension
+//get stored  language configuration
+$pdf_details = getAllPDFDetails($currentModule);
+$pdflanguage_selected = $pdf_details['pdflang'];
+$smarty->assign("PDFLANGUAGE",$pdf_details['pdflang']);
 
 include_once('vtlib/Vtiger/Link.php');
 $customlink_params = Array('MODULE'=>$currentModule, 'RECORD'=>$focus->id, 'ACTION'=>vtlib_purify($_REQUEST['action']));

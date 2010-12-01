@@ -25,6 +25,7 @@ require_once('data/Tracker.php');
 require_once('include/CustomFieldUtil.php');
 require_once('include/utils/utils.php');
 require_once('user_privileges/default_module_view.php');
+require_once('include/utils/PDFutils.php');
 global $mod_strings,$app_strings,$theme,$currentModule,$singlepane_view;
 
 $focus = CRMEntity::getInstance($currentModule);
@@ -84,6 +85,12 @@ $smarty->assign("CREATEPDF","permitted");
 if(isPermitted("PurchaseOrder","Delete",$_REQUEST['record']) == 'yes')
 	$smarty->assign("DELETE","permitted");
 
+//crm-now: added for PDF as attachment to mail
+//crm-now extension
+//get stored  language configuration
+$pdf_details = getAllPDFDetails($currentModule);
+$pdflanguage_selected = $pdf_details['pdflang'];
+$smarty->assign("PDFLANGUAGE",$pdf_details['pdflang']);
 
 //Get the associated Products and then display above Terms and Conditions
 $smarty->assign("ASSOCIATED_PRODUCTS",getDetailAssociatedProducts('PurchaseOrder',$focus));

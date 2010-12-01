@@ -6,13 +6,10 @@
  * The Initial Developer of the Original Code is vtiger.
  * Portions created by vtiger are Copyright (C) vtiger.
  * All Rights Reserved.
- *
+ * modified by: crm-now, www.crm-now.de
  ********************************************************************************/
-include_once 'modules/SalesOrder/SalesOrderPDFController.php';
+require_once('modules/'.$_REQUEST[module].'/pdfcreator.php');
 
-$controller = new Vtiger_SalesOrderPDFController($currentModule);
-$controller->loadRecord(vtlib_purify($_REQUEST['record']));
-
-$controller->Output('SalesOrder.pdf', 'D');//added file name to make it work in IE, also forces the download giving the user the option to save
-exit();
+global $adb,$app_strings,$focus,$current_user;
+createpdffile ($_REQUEST[record],'print');
 ?>

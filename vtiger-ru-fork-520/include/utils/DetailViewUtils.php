@@ -1373,13 +1373,28 @@ function getDetailAssociatedProducts($module,$focus)
 {
 	global $log;
 	$log->debug("Entering getDetailAssociatedProducts(".$module.",".get_class($focus).") method ...");
-	global $adb;
+	global $adb, $default_charset;
 	global $mod_strings;
 	global $theme;
 	global $log;
-	global $app_strings,$current_user;
+	global $app_strings,$current_user, $current_language;
 	$theme_path="themes/".$theme."/";
 	$image_path=$theme_path."images/";
+	
+	//crm-now: added to select comma or dot as numberformat
+	//European Format
+	if ($current_language=='en_us') {
+	//US Format
+		$decimal_precision = 2;
+		$decimals_separator = '.';
+		$thousands_separator = ',';
+	}
+	else {
+	//European Format
+		$decimal_precision = 2;
+		$decimals_separator = ',';
+		$thousands_separator = '.';
+	}
 
 	if($module != 'PurchaseOrder')
 	{
@@ -1435,6 +1450,7 @@ function getDetailAssociatedProducts($module,$focus)
 		$query="select case when vtiger_products.productid != '' then vtiger_products.productname else vtiger_service.servicename end as productname," .
 				" case when vtiger_products.productid != '' then 'Products' else 'Services' end as entitytype," .
 				" case when vtiger_products.productid != '' then vtiger_products.unit_price else vtiger_service.unit_price end as unit_price," .
+				" case when vtiger_products.productid != '' then vtiger_products.productcode else 'NA' end as productcode," .
 				" case when vtiger_products.productid != '' then vtiger_products.qtyinstock else 'NA' end as qtyinstock, vtiger_inventoryproductrel.* " .
 				" from vtiger_inventoryproductrel" .
 				" left join vtiger_products on vtiger_products.productid=vtiger_inventoryproductrel.productid " .
@@ -1463,32 +1479,48 @@ function getDetailAssociatedProducts($module,$focus)
 		$productid=$adb->query_result($result,$i-1,'productid');
 		$entitytype=$adb->query_result($result,$i-1,'entitytype');
 		$productname=$adb->query_result($result,$i-1,'productname');
+		//crm-now added to display product code and description
+		$productcode=$adb->query_result($result,$i-1,'productcode');
+		//html to utf8 conversion (necessary because stored at inventoryproductrel table)
+		$productdescription= nl2br($adb->query_result($result,$i-1,'description'));
+		$productdescription= html_entity_decode($productdescription,ENT_QUOTES,$default_charset);
+
+		$comment= nl2br(from_html($adb->query_result($result,$i-1,'comment')));
+		
 		if($subprodname_str!='') $productname .= "<br/><span style='color:#C0C0C0;font-style:italic;'>".$subprodname_str."</span>";
-		$comment=$adb->query_result($result,$i-1,'comment');
+		//$comment=$adb->query_result($result,$i-1,'comment');
 		$qtyinstock=$adb->query_result($result,$i-1,'qtyinstock');
 		$qty=$adb->query_result($result,$i-1,'quantity');
 		$unitprice=$adb->query_result($result,$i-1,'unit_price');
 		$listprice=$adb->query_result($result,$i-1,'listprice');
+		$listpriceformated =  number_format($listprice,$decimal_precision,$decimals_separator,$thousands_separator);
+
 		$total = $qty*$listprice;
+		$totalformated = number_format($total,$decimal_precision,$decimals_separator,$thousands_separator);
 
 		//Product wise Discount calculation - starts
 		$discount_percent=$adb->query_result($result,$i-1,'discount_percent');
 		$discount_amount=$adb->query_result($result,$i-1,'discount_amount');
 		$totalAfterDiscount = $total;
-
+		$totalAfterDiscountformated = number_format($total,$decimal_precision,$decimals_separator,$thousands_separator);
 		$productDiscount = '0.00';
+		$productDiscountformated = number_format($productDiscount,$decimal_precision,$decimals_separator,$thousands_separator);
 		if($discount_percent != 'NULL' && $discount_percent != '')
 		{
 			$productDiscount = $total*$discount_percent/100;
+			$productDiscountformated = number_format($productDiscount,$decimal_precision,$decimals_separator,$thousands_separator);
 			$totalAfterDiscount = $total-$productDiscount;
+			$totalAfterDiscountformated = number_format($totalAfterDiscount,$decimal_precision,$decimals_separator,$thousands_separator);
 			//if discount is percent then show the percentage
-			$discount_info_message = "$discount_percent % of $total = $productDiscount";
+			$discount_info_message = "$discount_percent % ".$app_strings['of_string']." $total = $productDiscountformated";
 		}
 		elseif($discount_amount != 'NULL' && $discount_amount != '')
 		{
 			$productDiscount = $discount_amount;
+			$productDiscountformated = number_format($productDiscount,$decimal_precision,$decimals_separator,$thousands_separator);
 			$totalAfterDiscount = $total-$productDiscount;
-			$discount_info_message = $app_strings['LBL_DIRECT_AMOUNT_DISCOUNT']." = $productDiscount";
+			$totalAfterDiscountformated = number_format($totalAfterDiscount,$decimal_precision,$decimals_separator,$thousands_separator);
+			$discount_info_message = $app_strings['LBL_DIRECT_AMOUNT_DISCOUNT']." = $productDiscountformated";
 		}
 		else
 		{
@@ -1501,7 +1533,7 @@ function getDetailAssociatedProducts($module,$focus)
 		if($taxtype == 'individual')
 		{
 			$taxtotal = '0.00';
-			$tax_info_message = $app_strings['LBL_TOTAL_AFTER_DISCOUNT']." = $totalAfterDiscount \\n";
+			$tax_info_message = $app_strings['LBL_TOTAL_AFTER_DISCOUNT']." = $totalAfterDiscountformated \\n";
 			$tax_details = getTaxDetailsForProduct($productid,'all');
 			for($tax_count=0;$tax_count<count($tax_details);$tax_count++)
 			{
@@ -1510,17 +1542,20 @@ function getDetailAssociatedProducts($module,$focus)
 				$tax_value = getInventoryProductTaxValue($focus->id, $productid, $tax_name);
 
 				$individual_taxamount = $totalAfterDiscount*$tax_value/100;
+				$individual_taxamountformated = number_format((round($individual_taxamount,2)),$decimal_precision,$decimals_separator,$thousands_separator);
+
 				$taxtotal = $taxtotal + $individual_taxamount;
-				$tax_info_message .= "$tax_label : $tax_value % = $individual_taxamount \\n";
+		        $taxtotalformated = number_format((round($taxtotal,2)),$decimal_precision,$decimals_separator,$thousands_separator);
+				$tax_info_message .= "$tax_label : $tax_value % = $individual_taxamountformated \\n";
 			}
-			$tax_info_message .= "\\n ".$app_strings['LBL_TOTAL_TAX_AMOUNT']." = $taxtotal";
+			$tax_info_message .= "\\n ".$app_strings['LBL_TOTAL_TAX_AMOUNT']." = $taxtotalformated";
 			$netprice = $netprice + $taxtotal;
 		}
 
 		$sc_image_tag = '';
 		if ($entitytype == 'Services') {
 			$sc_image_tag = '<a href="index.php?module=ServiceContracts&action=EditView&service_id='.$productid.'&return_module='.$module.'&return_id='.$focus->id.'">' .
-						'<img border="0" src="'.vtiger_imageurl('handshake.gif', $theme).'" title="'. getTranslatedString('Add Service Contract').'" style="cursor: pointer;" align="absmiddle" />' .
+						'<img border="0" src="'.vtiger_imageurl('handshake.gif', $theme).'" title="'. getTranslatedString('Add Service Contract',$module).'" style="cursor: pointer;" align="absmiddle" />' .
 						'</a>';
 		}
 		
@@ -1528,8 +1563,10 @@ function getDetailAssociatedProducts($module,$focus)
 		$output .= '
 			   <tr valign="top">
 				<td class="crmTableRow small lineOnTop">
-					'.$productname.'&nbsp;'.$sc_image_tag.' 				
-					<br>'.$comment.'
+					<font color="gray">'.$productcode.'</font>
+					<br><font color="black">'.$productname.'</font>
+					<br><font color="gray">'.$productdescription.'</font>
+					<br><font color="gray">'.$comment.'</font>
 				</td>';
 		//Upto this added to display the Product name and comment
 
@@ -1543,7 +1580,7 @@ function getDetailAssociatedProducts($module,$focus)
 			<td class="crmTableRow small lineOnTop" align="right">
 				<table width="100%" border="0" cellpadding="5" cellspacing="0">
 				   <tr>
-				   	<td align="right">'.$listprice.'</td>
+				   	<td align="right">'.$listpriceformated.'</td>
 				   </tr>
 				   <tr>
 					   <td align="right">(-)&nbsp;<b><a href="javascript:;" onclick="alert(\''.$discount_info_message.'\'); ">'.$app_strings['LBL_DISCOUNT'].' : </a></b></td>
@@ -1565,19 +1602,19 @@ function getDetailAssociatedProducts($module,$focus)
 		$output .= '
 			<td class="crmTableRow small lineOnTop" align="right">
 				<table width="100%" border="0" cellpadding="5" cellspacing="0">
-				   <tr><td align="right">'.$total.'</td></tr>
-				   <tr><td align="right">'.$productDiscount.'</td></tr>
-				   <tr><td align="right" nowrap>'.$totalAfterDiscount.'</td></tr>';
+				   <tr><td align="right">'.$totalformated.'</td></tr>
+				   <tr><td align="right">'.$productDiscountformated.'</td></tr>
+				   <tr><td align="right" nowrap>'.$totalAfterDiscountformated.'</td></tr>';
 
 		if($taxtype == 'individual')
 		{
-			$output .= '<tr><td align="right" nowrap>'.$taxtotal.'</td></tr>';
+			$output .= '<tr><td align="right" nowrap>'.$taxtotalformated.'</td></tr>';
 		}
 
 		$output .= '		   
 				</table>
 			</td>';
-		$output .= '<td class="crmTableRow small lineOnTop" valign="bottom" align="right">'.$netprice.'</td>';
+		$output .= '<td class="crmTableRow small lineOnTop" valign="bottom" align="right">'.number_format((round($netprice,2)),$decimal_precision,$decimals_separator,$thousands_separator).'</td>';
 		$output .= '</tr>';
 
 		$netTotal = $netTotal + $netprice;
@@ -1587,12 +1624,12 @@ function getDetailAssociatedProducts($module,$focus)
 
 	//$netTotal should be equal to $focus->column_fields['hdnSubTotal']
 	$netTotal = $focus->column_fields['hdnSubTotal'];
-
+	$netTotalformated = number_format($netTotal,$decimal_precision,$decimals_separator,$thousands_separator);
 	//Display the total, adjustment, S&H details
 	$output .= '<table width="100%" border="0" cellspacing="0" cellpadding="5" class="crmTable">';
 	$output .= '<tr>'; 
 	$output .= '<td width="88%" class="crmTableRow small" align="right"><b>'.$app_strings['LBL_NET_TOTAL'].'</td>';
-	$output .= '<td width="12%" class="crmTableRow small" align="right"><b>'.$netTotal.'</b></td>';
+	$output .= '<td width="12%" class="crmTableRow small" align="right"><b>'.$netTotalformated.'</b></td>';
 	$output .= '</tr>';
 
 	//Decide discount
@@ -1602,11 +1639,13 @@ function getDetailAssociatedProducts($module,$focus)
 	if($focus->column_fields['hdnDiscountPercent'] != '0')
 	{
 		$finalDiscount = ($netTotal*$focus->column_fields['hdnDiscountPercent']/100);
-		$final_discount_info = $focus->column_fields['hdnDiscountPercent']." % of $netTotal = $finalDiscount";
+		$finalDiscountformated = number_format($finalDiscount,$decimal_precision,$decimals_separator,$thousands_separator);
+		$final_discount_info = $focus->column_fields['hdnDiscountPercent']." % ".$app_strings['of_string']." $netTotalformated = $finalDiscountformated";
 	}
 	elseif($focus->column_fields['hdnDiscountAmount'] != '0')
 	{
 		$finalDiscount = $focus->column_fields['hdnDiscountAmount'];
+		$finalDiscountformated = number_format($finalDiscount,$decimal_precision,$decimals_separator,$thousands_separator);
 		$final_discount_info = $finalDiscount;
 	}
 
@@ -1616,14 +1655,15 @@ function getDetailAssociatedProducts($module,$focus)
 
 	$output .= '<tr>'; 
 	$output .= '<td align="right" class="crmTableRow small lineOnTop">(-)&nbsp;<b><a href="javascript:;" '.$final_discount_info.'>'.$app_strings['LBL_DISCOUNT'].'</a></b></td>';
-	$output .= '<td align="right" class="crmTableRow small lineOnTop">'.$finalDiscount.'</td>';
+	$output .= '<td align="right" class="crmTableRow small lineOnTop">'.$finalDiscountformated.'</td>';
 	$output .= '</tr>';
 
 	if($taxtype == 'group')
 	{
 		$taxtotal = '0.00';
 		$final_totalAfterDiscount = $netTotal - $finalDiscount;
-		$tax_info_message = $app_strings['LBL_TOTAL_AFTER_DISCOUNT']." = $final_totalAfterDiscount \\n";
+		$final_totalAfterDiscountformated = number_format($final_totalAfterDiscount,$decimal_precision,$decimals_separator,$thousands_separator);
+		$tax_info_message = $app_strings['LBL_TOTAL_AFTER_DISCOUNT']." = $final_totalAfterDiscountformated \\n";
 		//First we should get all available taxes and then retrieve the corresponding tax values
 		$tax_details = getAllTaxes('available','','edit',$focus->id);
 		//if taxtype is group then the tax should be same for all products in vtiger_inventoryproductrel table
@@ -1636,21 +1676,24 @@ function getDetailAssociatedProducts($module,$focus)
 				$tax_value = '0.00';
 			
 			$taxamount = ($netTotal-$finalDiscount)*$tax_value/100;
+			$taxamountformated = number_format($taxamount,$decimal_precision,$decimals_separator,$thousands_separator);
 			$taxtotal = $taxtotal + $taxamount;
-			$tax_info_message .= "$tax_label : $tax_value % = $taxamount \\n";
+			$taxtotalformated = number_format($taxtotal,$decimal_precision,$decimals_separator,$thousands_separator);
+			$tax_info_message .= "$tax_label : $tax_value % = $taxamountformated \\n";
 		}
-		$tax_info_message .= "\\n ".$app_strings['LBL_TOTAL_TAX_AMOUNT']." = $taxtotal";
+		$tax_info_message .= "\\n ".$app_strings['LBL_TOTAL_TAX_AMOUNT']." = $taxtotalformated";
 
 		$output .= '<tr>';
 		$output .= '<td align="right" class="crmTableRow small">(+)&nbsp;<b><a href="javascript:;" onclick="alert(\''.$tax_info_message.'\');">'.$app_strings['LBL_TAX'].'</a></b></td>';
-		$output .= '<td align="right" class="crmTableRow small">'.$taxtotal.'</td>';
+		$output .= '<td align="right" class="crmTableRow small">'.$taxtotalformated.'</td>';
 		$output .= '</tr>';
 	}
 
 	$shAmount = ($focus->column_fields['hdnS_H_Amount'] != '')?$focus->column_fields['hdnS_H_Amount']:'0.00';
+	$shAmountformated = number_format($shAmount,$decimal_precision,$decimals_separator,$thousands_separator);
 	$output .= '<tr>'; 
 	$output .= '<td align="right" class="crmTableRow small">(+)&nbsp;<b>'.$app_strings['LBL_SHIPPING_AND_HANDLING_CHARGES'].'</b></td>';
-	$output .= '<td align="right" class="crmTableRow small">'.$shAmount.'</td>';
+	$output .= '<td align="right" class="crmTableRow small">'.$shAmountformated.'</td>';
 	$output .= '</tr>';
 
 	//calculate S&H tax
@@ -1658,33 +1701,37 @@ function getDetailAssociatedProducts($module,$focus)
 	//First we should get all available taxes and then retrieve the corresponding tax values
 	$shtax_details = getAllTaxes('available','sh','edit',$focus->id);
 	//if taxtype is group then the tax should be same for all products in vtiger_inventoryproductrel table
-	$shtax_info_message = $app_strings['LBL_SHIPPING_AND_HANDLING_CHARGE']." = $shAmount \\n";
+	$shtax_info_message = $app_strings['LBL_SHIPPING_AND_HANDLING_CHARGE']." = $shAmountformated \\n";
 	for($shtax_count=0;$shtax_count<count($shtax_details);$shtax_count++)
 	{
 		$shtax_name = $shtax_details[$shtax_count]['taxname'];
 		$shtax_label = $shtax_details[$shtax_count]['taxlabel'];
 		$shtax_percent = getInventorySHTaxPercent($focus->id,$shtax_name);
 		$shtaxamount = $shAmount*$shtax_percent/100;
+		$shtaxamountformated = number_format($shtaxamount,$decimal_precision,$decimals_separator,$thousands_separator);
 		$shtaxtotal = $shtaxtotal + $shtaxamount;
-		$shtax_info_message .= "$shtax_label : $shtax_percent % = $shtaxamount \\n";
+		$shtaxtotalformated = number_format($shtaxtotal,$decimal_precision,$decimals_separator,$thousands_separator);
+		$shtax_info_message .= "$shtax_label : $shtax_percent % = $shtaxamountformated \\n";
 	}
-	$shtax_info_message .= "\\n ".$app_strings['LBL_TOTAL_TAX_AMOUNT']." = $shtaxtotal";
+	$shtax_info_message .= "\\n ".$app_strings['LBL_TOTAL_TAX_AMOUNT']." = $shtaxtotalformated";
 	
 	$output .= '<tr>'; 
 	$output .= '<td align="right" class="crmTableRow small">(+)&nbsp;<b><a href="javascript:;" onclick="alert(\''.$shtax_info_message.'\')">'.$app_strings['LBL_TAX_FOR_SHIPPING_AND_HANDLING'].'</a></b></td>';
-	$output .= '<td align="right" class="crmTableRow small">'.$shtaxtotal.'</td>';
+	$output .= '<td align="right" class="crmTableRow small">'.$shtaxtotalformated.'</td>';
 	$output .= '</tr>';
 
 	$adjustment = ($focus->column_fields['txtAdjustment'] != '')?$focus->column_fields['txtAdjustment']:'0.00';
+	$adjustmentformated = number_format($adjustment,$decimal_precision,$decimals_separator,$thousands_separator);
 	$output .= '<tr>'; 
 	$output .= '<td align="right" class="crmTableRow small">&nbsp;<b>'.$app_strings['LBL_ADJUSTMENT'].'</b></td>';
-	$output .= '<td align="right" class="crmTableRow small">'.$adjustment.'</td>';
+	$output .= '<td align="right" class="crmTableRow small">'.$adjustmentformated.'</td>';
 	$output .= '</tr>';
 
 	$grandTotal = ($focus->column_fields['hdnGrandTotal'] != '')?$focus->column_fields['hdnGrandTotal']:'0.00';
+	$grandTotalformated = number_format($grandTotal,$decimal_precision,$decimals_separator,$thousands_separator);
 	$output .= '<tr>'; 
 	$output .= '<td align="right" class="crmTableRow small lineOnTop"><b>'.$app_strings['LBL_GRAND_TOTAL'].'</b></td>';
-	$output .= '<td align="right" class="crmTableRow small lineOnTop">'.$grandTotal.'</td>';
+	$output .= '<td align="right" class="crmTableRow small lineOnTop">'.$grandTotalformated.'</td>';
 	$output .= '</tr>';
 	$output .= '</table>';
 

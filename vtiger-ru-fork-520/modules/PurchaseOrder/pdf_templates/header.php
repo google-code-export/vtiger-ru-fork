@@ -2,102 +2,152 @@
 /*********************************************************************************
 ** The contents of this file are subject to the vtiger CRM Public License Version 1.0
  * ("License"); You may not use this file except in compliance with the License
- * The Original Code is:  vtiger CRM Open Source
- * The Initial Developer of the Original Code is vtiger.
- * Portions created by vtiger are Copyright (C) vtiger.
- * All Rights Reserved.
+ * The Original Code is:  crm-now, www.crm-now.com
+* Portions created by crm-now are Copyright (C)  crm-now c/o im-netz Neue Medien GmbH.
+* All Rights Reserved.
  *
  ********************************************************************************/
-
-
-define('USD',"$");
-define('EURO', chr(128) );
-
+$pdf-> setImageScale(1.5);
 // ************** Begin company information *****************
-$imageBlock=array("10","3","0","0");
-$pdf->addImage( $logo_name, $imageBlock);
-
-// x,y,width
-if($org_phone != '')
-  $phone ="\n".$app_strings["Phone"].":".$org_phone;
-$companyBlockPositions=array( "10","23","62" );
-$companyText=$org_address."\n".$org_city.", ".$org_state." ".$org_code." ".$org_country." ".$phone."\n".$org_website;
-$pdf->addTextBlock( $org_name, $companyText ,$companyBlockPositions );
-
+//company logo
+//function to scal the image to the space availabel is needed
+global $logo_name;
+if ($logoradio =='true') {
+	if (file_exists('test/logo/'.$logo_name))
+	$pdf->Image('test/logo/'.$logo_name, $x='125', $y='10', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false);
+	else {
+	$pdf->SetXY('130','15');
+	$pdf->Cell(20,$pdf->getFontSize(),$pdf_strings['MISSING_IMAGE'],0,0);
+	}
+}
 // ************** End company information *******************
 
-
-
 // ************* Begin Top-Right Header ***************
-// title
-$titleBlock=array("147","7");
-$pdf->title( $app_strings["PurchaseOrder"],"", $titleBlock );
-
-$soBubble=array("168","17","12");
-$pdf->addBubbleBlock($reqno, $app_strings["Req. No."], $soBubble);
-
-$poBubble=array("114","17","12");
-$pdf->addBubbleBlock($trno, $app_strings["Tracking No."], $poBubble);
-
-// page number
-$pageBubble=array("147","17",0);
-$pdf->addBubbleBlock($page_num, $app_strings["Page"], $pageBubble);
+//set location
+$xmargin = '130';
+$ymargin = '45';
+$xdistance = '40';
+$pdf->SetXY($xmargin,$ymargin);
+// define standards
+$pdf->SetFont($default_font,'',$font_size_header);
+//PO number
+// PO number-label
+$pdf->Cell(20,$pdf->getFontSize(),$pdf_strings['NUM_FACTURE_NAME'],0,0);
+//PO number-content
+//we get the PO # from the entry field, if not set the record id is used
+$pdf->SetX($xmargin+$xdistance);
+if ($requisition_no != '') $pdf->Cell(20,$pdf->getFontSize(),$requisition_no,0,1);
+else $pdf->Cell(20,$pdf->getFontSize(),$PurchaseOrder_no,0,1);
+//PO date
+//PO date - label
+$pdf->SetX($xmargin);
+$pdf->Cell(20,$pdf->getFontSize(),$pdf_strings['PODATE'],0,0);
+//PO date -content
+$pdf->SetX($xmargin+$xdistance);
+$pdf->Cell(20,$pdf->getFontSize(),$date_to_display,0,1);
+//due date number
+//due date - label
+$pdf->SetX($xmargin);
+$pdf->Cell(20,$pdf->getFontSize(),$pdf_strings['VALID_TILL'],0,0);
+//due date -content
+$pdf->SetX($xmargin+$xdistance);
+$pdf->Cell(20,$pdf->getFontSize(),$valid_till,0,1);
+//print owner if requested
+if ($owner =='true'){
+	//owner label
+	$pdf->SetX($xmargin);
+	$pdf->Cell(20,$pdf->getFontSize(),$pdf_strings['ISSUER'],0,0);
+	//owner-content
+	$pdf->SetX($xmargin+$xdistance);
+	$pdf->Cell(20,$pdf->getFontSize(),$owner_firstname.' '.$owner_lastname,0,1);
+}
+if ($ownerphone =='true'){
+	//ownerphone label
+	$pdf->SetX($xmargin);
+	$pdf->Cell(20,$pdf->getFontSize(),$pdf_strings['PHONE'],0,0);
+	//ownerphone-content
+	$pdf->SetX($xmargin+$xdistance);
+	$pdf->Cell(20,$pdf->getFontSize(),$owner_phone,0,1);
+}
+//print customer mark if set
+if ($req =='true'){
+	if ($customermark!='')
+	{
+		//mark label
+		$pdf->SetX($xmargin);
+		$pdf->Cell(20,$pdf->getFontSize(),$pdf_strings['REQCODE'],0,0);
+		//mark-content
+		$pdf->SetX($xmargin+$xdistance);
+		$pdf->Cell(20,$pdf->getFontSize(),$customermark,0,1);
+	}
+}
+//print shipping company if set
+if ($carrier =='true'){
+	if ($carriername!='')
+	{
+		//carrier label
+		$pdf->SetX($xmargin);
+		$pdf->Cell(20,$pdf->getFontSize(),$pdf_strings['CARRIER'],0,0);
+		//carrier-content
+		$pdf->SetX($xmargin+$xdistance);
+		$pdf->Cell(20,$pdf->getFontSize(),$carriername,0,1);
+	}
+}
+//print vendor ID if set
+if ($vendor =='true'){
+	//vendor label
+	$pdf->SetX($xmargin);
+	$pdf->Cell(20,$pdf->getFontSize(),$pdf_strings['VENDORID'],0,0);
+	//vendor-content
+	$pdf->SetX($xmargin+$xdistance);
+	$pdf->Cell(20,$pdf->getFontSize(),$vendor_id,0,1);
+}
 // ************** End Top-Right Header *****************
 
+// ************** Begin Top-Left Header **************
+// Address
+$xmargin = '20';
+$ymargin = '55';
+//senders info
+$pdf->SetTextColor(120,120,120);
+// companyBlockPositions -> x,y,width
+$companyText=decode_html ($org_name." - ".$org_address." - ".$org_code." ".$org_city);
+$pdf->SetFont($default_font,'B',6);
+$pdf->SetXY($xmargin, $ymargin);
+$pdf->MultiCell(80,$pdf->getFontSize(), $companyText,0,'L',0);
+$pdf->SetTextColor(0,0,0);
+$pdf->SetFont($default_font,'B',$font_size_address);
+$billPositions = array($xmargin,$ymargin,"60");
+if ($contact_name!='') 
+{
+	if ($bill_country!='Deutschland') {
+		if ($contact_department!='') 
+			$billText=$vendor_name."\n".$contact_department."\n".$contact_name."\n".$bill_street."\n".$bill_code." ".$bill_city."\n".$bill_country;
+		else
+			$billText=$vendor_name."\n".$contact_name."\n".$bill_street."\n".$bill_code." ".$bill_city."\n".$bill_country;
+	}
+	else {
+		if ($contact_department!='') 
+			$billText=$vendor_name."\n".$contact_department."\n".$contact_name."\n".$bill_street."\n".$bill_code." ".$bill_city;
+		else
+			$billText=$vendor_name."\n".$contact_name."\n".$bill_street."\n".$bill_code." ".$bill_city;
+	}
+}
+elseif ($bill_country!='Deutschland') $billText=$vendor_name."\n".$bill_street."\n".$bill_code." ".$bill_city."\n".$bill_country;
+else $billText=$vendor_name."\n".$bill_street."\n".$bill_code." ".$bill_city;
 
-
-// ************** Begin Addresses **************
-// shipping Address
-$shipLocation = array("147","40","61");
-if(trim($ship_street)!='')
-	$shipText = $ship_street."\n";
-if(trim($ship_city) !='')
-	$shipText .= $ship_city.", ";
-if(trim($ship_state)!='' || trim($ship_code)!= '')
-	$shipText .= $ship_state." ".$ship_code."\n";
-
-	$shipText .=$ship_country;
-$pdf->addTextBlock( $app_strings["Shipping Address"].":", $shipText, $shipLocation );
-
-// billing Address
-$billPositions = array("10","51","61");
-if(trim($bill_street)!='')
-	$billText = $bill_street."\n";
-if(trim($bill_city) !='')
-	$billText .= $bill_city.", ";
-if(trim($bill_state)!='' || trim($bill_code)!= '')
-	$billText .= $bill_state." ".$bill_code."\n";
-
-	$billText .=$bill_country;
-$pdf->addTextBlock($app_strings["Billing Address"].":",$billText, $billPositions);
-// ********** End Addresses ******************
-
-
-
-/*  ******** Begin Invoice Data ************************ */ 
-// issue date block
-$issueBlock=array("80","37");
-$pdf->addRecBlock(getDisplayDate(date("Y-m-d")), $app_strings["Issue Date"],$issueBlock);
-
-// due date block
-$dueBlock=array("81","52");
-$pdf->addRecBlock($valid_till, $app_strings["Due Date"],$dueBlock);
-
-// terms block
-$termBlock=array("10","67");
-$pdf->addRecBlock($vendor_name, $app_strings["Vendor Name"], $termBlock);
-
-// Contact Name block
-$conBlock=array("79","67");
-$pdf->addRecBlock($contact_name, $app_strings["Contact Name"],$conBlock);
-
-
-// vtiger_invoice number block
-$invBlock=array("145","65");
-$pdf->addRecBlock($po_no, $app_strings["PO Number"],$invBlock);
-
-/* ************ End Invoice Data ************************ */
-
-
+$pdf->SetFont($default_font, "", $font_size_address);
+$pdf->SetXY ($xmargin,$ymargin);
+3*$pdf->Ln(10);
+$pdf->MultiCell(60,$pdf->getFontSize(), $billText,0,'L');
+// ********** End Top-Left Header ******************
+//***** empty space below the address required ************
+$pdf->SetTextColor(255,255,255);
+		//Line break
+		$pdf->Ln(20);
+//set start y location for body
+if ($pdf->GetY() > $ylocation_rightheader) $ylocation_after = $pdf->GetY();
+else $ylocation_after = $ylocation_rightheader;
+$pdf->SetTextColor(0,0,0);
 
 ?>

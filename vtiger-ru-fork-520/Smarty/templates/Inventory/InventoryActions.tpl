@@ -269,18 +269,28 @@
    <tr>
 	<td align="left" style="padding-left:10px;">
 		<a href="index.php?module={$MODULE}&action={$export_pdf_action}&return_module={$MODULE}&return_action=DetailView&record={$ID}&return_id={$ID}" class="webMnu"><img src="{'actionGeneratePDF.gif'|@vtiger_imageurl:$THEME}" hspace="5" align="absmiddle" border="0"/></a>
-                <a href="index.php?module={$MODULE}&action={$export_pdf_action}&return_module={$MODULE}&return_action=DetailView&record={$ID}&return_id={$ID}" class="webMnu">{$APP.LBL_EXPORT_TO_PDF}</a>
+        <a href="index.php?module={$MODULE}&action={$export_pdf_action}&return_module={$MODULE}&return_action=DetailView&record={$ID}&return_id={$ID}" class="webMnu">{$APP.LBL_EXPORT_TO_PDF}</a>
 	</td>
    </tr>
 
 {if $MODULE eq 'PurchaseOrder' || $MODULE eq 'SalesOrder' || $MODULE eq 'Quotes' || $MODULE eq 'Invoice'}
 <!-- Added to give link to  send Invoice PDF through mail -->
  <tr>
-	<td align="left" style="padding-left:10px;">
-		<a href="javascript: document.DetailView.return_module.value='{$MODULE}'; document.DetailView.return_action.value='DetailView'; document.DetailView.module.value='{$MODULE}'; document.DetailView.action.value='SendPDFMail'; document.DetailView.record.value='{$ID}'; document.DetailView.return_id.value='{$ID}'; sendpdf_submit();" class="webMnu"><img src="{'PDFMail.gif'|@vtiger_imageurl:$THEME}" hspace="5" align="absmiddle" border="0"/></a>
-		<a href="javascript: document.DetailView.return_module.value='{$MODULE}'; document.DetailView.return_action.value='DetailView'; document.DetailView.module.value='{$MODULE}'; document.DetailView.action.value='SendPDFMail'; document.DetailView.record.value='{$ID}'; document.DetailView.return_id.value='{$ID}'; sendpdf_submit();" class="webMnu">{$APP.LBL_SEND_EMAIL_PDF}</a> 
+	<td align="left" style="padding-left:10px;border-bottom:1px dotted #CCCCCC;">
+		<a href="javascript: document.DetailView.return_module.value='{$MODULE}'; document.DetailView.return_action.value='DetailView'; document.DetailView.module.value='{$MODULE}'; document.DetailView.action.value='SendPDFMail'; document.DetailView.record.value='{$ID}'; document.DetailView.return_id.value='{$ID}'; sendpdf_submit('{$PDFLANGUAGE}');" class="webMnu"><img src="{'PDFMail.gif'|@vtiger_imageurl:$THEME}" hspace="5" align="absmiddle" border="0"/></a>
+		<a href="javascript: document.DetailView.return_module.value='{$MODULE}'; document.DetailView.return_action.value='DetailView'; document.DetailView.module.value='{$MODULE}'; document.DetailView.action.value='SendPDFMail'; document.DetailView.record.value='{$ID}'; document.DetailView.return_id.value='{$ID}'; sendpdf_submit('{$PDFLANGUAGE}');" class="webMnu">{$APP.LBL_SEND_EMAIL_PDF}</a> 
 	</td>
    </tr>
+{if $MODULE eq 'Invoice'}
+<!-- To display the Export To PDF link for Shipping Note (Invoice only) -->
+   <tr>
+	<td align="left" style="padding-left:10px;border-bottom:1px dotted #CCCCCC;">
+		{assign var=export_snpdf_action value="CreateSNPDF"}
+		<a href="index.php?module={$MODULE}&action={$export_snpdf_action}&return_module={$MODULE}&return_action=DetailView&record={$ID}&return_id={$ID}" class="webMnu"><img src="{'actionGeneratePDF-Lieferschein.gif'|@vtiger_imageurl:$THEME}" hspace="5" align="absmiddle" border="0"/></a>
+        <a href="index.php?module={$MODULE}&action={$export_snpdf_action}&return_module={$MODULE}&return_action=DetailView&record={$ID}&return_id={$ID}" class="webMnu">{$APP.LBL_SHIPPINGNOTE_EXPORT_PDF}</a>
+	</td>
+   </tr>
+ {/if}
 {/if}
 {/if}
 <!-- To display the Export To PDF link for PO, SO, Quotes and Invoice - ends -->
@@ -312,20 +322,72 @@
 
 {literal}
 <script type='text/javascript'>
-function sendpdf_submit()
+function sendpdf_submit(langua)
 {
-	// Submit the form to get the attachment ready for submission
-	document.DetailView.submit();
+// Submit the form to get the attachment ready for submission
+//crm-now: changed to have multi lingual output
+document.DetailView.submit();
 {/literal}
-
 	{if $MODULE eq 'Invoice'}
-		OpenCompose('{$ID}','Invoice');
+		{ldelim}
+			switch(langua)
+			{ldelim}		
+				case 'de_de':
+					OpenComposePDF('{$ID}','Invoice','Rechnung');
+					break;
+				case 'en_us':
+					OpenComposePDF('{$ID}','Invoice','Invoice');
+					break;
+				default:
+					OpenComposePDF('{$ID}','Invoice','Invoice');
+					break;
+			{rdelim}
+		{rdelim}
 	{elseif $MODULE eq 'Quotes'}
-		OpenCompose('{$ID}','Quote');
+		{ldelim}
+			switch(langua)
+			{ldelim}		
+				case 'de_de':
+					OpenComposePDF('{$ID}','Quote','Angebot');
+					break;
+				case 'en_us':
+					OpenComposePDF('{$ID}','Quote','Quote');
+					break;
+				default:
+					OpenComposePDF('{$ID}','Quote','Quote');
+					break;
+			{rdelim}
+		{rdelim}
 	{elseif $MODULE eq 'PurchaseOrder'}
-		OpenCompose('{$ID}','PurchaseOrder');
+		{ldelim}
+			switch(langua)
+			{ldelim}		
+				case 'de_de':
+					OpenComposePDF('{$ID}','PurchaseOrder','Einkaufsbestellung');
+					break;
+				case 'en_us':
+					OpenComposePDF('{$ID}','PurchaseOrder','PurchaseOrder');
+					break;
+				default:
+					OpenComposePDF('{$ID}','PurchaseOrder','PurchaseOrder');
+					break;
+			{rdelim}
+		{rdelim}
 	{elseif $MODULE eq 'SalesOrder'}
-		OpenCompose('{$ID}','SalesOrder');
+		{ldelim}
+			switch(langua)
+			{ldelim}	
+				case 'de_de':
+					OpenComposePDF('{$ID}','SalesOrder','Bestellung');
+					break;
+				case 'en_us':
+					OpenComposePDF('{$ID}','SalesOrder','SalesOrder');
+					break;
+				default:
+					OpenComposePDF('{$ID}','SalesOrder','SalesOrder');
+					break;
+			{rdelim}
+		{rdelim}
 	{/if}
 {literal}
 }
