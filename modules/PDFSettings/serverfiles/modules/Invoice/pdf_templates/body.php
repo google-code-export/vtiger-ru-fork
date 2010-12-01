@@ -172,6 +172,7 @@ for($i=0;$i<$num_products;$i++)
 	//add line below product
 	$y_line_storage = $pdf->GetY();
 	if ($newpage==false)
+
 		$pdf->Line(PDF_MARGIN_LEFT,$actual_y_position-2, "200", $actual_y_position-2);
 	$pdf->SetXY( PDF_MARGIN_LEFT, $y_line_storage+2);
 }

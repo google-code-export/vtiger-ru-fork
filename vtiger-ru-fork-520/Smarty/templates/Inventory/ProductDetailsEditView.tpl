@@ -149,6 +149,7 @@ function displayCoords(currObj,obj,mode,curr_row)
    {foreach key=row_no item=data from=$ASSOCIATEDPRODUCTS name=outer1}
 	{assign var="deleted" value="deleted"|cat:$row_no}
 	{assign var="hdnProductId" value="hdnProductId"|cat:$row_no}
+	{assign var="hdnProductcode" value="hdnProductcode"|cat:$row_no}
 	{assign var="productName" value="productName"|cat:$row_no}
 	{assign var="comment" value="comment"|cat:$row_no}
 	{assign var="productDescription" value="productDescription"|cat:$row_no}
@@ -199,6 +200,11 @@ function displayCoords(currObj,obj,mode,curr_row)
 		<!-- Product Re-Ordering Feature Code Addition ends -->
 		<table width="100%"  border="0" cellspacing="0" cellpadding="1">
 			<tr>
+			<td class="small" id="viewproductcode">
+				<textarea id="{$hdnProductcode}" name="{$hdnProductcode}" class=small style="width:98%;height:12px" readonly>{$data.$hdnProductcode}</textarea>
+			</td>
+		   </tr>
+		   <tr>
 				<td class="small" valign="top">
 					<input type="text" id="{$productName}" name="{$productName}" value="{$data.$productName}" class="small" style="width: 70%;" readonly />
 					<input type="hidden" id="{$hdnProductId}" name="{$hdnProductId}" value="{$data.$hdnProductId}" />
@@ -211,6 +217,11 @@ function displayCoords(currObj,obj,mode,curr_row)
 					{/if}
 				</td>
 			</tr>
+			</tr>
+		   <tr>
+			<td class="small" id="viewdescription">
+				<textarea id="{$productDescription}" name="{$productDescription}" class=small style="width:98%;height:80px">{$data.$productDescription}</textarea>
+			</td>
 			<tr>
 				<td class="small">
 					<input type="hidden" value="{$data.$subproduct_ids}" id="{$subproduct_ids}" name="{$subproduct_ids}" />
@@ -219,7 +230,7 @@ function displayCoords(currObj,obj,mode,curr_row)
 			</tr>
 			<tr>
 				<td class="small" id="setComment">
-					<textarea id="{$comment}" name="{$comment}" class=small style="width:70%;height:40px">{$data.$comment}</textarea>
+					<textarea id="{$comment}" name="{$comment}" class=small style="width:98%;height:40px">{$data.$comment}</textarea>
 					<img src="{'clear_field.gif'|@vtiger_imageurl:$THEME}" onClick="{literal}${/literal}('{$comment}').value=''"; style="cursor:pointer;" />
 				</td>
 			</tr>

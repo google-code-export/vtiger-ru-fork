@@ -75,15 +75,18 @@ function add_data_to_relatedlist(entity_id,recordid) {
         opener.document.location.href="index.php?module={RETURN_MODULE}&action=updateRelations&smodule={SMODULE}&destination_module=Products&entityid="+entity_id+"&parentid="+recordid;
 }
 
-function set_return_inventory(product_id,product_name,unitprice,qtyinstock,taxstr,curr_row,desc,subprod_id) {
+function set_return_inventory(product_id,product_name,unitprice,qtyinstock,taxstr,curr_row,desc,subprod_id,product_code) {
 	var subprod = subprod_id.split("::");
+	//crm-now added to display order code
+ 	window.opener.document.EditView.elements["hdnProductcode"+curr_row].value = product_code;
+
 	window.opener.document.EditView.elements["subproduct_ids"+curr_row].value = subprod[0];
 	window.opener.document.getElementById("subprod_names"+curr_row).innerHTML = subprod[1];
 
 	window.opener.document.EditView.elements["productName"+curr_row].value = product_name;
 	window.opener.document.EditView.elements["hdnProductId"+curr_row].value = product_id;
 	window.opener.document.EditView.elements["listPrice"+curr_row].value = unitprice;
-	window.opener.document.EditView.elements["comment"+curr_row].value = desc;
+	window.opener.document.EditView.elements["productDescription"+curr_row].value = desc.replace("&quot;", "\"");
 	//getOpenerObj("unitPrice"+curr_row).innerHTML = unitprice;
 	getOpenerObj("qtyInStock"+curr_row).innerHTML = qtyinstock;
 
@@ -102,15 +105,18 @@ function set_return_inventory(product_id,product_name,unitprice,qtyinstock,taxst
 	window.opener.document.EditView.elements["qty"+curr_row].focus()
 }
 
-function set_return_inventory_po(product_id,product_name,unitprice,taxstr,curr_row,desc,subprod_id) {
+
+function set_return_inventory_po(product_id,product_name,unitprice,taxstr,curr_row,desc,subprod_id,product_code) {
 	var subprod = subprod_id.split("::");
+	//crm-now added to display order code
+ 	window.opener.document.EditView.elements["hdnProductcode"+curr_row].value = product_code;
 	window.opener.document.EditView.elements["subproduct_ids"+curr_row].value = subprod[0];
 	window.opener.document.getElementById("subprod_names"+curr_row).innerHTML = subprod[1];
 
 	window.opener.document.EditView.elements["productName"+curr_row].value = product_name;
 	window.opener.document.EditView.elements["hdnProductId"+curr_row].value = product_id;
 	window.opener.document.EditView.elements["listPrice"+curr_row].value = unitprice;
-	window.opener.document.EditView.elements["comment"+curr_row].value = desc;
+	window.opener.document.EditView.elements["productDescription"+curr_row].value = desc.replace("&quot;", "\"");
 	//getOpenerObj("unitPrice"+curr_row).innerHTML = unitprice;
 	
 	// Apply decimal round-off to value

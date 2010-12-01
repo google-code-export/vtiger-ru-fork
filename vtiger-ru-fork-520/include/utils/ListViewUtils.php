@@ -212,6 +212,7 @@ function getListViewHeader($focus, $module,$sort_qry='',$sorder='',$order_by='',
 										$_REQUEST['relation_id']);
 							}
 							$actionsURL = '';
+
 							if(!empty($_REQUEST['actions'])){
 								$actionsURL = '&actions='.vtlib_purify($_REQUEST['actions']);
 							}
@@ -1277,9 +1278,8 @@ function getSearchListViewEntries($focus, $module,$list_result,$navigation_array
 							$list_result_count = $i-1;
 							$value = getValue($ui_col_array,$list_result,$fieldname,$focus,$module,$entity_id,$list_result_count,"search",$focus->popup_type);
 							if(isset($forfield) && $forfield != '' && $focus->popup_type != 'detailview') {
-								$value1 = strip_tags($value);
-								$value = htmlspecialchars(addslashes(html_entity_decode(strip_tags($value), ENT_QUOTES,$default_charset)), ENT_QUOTES,$default_charset); // Remove any previous html conversion
-								$value = "<a href='javascript:window.close();' onclick='return vtlib_setvalue_from_popup($entity_id, \"$value\", \"$forfield\")'>$value1</a>";
+								$value = strip_tags($value); // Remove any previous html conversion
+								$value = "<a href='javascript:window.close();' onclick='return vtlib_setvalue_from_popup($entity_id, \"$value\", \"$forfield\")'>$value</a>";
 							}
 						}
 						// END
@@ -2020,7 +2020,9 @@ function getValue($field_result, $list_result,$fieldname,$focus,$module,$entity_
 						$sub_products .= $str_sep.$id;
 						$sub_prod .= $str_sep." - ".$adb->query_result($sub_prod_query,$i,"productname");
 					}
-					
+
+					//crm-now: escape single quotes " 
+					$sub_prod = str_replace('&quot;','\&quot;',$sub_prod);
 					$sub_det = $sub_products."::".str_replace(":","<br>",$sub_prod);
 					$qty_stock=$adb->query_result($list_result,$list_result_count,'qtyinstock');
 
@@ -2033,9 +2035,13 @@ function getValue($field_result, $list_result,$fieldname,$focus,$module,$entity_
 					
 					$slashes_desc = str_replace(array("\r","\n"),array('\r','\n'), $slashes_temp_desc);
 					$tmp_arr = array("entityid"=>$entity_id,"prodname"=>"".stripslashes(decode_html(nl2br($slashes_temp_val)))."","unitprice" => "$unitprice", "qtyinstk"=>"$qty_stock","taxstring"=>"$tax_str","rowid"=>"$row_id","desc"=>"$slashes_desc","subprod_ids"=>"$sub_det");
+					$order_code = $adb->query_result($list_result,$list_result_count,'productcode');
+					$tmp_arr = array("entityid"=>$entity_id,"prodname"=>"".stripslashes(nl2br(decode_html($slashes_temp_val)))."","unitprice" => "$unitprice", "qtyinstk"=>"$qty_stock","taxstring"=>"$tax_str","rowid"=>"$row_id","desc"=>"".decode_html($slashes_desc)."","subprod_ids"=>"$sub_det","prod_code"=>"$order_code");
+					$slashes_desc = str_replace(array("\r","\n"),array('\r','\n'), $slashes_desc);
 					require_once('include/Zend/Json.php');
 					$prod_arr = Zend_Json::encode($tmp_arr);
-					$value = '<a href="javascript:window.close();" id=\'popup_product_'.$entity_id.'\' onclick=\'set_return_inventory("'.$entity_id.'", "'.decode_html(nl2br($slashes_temp_val)).'", "'.$unitprice.'", "'.$qty_stock.'","'.$tax_str.'","'.$row_id.'","'.$slashes_desc.'","'.$sub_det.'");\' vt_prod_arr=\''.$prod_arr.'\' >'.$temp_val.'</a>';
+					//crm-now: order code added
+					$value = '<a href="javascript:window.close();" id=\'popup_product_'.$entity_id.'\' onclick=\'set_return_inventory("'.$entity_id.'", "'.nl2br(decode_html($slashes_temp_val)).'", "'.$unitprice.'", "'.$qty_stock.'","'.$tax_str.'","'.$row_id.'","'.$slashes_desc.'","'.$sub_det.'","'.$order_code.'");\' vt_prod_arr=\''.$prod_arr.'\' >'.$temp_val.'</a>';
 				}
 				elseif($popuptype == "inventory_prod_po")
 				{
@@ -2073,17 +2079,20 @@ function getValue($field_result, $list_result,$fieldname,$focus,$module,$entity_
 					}
 					
 					$sub_det = $sub_products."::".str_replace(":","<br>",$sub_prod);
-                    
-					$slashes_temp_val = popup_from_html($field_val);
-                    $slashes_temp_val = htmlspecialchars($slashes_temp_val,ENT_QUOTES,$default_charset);
-                    $description = popup_from_html($adb->query_result($list_result,$list_result_count,'description'));
-                    $slashes_temp_desc = decode_html(htmlspecialchars($description,ENT_QUOTES,$default_charset));
-                                        
-                    $slashes_desc = str_replace(array("\r","\n"),array('\r','\n'), $slashes_temp_desc);
-                    $tmp_arr = array("entityid"=>$entity_id,"prodname"=>"".stripslashes(decode_html(nl2br($slashes_temp_val)))."","unitprice" => "$unitprice", "qtyinstk"=>"$qty_stock","taxstring"=>"$tax_str","rowid"=>"$row_id","desc"=>"$slashes_desc","subprod_ids"=>"$sub_det");
+
+					$slashes_temp_val = popup_from_html($temp_val);
+					$slashes_temp_val = htmlspecialchars($slashes_temp_val,ENT_QUOTES,$default_charset);
+					$description=$adb->query_result($list_result,$list_result_count,'description');
+					//crm-now: bugfix to get product description in popup menue saved
+					$product_des =  str_replace(chr(34), "&quot;", $description);
+					$slashes_desc = addslashes(htmlspecialchars($product_des,ENT_QUOTES,$default_charset));
+					
+					$order_code = $adb->query_result($list_result,$list_result_count,'productcode');
+					$tmp_arr = array("entityid"=>$entity_id,"prodname"=>"".stripslashes(nl2br($slashes_temp_val))."","unitprice" => "$unitprice", "taxstring"=>"$tax_str","rowid"=>"$row_id","desc"=>"".decode_html($slashes_desc)."","subprod_ids"=>"$sub_det","prod_code"=>"$order_code");
+					$slashes_desc = str_replace(array("\r","\n"),array('\r','\n'), $slashes_desc);
 					require_once('include/Zend/Json.php');
 					$prod_arr = Zend_Json::encode($tmp_arr);
-					$value = '<a href="javascript:window.close();" id=\'popup_product_'.$entity_id.'\' onclick=\'set_return_inventory_po("'.$entity_id.'", "'.decode_html(nl2br($slashes_temp_val)).'", "'.$unitprice.'", "'.$tax_str.'","'.$row_id.'","'.$slashes_desc.'","'.$sub_det.'"); \'  vt_prod_arr=\''.$prod_arr.'\' >'.$temp_val.'</a>';
+					$value = '<a href="javascript:window.close();" id=\'popup_product_'.$entity_id.'\' onclick=\'set_return_inventory_po("'.$entity_id.'", "'.nl2br(decode_html($slashes_temp_val)).'", "'.$unitprice.'", "'.$tax_str.'","'.$row_id.'","'.decode_html($slashes_desc).'","'.$sub_det.'","'.$order_code.'"); \'  vt_prod_arr=\''.$prod_arr.'\' >'.$temp_val.'</a>';
 				}
 				elseif($popuptype == "inventory_service")
 				{
@@ -2108,17 +2117,21 @@ function getValue($field_result, $list_result,$fieldname,$focus,$module,$entity_
 						$unit_price = '';
 					}
 
-					$slashes_temp_val = popup_from_html($field_val);
+					$slashes_temp_val = popup_from_html($temp_val);
 					$slashes_temp_val = htmlspecialchars($slashes_temp_val,ENT_QUOTES,$default_charset);
-					$description = popup_from_html($adb->query_result($list_result,$list_result_count,'description'));
-					$slashes_temp_desc = decode_html(htmlspecialchars($description,ENT_QUOTES,$default_charset));
+					$description=decode_html_force($adb->query_result($list_result,$list_result_count,'description'));
+					//crm-now: bugfix to get product description in popup menue saved
+					$product_des =  str_replace(chr(34), "&quot;", $description);
+					$slashes_desc = htmlspecialchars($product_des,ENT_QUOTES,$default_charset);
 					
-					$slashes_desc = str_replace(array("\r","\n"),array('\r','\n'), $slashes_temp_desc);
-					$tmp_arr = array("entityid"=>$entity_id,"prodname"=>"".stripslashes(decode_html(nl2br($slashes_temp_val)))."","unitprice" => "$unitprice","taxstring"=>"$tax_str","rowid"=>"$row_id","desc"=>"$slashes_desc");
+					//crm-now: order code added
+					$order_code = $adb->query_result($list_result,$list_result_count,'service_no');
+					$tmp_arr = array("entityid"=>$entity_id,"prodname"=>"".stripslashes(nl2br($slashes_temp_val))."","unitprice" => "$unitprice","taxstring"=>"$tax_str","rowid"=>"$row_id","desc"=>"$slashes_desc","prod_code"=>"$order_code");
+					$slashes_desc = str_replace(array("\r","\n"),array('\r','\n'), $slashes_desc);
 					require_once('include/Zend/Json.php');
 					$prod_arr = Zend_Json::encode($tmp_arr);
-
-					$value = '<a href="javascript:window.close();" id=\'popup_product_'.$entity_id.'\' onclick=\'set_return_inventory("'.$entity_id.'", "'.decode_html(nl2br($slashes_temp_val)).'", "'.$unitprice.'", "'.$tax_str.'","'.$row_id.'","'.$slashes_desc.'");\'  vt_prod_arr=\''.$prod_arr.'\' >'.$temp_val.'</a>';
+					$value = '<a href="javascript:window.close();" id=\'popup_product_'.$entity_id.'\' onclick=\'set_return_inventory("'.$entity_id.'", "'.nl2br(decode_html($slashes_temp_val)).'", "'.$unitprice.'", "'.$tax_str.'","'.$row_id.'","'.$slashes_desc.'","'.$order_code.'");\'  vt_prod_arr=\''.$prod_arr.'\' >'.$temp_val.'</a>';
+					//$value = '<a href="javascript:window.close();" id=\'popup_product_'.$entity_id.'\' onclick=\'set_return_inventory("'.$entity_id.'", "'.nl2br(decode_html($slashes_temp_val)).'", "'.$unitprice.'", "'.$qty_stock.'","'.$tax_str.'","'.$row_id.'","'.$product_des.'","'.$order_code.'");\'  vt_prod_arr=\''.$prod_arr.'\' >'.$temp_val.'</a>';
 				}
 				elseif($popuptype == "inventory_pb")
 				{

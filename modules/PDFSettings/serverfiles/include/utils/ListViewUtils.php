@@ -212,6 +212,7 @@ function getListViewHeader($focus, $module,$sort_qry='',$sorder='',$order_by='',
 										$_REQUEST['relation_id']);
 							}
 							$actionsURL = '';
+
 							if(!empty($_REQUEST['actions'])){
 								$actionsURL = '&actions='.vtlib_purify($_REQUEST['actions']);
 							}

@@ -1532,6 +1532,7 @@ function getAssociatedProducts($module,$focus,$seid='')
 		$query="SELECT 
 					case when vtiger_products.productid != '' then vtiger_products.productname else vtiger_service.servicename end as productname,
  		            case when vtiger_products.productid != '' then vtiger_products.productcode else vtiger_service.service_no end as productcode, 
+					case when vtiger_products.productid != '' then vtiger_products.usageunit else vtiger_service.service_usageunit end as usageunit,									
 					case when vtiger_products.productid != '' then vtiger_products.unit_price else vtiger_service.unit_price end as unit_price,									
  		            case when vtiger_products.productid != '' then vtiger_products.qtyinstock else 'NA' end as qtyinstock,
  		            case when vtiger_products.productid != '' then 'Products' else 'Services' end as entitytype,
@@ -1613,6 +1614,8 @@ function getAssociatedProducts($module,$focus,$seid='')
 		$unitprice=$adb->query_result($result,$i-1,'unit_price');
 		$listprice=$adb->query_result($result,$i-1,'listprice');
 		$entitytype=$adb->query_result($result,$i-1,'entitytype');
+		//crm-now: fix
+		$usageunit=$adb->query_result($result,$i-1,'usageunit');
 		if (!empty($entitytype)) {
 			$product_Detail[$i]['entityType'.$i]=$entitytype;
 		}
@@ -1651,6 +1654,8 @@ function getAssociatedProducts($module,$focus,$seid='')
 
 		$subprodname_str = str_replace(":","<br>",$subprodname_str);
 
+		//crm-now fix
+		$product_Detail[$i]['usageunit'.$i] = $usageunit;
 		$product_Detail[$i]['subProductArray'.$i] = $subProductArray;
 		$product_Detail[$i]['hdnProductId'.$i] = $hdnProductId;
 		$product_Detail[$i]['productName'.$i]= from_html($productname);

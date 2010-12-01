@@ -25,6 +25,7 @@ require_once('data/Tracker.php');
 require_once('include/CustomFieldUtil.php');
 require_once('include/utils/utils.php');
 require_once('user_privileges/default_module_view.php');
+require_once('include/utils/PDFutils.php');
 global $mod_strings,$app_strings,$currentModule,$theme,$singlepane_view;
 
 $focus = CRMEntity::getInstance($currentModule);
@@ -125,7 +126,12 @@ if($singlepane_view == 'true')
 	$open_related_modules = RelatedListViewSession::getRelatedModulesFromSession();
 	$smarty->assign("SELECTEDHEADERS", $open_related_modules);
 }
-
+//crm-now: added for PDF as attachment to mail
+//crm-now extension
+//get stored  language configuration
+$pdf_details = getAllPDFDetails($currentModule);
+$pdflanguage_selected = $pdf_details['pdflang'];
+$smarty->assign("PDFLANGUAGE",$pdf_details['pdflang']);
 $smarty->assign("SinglePane_View", $singlepane_view);
 $smarty->assign("TODO_PERMISSION",CheckFieldPermission('parent_id','Calendar'));
 $smarty->assign("EVENT_PERMISSION",CheckFieldPermission('parent_id','Events'));

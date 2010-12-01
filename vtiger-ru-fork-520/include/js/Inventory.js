@@ -643,13 +643,13 @@ function fnAddProductRow(module,image_path){
 	}
 	/* Product Re-Ordering Feature Code Addition ends */
 	
-	//Product Name with Popup image to select product
+	//Product Name with Popup image to select product, crm-now: Product Code and description added
 	coltwo.className = "crmTableRow small"
-	coltwo.innerHTML= '<table border="0" cellpadding="1" cellspacing="0" width="100%"><tr><td class="small"><input id="productName'+count+'" name="productName'+count+'" class="small" style="width: 70%;" value="" readonly="readonly" type="text">'+
+	coltwo.innerHTML= '<table border="0" cellpadding="1" cellspacing="0" width="100%"><tr><td class="small" id="viewproductcode"><input id="hdnProductcode'+count+'" name="hdnProductcode'+count+'" class="small" style="width: 98%;" value="" readonly="readonly" type="text"></td></tr><tr><td class="small"><input id="productName'+count+'" name="productName'+count+'" class="small" style="width: 70%;" value="" readonly="readonly" type="text">'+
 						'<input id="hdnProductId'+count+'" name="hdnProductId'+count+'" value="" type="hidden"><input type="hidden" id="lineItemType'+count+'" name="lineItemType'+count+'" value="Products" />'+
 						'&nbsp;<img id="searchIcon'+count+'" title="Products" src="themes/images/products.gif" style="cursor: pointer;" onclick="productPickList(this,\''+module+'\','+count+')" align="absmiddle">'+
 						'</td></tr><tr><td class="small"><input type="hidden" value="" id="subproduct_ids'+count+'" name="subproduct_ids'+count+'" /><span id="subprod_names'+count+'" name="subprod_names'+count+'" style="color:#C0C0C0;font-style:italic;"> </span>'+
-						'</td></tr><tr><td class="small" id="setComment'+count+'"><textarea id="comment'+count+'" name="comment'+count+'" class=small style="width:70%;height:40px"></textarea><img src="themes/images/clear_field.gif" onClick="getObj(\'comment'+count+'\').value=\'\'"; style="cursor:pointer;" /></td></tr></tbody></table>';	
+						'</td></tr><tr><td><textarea id="productDescription'+count+'" name="productDescription'+count+'" class=small style="width:98%;height:80px"></textarea></td></tr><tr><td class="small" id="setComment'+count+'"><textarea id="comment'+count+'" name="comment'+count+'" class=small style="width:70%;height:40px"></textarea><img src="themes/images/clear_field.gif" onClick="getObj(\'comment'+count+'\').value=\'\'"; style="cursor:pointer;" /></td></tr></tbody></table>';	
 
 	//Quantity In Stock - only for SO, Quotes and Invoice
 	if(module != "PurchaseOrder"){
@@ -1028,7 +1028,7 @@ function resetSHandAdjValues() {
  */
 function moveUpDown(sType,oModule,iIndex)
 {
-	var aFieldIds = Array('hidtax_row_no','productName','subproduct_ids','hdnProductId','comment','qty','listPrice','discount_type','discount_percentage','discount_amount','tax1_percentage','hidden_tax1_percentage','popup_tax_row','tax2_percentage','hidden_tax2_percentage','lineItemType');
+	var aFieldIds = Array('hidtax_row_no','productName','subproduct_ids','hdnProductId','comment','qty','listPrice','discount_type','discount_percentage','discount_amount','tax1_percentage','hidden_tax1_percentage','popup_tax_row','tax2_percentage','hidden_tax2_percentage','lineItemType','productDescription','hdnProductcode');
 	var aContentIds = Array('qtyInStock','netPrice','subprod_names');
 	var aOnClickHandlerIds = Array('searchIcon');
 	
@@ -1199,6 +1199,7 @@ function InventorySelectAll(mod,image_pth)
 				var prod_array = JSON.parse($('popup_product_'+c).attributes['vt_prod_arr'].nodeValue);
 				var prod_id = prod_array['entityid'];
 				var prod_name = prod_array['prodname'];
+				var prod_code = prod_array['prod_code'];
 				var unit_price = prod_array['unitprice'];
 				var taxstring = prod_array['taxstring'];
 				var desc = prod_array['desc'];
@@ -1206,9 +1207,9 @@ function InventorySelectAll(mod,image_pth)
 				var subprod_ids = prod_array['subprod_ids'];
 				if(mod!='PurchaseOrder') {
 					var qtyinstk = prod_array['qtyinstk'];
-					set_return_inventory(prod_id,prod_name,unit_price,qtyinstk,taxstring,parseInt(row_id),desc,subprod_ids);
+					set_return_inventory(prod_id,prod_name,unit_price,qtyinstk,taxstring,parseInt(row_id),desc,subprod_ids,prod_code);
 				} else {
-					set_return_inventory_po(prod_id,prod_name,unit_price,taxstring,parseInt(row_id),desc,subprod_ids);
+					set_return_inventory_po(prod_id,prod_name,unit_price,taxstring,parseInt(row_id),desc,subprod_ids,prod_code);
 				}
 				y=1;
 			} else {
@@ -1224,6 +1225,7 @@ function InventorySelectAll(mod,image_pth)
 					var prod_array = JSON.parse($('popup_product_'+c).attributes['vt_prod_arr'].nodeValue);
 					var prod_id = prod_array['entityid'];
 					var prod_name = prod_array['prodname'];
+					var prod_code = prod_array['prod_code'];
 					var unit_price = prod_array['unitprice'];
 					var taxstring = prod_array['taxstring'];
 					var desc = prod_array['desc'];
@@ -1236,9 +1238,9 @@ function InventorySelectAll(mod,image_pth)
 								
 					if(mod!='PurchaseOrder') {
 						var qtyinstk = prod_array['qtyinstk'];
-						set_return_inventory(prod_id,prod_name,unit_price,qtyinstk,taxstring,parseInt(row_id),desc,subprod_ids);
+						set_return_inventory(prod_id,prod_name,unit_price,qtyinstk,taxstring,parseInt(row_id),desc,subprod_ids,prod_code);
 					} else {
-						set_return_inventory_po(prod_id,prod_name,unit_price,taxstring,parseInt(row_id),desc,subprod_ids);
+						set_return_inventory_po(prod_id,prod_name,unit_price,taxstring,parseInt(row_id),desc,subprod_ids,prod_code);
 					}					
 					y=y+1;
 				}
