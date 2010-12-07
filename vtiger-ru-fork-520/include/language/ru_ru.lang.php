@@ -1136,7 +1136,9 @@ $app_strings = array (
 		
 //Конец добавления
 
+//vtiger-ru-fork Eugene Babiy Добавлено для OOO_Merge
 
+'DownloadMergeFile'=>'Загрузить сформированный документ',
 
 );
 $app_list_strings = array (

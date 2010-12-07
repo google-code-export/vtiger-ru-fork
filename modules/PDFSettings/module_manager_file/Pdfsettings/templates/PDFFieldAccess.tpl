@@ -124,7 +124,7 @@
 																				<td class="small" valign="top" width="100%">
 																					<table width="100%"  border="0" cellspacing="0" cellpadding="5">
 																						<tr valign="top">
-																							<td  class="smalltxt" width="80%">
+																							<td  class="smalltxt" width="60%">
 																								<select id="Quotes_fontid_qv" name="Quotes_fontid_qv" class="detailedViewTextBox"  style="width:40%;" {$CHANGEPERMISSION.Quotes.fontid}>
 																									{html_options selected=$SELECTEDFONTID.Quotes size=1 values=$FONTIDS.Quotes output=$FONTLIST.Quotes }
 																								</select>
@@ -202,71 +202,71 @@
 																	<td align="left">
 																		<table align="" border=0 cellspacing=0 cellpadding=0 width="100%" >
 																			<tr>
-																				<td valign="top" width="80%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PRINT_LOGO}&nbsp;&nbsp;
+																				<td valign="top" width="60%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PRINT_LOGO}&nbsp;&nbsp;
 																					<input type="checkbox" id="Quotes_logoradio_qc" name="Quotes_logoradio_qc" {$LOGORADIO.Quotes} {$CHANGEPERMISSION.Quotes.logoradio}> {$APP.yes}
 																				</td>
 																				{if $MODULEVIEW==1} 
-																				<td class="smalltxt" width="20%" align="right">
+																				<td class="smalltxt" width="40%" align="right">
 																					<input type="checkbox" id="Quotes_logoradio_perm" name="Quotes_logoradio_perm" {$EDITPERMISSION.Quotes.logoradio} > {$MOD.LBL_PDFCONFIGURATOR_ENABLE}
 																				</td>
 																				{/if}
 																			</tr>
 																			<tr>
-																				<td valign="top"  width="80%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PDF_DATE}
+																				<td valign="top"  width="60%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PDF_DATE}
 																					<select name="Quotes_dateused_qv" class="detailedViewTextBox"  style="width:20%;" id="Quotes_dateused_qv" {$CHANGEPERMISSION.Quotes.dateused}>
 																						{html_options values=$DATEUSED.Quotes output= $DATEUSEDNAME selected=$DATEUSEDSELECTED.Quotes}
 																					</select>
 																				</td>
 																				{if $MODULEVIEW==1}
-																				<td class="smalltxt"  width="20%" align="right">
+																				<td class="smalltxt"  width="40%" align="right">
 																					<input type="checkbox" name="Quotes_dateused_perm" id="Quotes_dateused_perm" {$EDITPERMISSION.Quotes.dateused} > {$MOD.LBL_PDFCONFIGURATOR_ENABLE}
 																				</td>
 																				{/if}
 																			</tr>
 																			<tr>
-																				<td valign="top" width="80%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_OWNER}
+																				<td valign="top" width="60%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_OWNER}
 																					<input type="checkbox" id="Quotes_owner_qc" name="Quotes_owner_qc" {$OWNER.Quotes} {$CHANGEPERMISSION.Quotes.owner}> {$APP.yes}
 																				</td>
 																				{if $MODULEVIEW==1} 
-																				<td class="smalltxt" width="20%" align="right">
+																				<td class="smalltxt" width="40%" align="right">
 																					<input type="checkbox" id="Quotes_owner_perm" name="Quotes_owner_perm" {$EDITPERMISSION.Quotes.owner} > {$MOD.LBL_PDFCONFIGURATOR_ENABLE}
 																				</td>
 																				{/if}
 																			</tr>
 																			<tr>
-																				<td valign="top" width="80%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_OWNER_PH}
+																				<td valign="top" width="60%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_OWNER_PH}
 																					<input type="checkbox" id="Quotes_ownerphone_qc" name="Quotes_ownerphone_qc" {$OWNERPHONE.Quotes} {$CHANGEPERMISSION.Quotes.ownerphone}> {$APP.yes}
 																				</td>
 																				{if $MODULEVIEW==1} 
-																				<td class="smalltxt" width="20%" align="right">
+																				<td class="smalltxt" width="40%" align="right">
 																					<input type="checkbox" id="Quotes_ownerphone_perm" name="Quotes_ownerphone_perm" {$EDITPERMISSION.Quotes.ownerphone} > {$MOD.LBL_PDFCONFIGURATOR_ENABLE}
 																				</td>
 																				{/if}
 																			</tr>
 																			<tr>
-																				<td valign="top"  width="80%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PDF_CONFIGURATOR_SPACE_HEADER}&nbsp;&nbsp;
+																				<td valign="top"  width="60%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PDF_CONFIGURATOR_SPACE_HEADER}&nbsp;&nbsp;
 																					<select name="Quotes_spaceheadline_qv" class="detailedViewTextBox"   style="width:7%;" id="Quotes_spaceheadline_qv" {$CHANGEPERMISSION.Quotes.spaceheadline}>
 																						{html_options values=$HEADERSPACE output=$HEADERSPACE selected=$HEADERSPACESELECTED}
 																					</select>
 																				</td>
 																				{if $MODULEVIEW==1}
-																				<td class="smalltxt"  width="20%" align="right">
+																				<td class="smalltxt"  width="40%" align="right">
 																					<input type="checkbox" name="Quotes_spaceheadline_perm" id="Quotes_spaceheadline_perm"  {$EDITPERMISSION.Quotes.spaceheadline} > {$MOD.LBL_PDFCONFIGURATOR_ENABLE}
 																				</td>
 																				{/if}
 																			</tr>
 																			<tr>
-																				<td valign="top"  width="80%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PRINT_FOOTER}&nbsp;&nbsp;
+																				<td valign="top"  width="60%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PRINT_FOOTER}&nbsp;&nbsp;
 																					<input type="checkbox" name="Quotes_footerradio_qc" id="Quotes_footerradio_qc" {$FOOTERRADIO.Quotes} {$CHANGEPERMISSION.Quotes.footerradio}> {$APP.yes}
 																				</td>
 																				{if $MODULEVIEW==1}
-																				<td class="smalltxt"  width="20%" align="right">
+																				<td class="smalltxt"  width="40%" align="right">
 																					<input type="checkbox" name="Quotes_footerradio_perm" id="Quotes_footerradio_perm"  {$EDITPERMISSION.Quotes.footerradio} > {$MOD.LBL_PDFCONFIGURATOR_ENABLE}
 																				</td>
 																				{/if}
 																			</tr>
 																			<tr>
-																				<td valign="top"  width="80%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PRINT_FOOTERPAGE}&nbsp;&nbsp;
+																				<td valign="top"  width="60%" class="smalltxt">{$PDFMODULLANGUAGEQUOTES.LBL_PRINT_FOOTERPAGE}&nbsp;&nbsp;
 																					<input type="checkbox" name="Quotes_pageradio_qc" id="Quotes_pageradio_qc" {$FOOTERPAGERADIO.Quotes} {$CHANGEPERMISSION.Quotes.pageradio}> {$APP.yes}
 																				</td>
 																				{if $MODULEVIEW==1}
@@ -501,7 +501,7 @@
 											</tr>
 										</table>
 										<script type="text/javascript">
-											initTabs('configurationtabs',Array(pdfconfig_arr.TAB_GENERAL,pdfconfig_arr.TAB_GROUP,pdfconfig_arr.TAB_INDIVIDUAL),0,750,515);
+											initTabs('configurationtabs',Array(pdfconfig_arr.TAB_GENERAL,pdfconfig_arr.TAB_GROUP,pdfconfig_arr.TAB_INDIVIDUAL),0,1250,515);
 										</script>
 									</div>
 								</td>
@@ -969,7 +969,7 @@
 											</tr>
 										</table>
 										<script type="text/javascript">
-											initTabs('configurationtabs_invoice',Array(pdfconfig_arr.TAB_GENERAL,pdfconfig_arr.TAB_GROUP,pdfconfig_arr.TAB_INDIVIDUAL),0,750,530);
+											initTabs('configurationtabs_invoice',Array(pdfconfig_arr.TAB_GENERAL,pdfconfig_arr.TAB_GROUP,pdfconfig_arr.TAB_INDIVIDUAL),0,1250,530);
 										</script>
 									</div>
 									<br>
@@ -1442,7 +1442,7 @@
 											</tr>
 										</table>
 										<script type="text/javascript">
-											initTabs('configurationtabs_so',Array(pdfconfig_arr.TAB_GENERAL,pdfconfig_arr.TAB_GROUP,pdfconfig_arr.TAB_INDIVIDUAL),0,750,545);
+											initTabs('configurationtabs_so',Array(pdfconfig_arr.TAB_GENERAL,pdfconfig_arr.TAB_GROUP,pdfconfig_arr.TAB_INDIVIDUAL),0,1250,545);
 										</script>
 									</div>
 								</td>
@@ -1934,7 +1934,7 @@
 											</tr>
 										</table>
 										<script type="text/javascript">
-											initTabs('configurationtabs_po',Array(pdfconfig_arr.TAB_GENERAL,pdfconfig_arr.TAB_GROUP,pdfconfig_arr.TAB_INDIVIDUAL),0,750,560);
+											initTabs('configurationtabs_po',Array(pdfconfig_arr.TAB_GENERAL,pdfconfig_arr.TAB_GROUP,pdfconfig_arr.TAB_INDIVIDUAL),0,1250,560);
 										</script>
 									</div>
 								</td>

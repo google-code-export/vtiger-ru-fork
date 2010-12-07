@@ -8,7 +8,7 @@
 //this defindes the language strings for the PDF settings for Quotes
 $pdf_setting_strings = Array(
 'LBL_PDF_CONFIGURATOR_DESC'=>'Здесь вы можете изменить настройки вывода в PDF для ваших Предложений.',
-'LBL_PDF_CONFIGURATOR_FONTS'=>'Доступны следующие шрифты. По умолчанию "Dajavu Sans".',
+'LBL_PDF_CONFIGURATOR_FONTS'=>'Доступны следующие шрифты. По умолчанию "DejaVu Sans".',
 'LBL_PDF_CONFIGURATOR_FONTSSIZE'=>'Здесь вы можете изменить размеры шрифтов для каждого раздела в пикселах (px).',
 'LBL_PDF_CONFIGURATOR_FONTSSIZE_HEADER'=>'Верхний колонтитул',
 'LBL_PDF_CONFIGURATOR_FONTSSIZE_FOOTER'=>'Нижний колонтитул',
