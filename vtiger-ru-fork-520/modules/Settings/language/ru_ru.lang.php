@@ -2,8 +2,8 @@
 /***********************************************************
 *  Module       : Settings
 *  Language     : RU Русский
-*  Version      : 5.2.0
-*  Created Date : 2010-08-23
+*  Version      : 5.2.1
+*  Created Date : 2010-12-03
 *  Author       : Eugene Babiy
 *  License      : 
 Licensed under Vtiger Public License Version 1.1.
@@ -552,7 +552,7 @@ $mod_strings = array (
       'LBL_SELECT_ENTITY' => 'Выберите обьект',
       'LBL_CAN_BE_ACCESSED_BY' => 'доступно для',
       'LBL_PERMISSIONS' => 'Права',
-      'LBL_DOC_MSWORD' => 'Файл должен быть документом формата doc/msword',
+      'LBL_DOC_MSWORD' => 'Файл должен быть документом .doc/MSWord .odt/OpenOffice или .rtf/RichTextFormat',
       'LBL_NODOC' => 'Нет файлов .doc в этой папке. Пожалуйста, попробуйте еще раз!',
       'LOGO_ERROR' => 'Логотип должен быть изображением типа jpeg/png',
       'Error_Message' => 'Ошибка',

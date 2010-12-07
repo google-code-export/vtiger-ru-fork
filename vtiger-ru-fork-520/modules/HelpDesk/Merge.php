@@ -8,27 +8,14 @@
  * All Rights Reserved.
 *
  ********************************************************************************/
-?>
-<html>
-<body>
-<script>
-if (document.layers || (!document.all && document.getElementById))
-{
-	document.write("This feature requires IE 5.5 or higher for Windows on Microsoft Windows 2000, Windows NT4 SP6, Windows XP.");
-	document.write("<br><br>Click <a href='#' onclick='window.history.back();'>here</a> to return to the previous page");
-}
-else if(document.all)
-{
-	document.write("<br><br>Click <a href='#' onclick='window.history.back();'>here</a> to return to the previous page");
-	document.write("<OBJECT Name='vtigerCRM' codebase='modules/Settings/vtigerCRM.CAB#version=1,5,0,0' id='objMMPage' classid='clsid:0FC436C2-2E62-46EF-A3FB-E68E94705126' width=0 height=0></object>");
-}
-</script>
-<?php
 
 require_once('include/database/PearDatabase.php');
 require_once('config.php');
-
+require_once('include/utils/MergeUtils.php');
+global $app_strings;
 global $default_charset;
+
+
 
 // Fix For: http://trac.vtiger.com/cgi-bin/trac.cgi/ticket/2107
 $randomfilename = "vt_" . str_replace(array("."," "), "", microtime());
@@ -47,15 +34,39 @@ $temparray = $adb->fetch_array($result);
 
 $fileContent = $temparray['data'];
 $filename=html_entity_decode($temparray['filename'], ENT_QUOTES, $default_charset);
+$extension=GetFileExtension($filename);
 // Fix For: http://trac.vtiger.com/cgi-bin/trac.cgi/ticket/2107
-$filename= $randomfilename . "_word.doc";
+$filename= $randomfilename . "_mmrg.$extension";
 
 $filesize=$temparray['filesize'];
 $wordtemplatedownloadpath =$root_directory ."/test/wordtemplatedownload/";
 
+
 $handle = fopen($wordtemplatedownloadpath .$filename,"wb");
 fwrite($handle,base64_decode($fileContent),$filesize);
 fclose($handle);
+
+if (GetFileExtension($filename)=="doc") {
+echo "<html>
+<body>
+<script>
+if (document.layers)
+{
+    document.write(\"This feature requires IE 5.5 or higher for Windows on Microsoft Windows 2000, Windows NT4 SP6, Windows XP.\");
+    document.write(\"<br><br>Click <a href='#' onclick='window.history.back();'>here</a> to return to the previous page\");
+}   
+else if (document.layers || (!document.all && document.getElementById))
+{
+    document.write(\"This feature requires IE 5.5 or higher for Windows on Microsoft Windows 2000, Windows NT4 SP6, Windows XP.\");
+    document.write(\"<br><br>Click <a href='#' onclick='window.history.back();'>here</a> to return to the previous page\"); 
+}
+else if(document.all)
+{
+    document.write(\"<br><br>Click <a href='#' onclick='window.history.back();'>here</a> to return to the previous page\");
+    document.write(\"<OBJECT Name='vtigerCRM' codebase='modules/Settings/vtigerCRM.CAB#version=1,5,0,0' id='objMMPage' classid='clsid:0FC436C2-2E62-46EF-A3FB-E68E94705126' width=0 height=0></object>\");
+}
+</script>";    
+}
 
 //<<<<<<<<<<<<<<<<<<<<<<<<<<<for mass merge>>>>>>>>>>>>>>>>>>>>>>>>>>>
 $mass_merge = $_REQUEST['allselectedboxes'];
@@ -178,6 +189,19 @@ for ($x=0; $x<$y; $x++)
 	}
 
 }
+
+// Ordena etiquetas más grandes primero para que no se sutituyan subcadenas en el documento
+// Por ejemplo, pongo LEAD_TIPOVIVIENDA delante de LEAD_TIPO, para que no se sustituya la subcadena LEAD_TIPO
+$labels_length=$field_label;
+function strlength($label,$clave) {
+    global $labels_length;
+    $labels_length[$clave] = strlen($label);
+}
+array_walk($labels_length,'strlength');
+array_multisort($labels_length, $field_label, $querycolumns);
+$field_label=array_reverse($field_label);
+$querycolumns=array_reverse($querycolumns);
+$labels_length=array_reverse($labels_length);
 $csvheader = implode(",",$field_label);
 //<<<<<<<<<<<<<<<<End>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -261,56 +285,105 @@ if(count($querycolumns) > 0)
 else
 {
 	die("No fields to do Merge");
-}	
-// Fix for: http://trac.vtiger.com/cgi-bin/trac.cgi/ticket/2107
-$datafilename = $randomfilename . "_data.csv";
+}
 
-$handle = fopen($wordtemplatedownloadpath.$datafilename,"wb");
-fwrite($handle,$csvheader."\r\n");
-fwrite($handle,str_replace("###","\r\n",$csvdata));
-fclose($handle);
+echo "<br><br><br>";
+$extension = GetFileExtension($filename);
+if($extension == "doc")
+{
+    // Fix for: http://trac.vtiger.com/cgi-bin/trac.cgi/ticket/2107
+    $datafilename = $randomfilename . "_data.csv";
+ 
+    $handle = fopen($wordtemplatedownloadpath.$datafilename,"wb");
+    fwrite($handle,$csvheader."\r\n");
+    fwrite($handle,str_replace("###","\r\n",$csvdata));
+    fclose($handle);
+}
+else if($extension == "odt")
+{
+    //delete old .odt files in the wordtemplatedownload directory
+    foreach (glob("$wordtemplatedownloadpath/*.odt") as $delefile) 
+    {
+        unlink($delefile);
+    }
+    if (!is_array($mass_merge)) $mass_merge = array($mass_merge);
+    foreach($mass_merge as $idx => $entityid) {
+        $temp_dir=entpack($filename,$wordtemplatedownloadpath,$fileContent);
+        $concontent=file_get_contents($wordtemplatedownloadpath.$temp_dir.'/content.xml');
+        unlink($wordtemplatedownloadpath.$temp_dir.'/content.xml');
+        $new_filecontent=crmmerge($csvheader,$concontent,$idx,'htmlspecialchars');
+        $stycontent=file_get_contents($wordtemplatedownloadpath.$temp_dir.'/styles.xml');
+        unlink($wordtemplatedownloadpath.$temp_dir.'/styles.xml');
+        $new_filestyle=crmmerge($csvheader,$stycontent,$idx,'htmlspecialchars');
+        packen($entityid.$filename,$wordtemplatedownloadpath,$temp_dir,$new_filecontent,$new_filestyle);
+
+        echo "&nbsp;&nbsp;<font size=+1><b><a href=test/wordtemplatedownload/$entityid$filename>".$app_strings['DownloadMergeFile']."</a></b></font><br>";
+        remove_dir($wordtemplatedownloadpath.$temp_dir);
+    }
+}
+else if($extension == "rtf")
+{
+    foreach (glob("$wordtemplatedownloadpath/*.rtf") as $delefile) 
+    {
+        unlink($delefile);
+    }
+    $filecontent = base64_decode($fileContent);
+    if (!is_array($mass_merge)) $mass_merge = array($mass_merge);
+    foreach($mass_merge as $idx => $entityid) {
+        $handle = fopen($wordtemplatedownloadpath.$entityid.$filename,"wb");
+        $new_filecontent = crmmerge($csvheader,$filecontent,$idx,'utf8Unicode');
+        fwrite($handle,$new_filecontent);
+        fclose($handle);
+        echo "&nbsp;&nbsp;<font size=+1><b><a href=test/wordtemplatedownload/$entityid$filename>".$app_strings['DownloadMergeFile']."</a></b></font><br>";
+    }
+}
+else
+{
+    die("unknown file format");
+}
 
 ?>
 <script>
-if (window.ActiveXObject)
-{
-	try 
-	{
-  		ovtigerVM = eval("new ActiveXObject('vtigerCRM.ActiveX');");
-  		if(ovtigerVM)
-		{
-			var filename = "<?php echo $filename?>";
-			if(filename != "")
-			{
-				if(objMMPage.bDLTempDoc("<?php echo $site_URL?>/test/wordtemplatedownload/<?php echo $filename?>","MMTemplate.doc"))
-				{
-					try
-					{
-						if(objMMPage.Init())
-						{
-							objMMPage.vLTemplateDoc();
-							objMMPage.bBulkHDSrc("<?php echo $site_URL;?>/test/wordtemplatedownload/<?php echo $datafilename ?>");
-							objMMPage.vBulkOpenDoc();
-							objMMPage.UnInit()
-								window.history.back();
-						}		
-					}catch(errorObject)
-					{
-						document.write("Error while processing mail merge operation");
-					}
-				}
-				else
-				{
-					document.write("Cannot get template document");
-				}
-			}
-		}
-	}
-	catch(e)
-	{
-		document.write("Requires to download ActiveX Control from vtigerCRM. Please, ensure that you have administration privilage");
-	}
+if("<?php echo GetFileExtension($filename); ?>" == "doc") {
+    if (window.ActiveXObject)
+    {
+        try 
+        {
+            ovtigerVM = eval("new ActiveXObject('vtigerCRM.ActiveX');");
+            if(ovtigerVM)
+            {
+                var filename = "<?php echo $filename?>";
+                if(filename != "")
+                {
+                    if(objMMPage.bDLTempDoc("<?php echo $site_URL?>/test/wordtemplatedownload/<?php echo $filename?>","MMTemplate.doc"))
+                    {
+                        try
+                        {
+                            if(objMMPage.Init())
+                            {
+                                objMMPage.vLTemplateDoc();
+                                objMMPage.bBulkHDSrc("<?php echo $site_URL;?>/test/wordtemplatedownload/<?php echo $datafilename ?>");
+                                objMMPage.vBulkOpenDoc();
+                                objMMPage.UnInit()
+                                    window.history.back();
+                            }		
+                        }catch(errorObject)
+                        {
+                            document.write("Error while processing mail merge operation");
+                        }
+                    }
+                    else
+                    {
+                        document.write("Cannot get template document");
+                    }
+                }
+            }
+        }
+        catch(e)
+        {
+            document.write("Requires to download ActiveX Control from vtigerCRM. Please, ensure that you have administration privilage");
+        }
+        document.write("</body></html>");
+    }
 }
 </script>
-</body>
-</html>
