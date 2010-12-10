@@ -63,7 +63,8 @@ function getMyTickets($maxval,$calCnt)
 			elseif($viewstatus == 'Marked')
 				$value[]= '<a style="color:yellow;" href="index.php?action=DetailView&module=HelpDesk&record='.substr($adb->query_result($tktresult,$i,"ticketid"),0,20).'">'.$adb->query_result($tktresult,$i,"title").'</a>';
 			else
-				$value[]= '<a href="index.php?action=DetailView&module=HelpDesk&record='.substr($adb->query_result($tktresult,$i,"ticketid"),0,20).'">'.substr($adb->query_result($tktresult,$i,"title"),0,20).'</a>';
+				//$value[]= '<a href="index.php?action=DetailView&module=HelpDesk&record='.substr($adb->query_result($tktresult,$i,"ticketid"),0,20).'">'.substr($adb->query_result($tktresult,$i,"title"),0,20).'</a>';
+				$value[]= '<a href="index.php?action=DetailView&module=HelpDesk&record='.mb_substr($adb->query_result($tktresult,$i,"ticketid", 'UTF-8'),0,40).'">'.mb_substr($adb->query_result($tktresult,$i,"title", 'UTF-8'),0,100).'</a>';
 
 			$parent_id = $adb->query_result($tktresult,$i,"parent_id");
 			$parent_name = '';
