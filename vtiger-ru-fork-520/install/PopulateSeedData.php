@@ -432,11 +432,11 @@ for($i=0; $i<10; $i++) {
 
 	$status_array=array ("Draft","Reviewed","Published","Draft","Reviewed","Draft","Reviewed","Draft","Reviewed","Draft","Reviewed","Draft");
 	$question_array=array (
-	"How to migrate data from previous versions to the latest version?",
-	"Error message: The file is damaged and could not be repaired.",
-	"A program is trying to access e-mail addresses you have stored in Outlook. Do you want to allow this? If this is unexpected, it may be a virus and you should choose No when trying to add Email to vitger CRM ",
-	"When trying to merge a template with a contact, First I was asked allow installation of ActiveX control. I accepted. After it appears a message that it will not be installed because it can't verify the publisher. Do you have a workarround for this issue ?",
-	" Error message - please close all instances of word before using the vtiger word plugin. Do I need to close all Word and Outlook instances first before I can reopen Word and sign in?",
+	"Что такое CRM система?",
+	"Какую пользу нашей компании принесет CRM система?",
+	"Как определить что мы 'доросли' до CRM?",
+	"В каких отраслях установка CRM системы приносит наиболее ощутимую пользу?",
+	"В чем преимущество онлайн CRM?",
 	"How to migrate data from previous versions to the latest version?",
 	"A program is trying to access e-mail addresses you have stored in Outlook. Do you want to allow this? If this is unexpected, it may be a virus and you should choose No when trying to add Email to vitger CRM ",
 	" Error message - please close all instances of word before using the vtiger word plugin. Do I need to close all Word and Outlook instances first before I can reopen Word and sign in?",
@@ -447,34 +447,49 @@ for($i=0; $i<10; $i++) {
 	);
 
 	$answer_array=array (
-	"Database migration scripts are available to migrate from the following versions:
-
-	1.0 to 2.0
-
-	2.0 to 2.1
-
-	2.1 to 3.0
-
-	3.0 to 3.2
-
-	3.2 to 4.0
-
-	4.0 to 4.0.1
-
-	4.0.1 to 4.2",
+	"CRM система (от англ. Customer Relationship Management) – это компьютерная программа, которая содержит 
+	всю необходимую информацию о ваших клиентах. Любое действие , связанное с клиентом: звонок, назначенная 
+	встреча, сообщения электронной почты, коммерческое предложение, договор, обращение в службу поддержки и 
+	многое другое сохраняется в CRM системе и становится доступным любому сотруднику вашей компании в любое 
+	время в любом месте. С помощью CRM системы, каждый сотрудник может без труда посмотреть всю историю 
+	общения с клиентом, а руководитель оценить работу отделов маркетинга, продаж и обслуживания.",
 	
-	"The above error message is due to version incompatibility between FPDF and PHP5. Use PHP 4.3.X version","Published",
-	"The above error message is displayed if you have installed the Microsoft(R) Outlook(R) E-mail Security Update. Please refer to the following URL for complete details:
-
-http://support.microsoft.com/default.aspx?scid=kb%3BEN-US%3B263074
-
-If you want to continue working with vtiger Outlook Plug-in, select the Allow access for check box and select the time from drop-down box.",
-	" Since, vtigerCRM & all plugins are open source, it is not signed up with third party vendors and IE will ask to download even though the plugin are not signed.
-
-This message if produced by Microsoft Windows XP. I English Windows XP with the SP2 and the last updates. I told IE to accept installation of the ActiveX, but after it, this message has appeared. Provably there is a place where to tall to WinXP to not validate if the code is signed... but I don\'t know where.
-
-In IE from Tools->Internet Options->Security->Custom Level, there you can see various options for downloading plugins which are not signed and you can adjust according to your need, so relax your security settings for a while and give a try to vtiger Office Plugin.",
-	"Before modifying any templates, please ensure that you don\'t have any documents open and only one instance of word is available in your memory."
+	"С помощью технологий, реализованных в CRM системе, ваши сотрудники могут заглянуть внутрь отношений с 
+	клиентами: изучить поведение клиентов, оценить их прибыльность и т.п. Используя CRM систему, ваша компания 
+	может увеличить прибыль, ведь ваши сотрудники смогут: * предлагать товары и услуги, которые действительно 
+	необходимы клиенту * быстрее завершать сделки продажами * проводить эффективные перекрестные продажи * 
+	обеспечивать более качественное послепродажное обслуживание ","Published",
+	"Если вы зашли на наш сайт, то уже наверняка знаете что такое CRM система. Поздравляем, вы почти 'доросли' до CRM. А теперь несколько ситуаций из практики:
+	
+	* Ежемесячно наша компания дает рекламу в газетах, журналах или на радио.
+	- Мы не знаем насколько эффективна та или иная реклама. Компания продолжает тратить деньги на рекламные компании с очень низким возвратом инвестиций.
+	
+	* Наша компания участвует в выставках. Клиенты интересуются нашими товарами или услугами, оставляют визитки, заполняют анкеты и т.д.
+	- После выставки мы складываем трофеи в коробку и убираем под стол. Так компания теряет потенциальных клиентов и прибыль, которую они могли принести.
+	
+	* Клиент написал письмо с запросом порекомендовать продукцию и изложил свои требования.
+	- Клиент не получил ответа. Письмо потерялось, так и не дойдя до ответственного менеджера.
+	- Клиент получил 3 ответа от 3 менеджеров. Причем все ответы были разные. В результате все менеджеры потратили время на поиски нужной информации и на написание ответа.
+	
+	* Менеджер по продажам заболел, уехал в отпуск или ушел к конкурентам.
+	- Все клиенты с которыми он работал остались в его записной книжке.
+	
+	* Менеджер забыл назначить встречу или позвонить после отправки коммерческого предложения.
+	- Клиент купил крупную партию товара у конкурента.
+	
+	* Клиент позвонил, чтобы пожаловаться на качество продукции
+	- Жалоба была записана на листок (направлена в другой отдел) и забыта.
+	- Клиент написал письмо директору компании с нареканием или ушел к конкурентам.
+	
+	* Наша компания часто сталкивается с конкурентами по ценам, по продукции.
+	- Мы не ведем информацию, как лучше себя вести продавцу в этих случаях. - Мы не знаем сколько сделок мы проиграли и кому.
+	
+	Наверное что-то подобное не раз случалось и в вашей компании. Вы активно занимаетесь продажами, а это и есть сигнал того, что ваша компания 'доросла до CRM системы.",
+	"CRM система будет наиболее полезна для тех компаний, которые предоставляют услуги в секторе B2B, продают товар вместе с послепродажным обслуживанием. Если говорить 
+	об отраслях, то можно выделить финансовый сектор, телекоммуникационные компании, рекламный бизнес, поставщиков оборудования, оптовые и дистрибьюторские компании. ",
+	"В настоящее время в Северной Америке особенно активно развивается новый вид распространения программного обеспечения - ПО как услуга (SaaS - Software as a Service). 
+	SugarCRM 'Онлайн' является онлайн-CRM, типичным представителем нового поколения SaaS решений. Основное преимущество SugarCRM 'Онлайн' - возможность максимально быстрого 
+	старта. Посудите сами: установка CRM системы происходит на нашем сервере, что позволяет вам сэкономить не только на оборудовании, но и на дальнейшем сопровождении системы."
 	);
 
 $num_array=array(0,1,2,3,4,6,7,8,9,10,11,12);
