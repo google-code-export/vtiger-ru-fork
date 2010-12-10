@@ -82,7 +82,8 @@ function getTopPotentials($maxval,$calCnt)
 					);
 			$potentialid=$adb->query_result($list_result,$i,'potentialid');                                  
 			$potentialname = $adb->query_result($list_result,$i,'potentialname');
-			$Top_Potential = (strlen($potentialname) > 20) ? (substr($potentialname,0,20).'...') : $potentialname;
+			//$Top_Potential = (strlen($potentialname) > 20) ? (substr($potentialname,0,20).'...') : $potentialname;
+			$Top_Potential = (mb_strlen($potentialname,'UTF-8') > 40) ? (mb_substr($potentialname,0,100).'...') : $potentialname;
 			$value=array();
 			$value[]='<a href="index.php?action=DetailView&module=Potentials&record='.$potentialid.'">'.$Top_Potential.'</a>';
 

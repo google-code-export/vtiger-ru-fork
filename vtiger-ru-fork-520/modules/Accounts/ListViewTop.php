@@ -97,7 +97,8 @@ function getTopAccounts($maxval,$calCnt)
 				'AMOUNT' => ($account['amount']),
 				);
 
-		$Top_Accounts = (strlen($account['accountname']) > 20) ? (substr($account['accountname'],0,20).'...') : $account['accountname'];
+		//$Top_Accounts = (strlen($account['accountname']) > 20) ? (substr($account['accountname'],0,20).'...') : $account['accountname'];
+		$Top_Accounts = (mb_strlen($account['accountname'],'UTF-8') > 40) ? (mb_substr($account['accountname'],0,20).'...') : $account['accountname'];
 		$value[]='<a href="index.php?action=DetailView&module=Accounts&record='.$account['accountid'].'">'.$Top_Accounts.'</a>';
 		$value[]=convertFromDollar($account['amount'],$rate);
 		$entries[$account['accountid']]=$value;	
