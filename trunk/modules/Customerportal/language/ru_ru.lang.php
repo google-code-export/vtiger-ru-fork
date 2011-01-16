@@ -57,7 +57,7 @@ $app_strings = Array(
 'LBL_NEW_INFORMATION'=>'Пожалуйста введите необходимую информацию в следующих полях чтобы создать обращение.',
 'LBL_TICKET_ID'=>'№ Обращения',
 'LBL_STATUS'=>'Статус',
-'LBL_ON'=>'on',
+'LBL_ON'=>'в',
 'LBL_NOTSET_UPLOAD_DIR'=>'ВЫ НЕ УКАЗАЛИ ПАПКУ ЗАГРУЗКИ В ФАЙЛЕ КОНФИГУРАЦИИ',
 'LBL_GIVE_VALID_FILE'=>'Пожалуйста предоставьте действительный файл для загрузки!',
 'LBL_UPLOAD_FILE_LARGE'=>'Извините, размер загружаемого файла превосходит максимальный допустимый лимит. Пожалуйста попробуйте файл поменьше',
@@ -85,7 +85,7 @@ $app_strings = Array(
 'Related to' =>'Относится к',
 'Product Name' =>'Название Продукта',
 'Status' =>'Статус',
-'Category' =>'Категория	',
+'Category' =>'Категория',
 'Description' =>'Описание',
 'Solution' =>'Решение',
 
@@ -366,12 +366,12 @@ $app_strings = Array(
 'LBL_LOGIN_NOTE'=>'Адрес E-mail и Пароль не чувствительны к Регистру.',
 'LBL_MY_SETTINGS'=>'Мои Настройки',
 'LBL_LOG_OUT'=>'Выход',
-'QUOTE_RELATED'=>'Относящиеся Предложения ',
-'INVOICE_RELATED'=>'Относящиеся Счета ',
+'QUOTE_RELATED'=>'Предложения',
+'INVOICE_RELATED'=>'Счета ',
 'LBL_NOT_AVAILABLE'=>'Нет в наличии',
 'LBL_EMAILID'=>'Адрес E-mail:',
-'Created Time' =>'Время Создания',
-'Modified Time' =>'Время Изменения',
+'Created Time' =>'Создано',
+'Modified Time' =>'Изменено',
 'LBL_LANGUAGE'=>'Язык',
 'Related To' =>'Относится к',
 'MODULE_INACTIVE'=>'Модуль Неактивен',
@@ -393,7 +393,7 @@ $app_strings = Array(
 'In Progress'=>'В процессе',
 'Wait For Response'=>'В ожидании ответа',
 'Closed'=>'Закрыто' ,
-'LBL_ANSWER'=>'ОТВЕТ : '
+'LBL_ANSWER'=>'ОТВЕТ : ',
 
 // Добавлено в 5.2.0RC:
 'LBL_ASSET_INFORMATION' => 'Информация по Активам',
@@ -430,5 +430,7 @@ $app_strings = Array(
 'Project Milestone Name' => 'Название Этапа',
 'Milestone Date' => 'Дата',
 'LBL_PROJECT_DOCUMENTS' => 'Документы по Проекту',
+
 );
+
 ?>
