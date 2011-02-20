@@ -345,6 +345,7 @@ function getSearchListViewHeader($focus, $module,$sort_qry='',$sorder='',$order_
 		$pass_url .= '&form=vtlibPopupView&forfield='.vtlib_purify($_REQUEST['forfield']).'&srcmodule='.vtlib_purify($_REQUEST['srcmodule']).'&forrecord='.vtlib_purify($_REQUEST['forrecord']);
 	}
 	// END
+	// НАЧАЛО
 	
 	//Added to reduce the no. of queries logging for non-admin user -- by Minnie-start
 	$field_list = array();
@@ -3080,8 +3081,25 @@ function AlphabeticalSearch($module,$action,$fieldname,$query,$type,$popuptype='
 		$returnvalue .= '&form=vtlibPopupView&forfield='.vtlib_purify($_REQUEST['forfield']).'&srcmodule='.vtlib_purify($_REQUEST['srcmodule']).'&forrecord='.vtlib_purify($_REQUEST['forrecord']);
 	}
 	// END
+	// НАЧАЛО
+	
+	$arr = array(
+	
+	  1 => "А", 2 => "Б", 3 => "В", 4 => "Г", 5 => "Д", 6 => "Е", 7 => "Ж", 8 => "З", 9 => "И", 10 => "К", 11 => "Л", 12 => "М", 13 => "Н", 14 => "О", 15 => "П",
+	  
+	   16 => "Р", 17 => "С", 18 => "Т",19 => "У", 20 => "Ф", 21 => "Х", 22 => "Ц", 23 => "Ч", 24 => "Ш", 25 => "Щ", 26 => "Ы", 27 => "Э", 28 => "Ю", 29 => "Я",
+	   
+	    30 => "A", 31 => "B", 32 => "C", 33 => "D", 34 => "E", 35 => "F", 36 => "G", 37 => "H", 38 => "I", 39 => "J", 40 => "K", 41 => "L", 42 => "M", 43 => "N", 44 => "O", 45 => "P",
+	    
+	     46 => "Q", 47 => "R", 48 => "S", 49 => "T", 50 => "U", 51 => "V", 52 => "W", 53 => "X", 54 => "Y", 55 => "Z");
+	     
+	     
+	     
+	        for($i =1;$var =$arr[$i],$i<=55;$i++)
+	        
+	        //  КОНЕЦ
 
-	for($var='A',$i =1;$i<=26;$i++,$var++)
+
 	// Mike Crowe Mod --------------------------------------------------------added groupid to url
 		$list .= '<td class="searchAlph" id="alpha_'.$i.'" align="center" onClick=\'alphabetic("'.$module.'","gname='.$groupid.'&query='.$query.'&search_field='.$fieldname.'&searchtype=BasicSearch&operator=s&type=alpbt&search_text='.$var.$flag.$popuptypevalue.$returnvalue.$append_url.'","alpha_'.$i.'")\'>'.$var.'</td>';
 
