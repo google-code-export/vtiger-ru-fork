@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<module>
+	<version>5.2.0</version>
+	<type>extension</type>
+	<name>MyMind</name>
+	<label>My Mind</label>
+	<parent>Tools</parent>
+	<dependencies>
+		<vtiger_version>5.2.0</vtiger_version>
+	</dependencies>
+	<exporttime>2010-06-27 19:33:00</exporttime>
+	<license>
+		<inline><![CDATA[/*+***********************************************************************************
+ * The contents of this file are subject to the vtiger CRM Public License Version 1.0
+ * ("License"); You may not use this file except in compliance with the License
+ * The Original Code is:  vtiger CRM Open Source
+ * The Initial Developer of the Original Code is vtiger.
+ * Portions created by vtiger are Copyright (C) vtiger.
+ * All Rights Reserved.
+ * MyMind-5.x-Java_Flash_MindMap
+ * Russian-English Speak Mikhail Baryshnikov michael.debian7@gmail.com
+ *************************************************************************************/]]></inline>
+	</license>
+</module>
