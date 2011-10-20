@@ -228,7 +228,7 @@ function searchMapLocation(addressType)
 
         }
 	mapParameter = removeHTMLFormatting(mapParameter);
-	window.open('http://maps.google.com/maps?q='+mapParameter,'goolemap','height=450,width=700,resizable=no,titlebar,location,top=200,left=250');
+	window.open('http://maps.google.ru/maps?q='+mapParameter,'goolemap','height=450,width=700,resizable=no,titlebar,location,top=200,left=250');
 }
 //javascript function will open new window to display traffic details for particular url using alexa.com
 function getRelatedLink()
