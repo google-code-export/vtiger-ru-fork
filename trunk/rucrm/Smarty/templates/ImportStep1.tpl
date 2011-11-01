@@ -88,15 +88,16 @@ function validateFile(form)
 						<br /><b>{$MOD.LBL_HAS_HEADER}</b>&nbsp;<input type="checkbox" name="has_header"{$HAS_HEADER_CHECKED} />
 						&nbsp;&nbsp;&nbsp;&nbsp;<b>{$MOD.LBL_DELIMITER}</b>&nbsp;
 							<select name="delimiter" class="small" style="font-family:Times;">
-								<option value=",">,</option>
 								<option value=";">;</option>
+								<option value=",">,</option>
 							</select>
 					  	&nbsp;&nbsp;&nbsp;&nbsp;<b>{$MOD.LBL_FORMAT}</b>&nbsp;
 							<select name="format" class="small">
 							<!-- value must be a known format for mb_convert_encoding() -->
-					  			<option value="ISO-8859-1">ISO-8859-1</option>
 					  			<option value="UTF-8">UTF-8</option>
-					  		</select>
+                  <option value="CP1251">CP2151</option>
+                  <option value="ISO-8859-1">ISO-8859-1</option>
+					  	  </select>
 					</td>
 				   </tr>
 				   {*<tr >
